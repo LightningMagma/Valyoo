@@ -16,4 +16,5 @@ public interface crud {
     public abstract boolean actualizarRegistro();
 
     public abstract boolean eliminarRegistro();
+    
 }
