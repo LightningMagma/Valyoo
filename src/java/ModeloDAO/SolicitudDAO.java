@@ -26,7 +26,8 @@ public class SolicitudDAO extends ConexionDB implements crud {
     private ResultSet mensajero;
     private boolean operacion = false;
     private String sql;
-    private String solId= "", solMonto = "", solCuotas = "",solInteres="",solEstado="";
+    private String solId = "", solMonto = "", solCuotas = "", solInteres = "", solEstado = "";
+
     public SolicitudDAO(SolicitudVO solVO) {
         super();
         try {
@@ -36,8 +37,8 @@ public class SolicitudDAO extends ConexionDB implements crud {
             solId = solVO.getSolId();
             solMonto = solVO.getSolMonto();
             solCuotas = solVO.getSolCuotas();
-            solInteres=solVO.getSolInteres();
-            solEstado=solVO.getSolEstado();                    
+            solInteres = solVO.getSolInteres();
+            solEstado = solVO.getSolEstado();
         } catch (Exception e) {
             //Logger atrapa la trasavilidad como nivel severo
             Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -71,12 +72,51 @@ public class SolicitudDAO extends ConexionDB implements crud {
 
     @Override
     public boolean actualizarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+
+            sql = "update tblsolicitud set solMonto=?,solCuotas=?,solInteres=? where SolID=?;";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, solMonto);
+            puente.setString(2, solCuotas);
+            puente.setString(3, solInteres);
+            puente.setString(4, solId);
+            puente.executeUpdate();
+            operacion = true;
+
+        } catch (Exception e) {
+            Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return operacion;
     }
 
     @Override
     public boolean eliminarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+
+            sql = "update tblsolicitud set solEstado='Inactivo' where SolID=?;";
+            puente = conexion.prepareStatement(sql);            
+            puente.setString(1, solId);
+            puente.executeUpdate();
+            operacion = true;
+
+        } catch (Exception e) {
+            Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return operacion;
     }
 
 }

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : newjsp
-    Created on : Mar 14, 2023, 11:38:05 PM
+    Document   : agregarUsuario
+    Created on : Mar 15, 2023, 10:12:12 PM
     Author     : xJuanDa
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hola mundo</h1>
+        <h1>Hello World!</h1>
     </body>
 </html>
