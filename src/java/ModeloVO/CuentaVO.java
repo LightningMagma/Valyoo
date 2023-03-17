@@ -9,14 +9,13 @@ package ModeloVO;
  *
  * @author APRENDIZ
  */
-public class CuentasVO {
+public class CuentaVO {
 
-    public CuentasVO(String CuNumero, String CuFechaRegistro, String CuEstado, String CuSede, String CuDeudor) {
+    public CuentaVO(String CuNumero, String CuFechaRegistro, String CuEstado, String CuSede, String CuDeudor) {
         this.CuNumero = CuNumero;
         this.CuFechaRegistro = CuFechaRegistro;
         this.CuEstado = CuEstado;
-        this.CuSede = CuSede;
-        this.CuDeudor = CuDeudor;
+        this.CuPersona = CuPersona;
     }
 
     public String getCuNumero() {
@@ -43,20 +42,13 @@ public class CuentasVO {
         this.CuEstado = CuEstado;
     }
 
-    public String getCuSede() {
-        return CuSede;
+    public String getCuPersona() {
+        return CuPersona;
     }
 
-    public void setCuSede(String CuSede) {
-        this.CuSede = CuSede;
+    public void setCuPersona(String CuPersona) {
+        this.CuPersona = CuPersona;
     }
 
-    public String getCuDeudor() {
-        return CuDeudor;
-    }
-
-    public void setCuDeudor(String CuDeudor) {
-        this.CuDeudor = CuDeudor;
-    }
-    private String CuNumero, CuFechaRegistro, CuEstado, CuSede, CuDeudor;
+    private String CuNumero, CuFechaRegistro, CuEstado, CuPersona;
 }
