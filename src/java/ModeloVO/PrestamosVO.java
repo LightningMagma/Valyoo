@@ -11,6 +11,9 @@ package ModeloVO;
  */
 public class PrestamosVO {
 
+    public PrestamosVO() {
+    }
+
     public PrestamosVO(String PreId, String PreFechaInicio, String PreFechaFin, String PreCuotas, String PreMonto, String PreInteres, String PreCuenta) {
         this.PreId = PreId;
         this.PreFechaInicio = PreFechaInicio;

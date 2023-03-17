@@ -21,9 +21,11 @@ public class UsuarioDAO extends ConexionDB implements crud{
     private Connection conexion;
     private PreparedStatement puente;
     private ResultSet mensajero;
-    private boolean operacion = false;
+    private boolean operacion = false;   
     private String sql;
     private String usuUsuario = "", usuContrasena = "", usuEstado = "";
+     public UsuarioDAO() {
+    }
     public UsuarioDAO(UsuarioVO usuVO) {
         super();
         try {

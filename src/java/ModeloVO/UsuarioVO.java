@@ -11,6 +11,9 @@ package ModeloVO;
  */
 public class UsuarioVO {
 
+    public UsuarioVO() {
+    }
+
     public UsuarioVO(String usuUsuario, String usuContrasena, String usuEstado) {
         this.usuUsuario = usuUsuario;
         this.usuContrasena = usuContrasena;

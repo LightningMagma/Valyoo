@@ -28,6 +28,9 @@ public class SolicitudDAO extends ConexionDB implements crud {
     private String sql;
     private String solId = "", solMonto = "", solCuotas = "", solInteres = "", solEstado = "";
 
+    public SolicitudDAO() {
+    }
+
     public SolicitudDAO(SolicitudVO solVO) {
         super();
         try {

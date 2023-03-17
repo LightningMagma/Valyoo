@@ -12,6 +12,9 @@ package ModeloVO;
 public class RolVO {
     private String rolId,rolNombre,rolEstado;
 
+    public RolVO() {
+    }
+
     public String getRolId() {
         return rolId;
     }

@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.ConexionDB;
@@ -20,14 +21,17 @@ import util.crud;
  * @author APRENDIZ
  */
 public class RolDAO extends ConexionDB implements crud {
-
+    
     private Connection conexion;
     private PreparedStatement puente;
     private ResultSet mensajero;
     private boolean operacion = false;
     private String sql;
     private String rolId = "", rolNombre = "", rolEstado = "";
-
+    
+    public RolDAO() {
+    }
+    
     public RolDAO(RolVO rolVO) {
         super();
         try {
@@ -111,6 +115,30 @@ public class RolDAO extends ConexionDB implements crud {
         }
 
         return operacion;
+    }     
+    public ArrayList<RolVO> listarRol(){
+        ArrayList<RolVO> listaRol = new ArrayList<>();
+        try {
+            conexion=this.obtenerConexion();
+            sql="select * from tblrol;";
+            puente= conexion.prepareStatement(sql);                     
+            mensajero=puente.executeQuery();            
+            while (mensajero.next()) {                
+                RolVO rolVO = new RolVO(mensajero.getString(1),mensajero.getString(2),mensajero.getString(3));
+                listarRol().add(rolVO);
+            }            
+        } catch (Exception e) {
+            Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listaRol;
+        
     }
 
 }
