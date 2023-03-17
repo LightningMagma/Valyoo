@@ -69,7 +69,14 @@ public class UsuarioControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("eliminarUsuario.jsp").forward(request, response);
                 break;
-
+            case 4:
+                if (usuDAO.iniciarSesion(usuUsuario, usuContrasena)) {
+                    request.getRequestDispatcher("menu.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("mensajeError", "No se pudo iniciar sesion");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
+                break;
         }
     }
 

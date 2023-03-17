@@ -43,7 +43,7 @@ public class UsuarioDAO extends ConexionDB implements crud{
     public boolean agregarRegistro() {
         try {
 
-            sql = "insert into tblusuario(usuUsuario,usuContraseña)values (?,?);";
+            sql = "insert into tblusuario(usuUsuario,usuContrasena)values (?,?);";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, usuUsuario);
             puente.setString(2, usuContrasena);            
@@ -67,7 +67,7 @@ public class UsuarioDAO extends ConexionDB implements crud{
     public boolean actualizarRegistro() {
         try {
 
-            sql = "update tblusuario set usuContraseña=? where usuUsuario=?;";
+            sql = "update tblusuario set usuContrasena=? where usuUsuario=?;";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, usuContrasena);
             puente.setString(2, usuUsuario);
@@ -107,6 +107,28 @@ public class UsuarioDAO extends ConexionDB implements crud{
             }
         }
 
+        return operacion;
+    }
+    public boolean iniciarSesion(String usuario, String clave) {
+        try {
+            conexion=this.obtenerConexion();
+            sql="select * from tblusuario where usuUsuario=? and usuContrasena=?;";
+            puente= conexion.prepareStatement(sql);
+            puente.setString(1, usuUsuario);
+            puente.setString(2, usuContrasena);
+            mensajero=puente.executeQuery();
+            if (mensajero.next()) {
+                operacion=true;
+            }
+        } catch (Exception e) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         return operacion;
     }
     
