@@ -24,6 +24,7 @@
                 <option value="Cédula de Extranjería">Cédula de Extranjería</option>
                 <option value="Pasaporte">Pasaporte</option>
             </select>
+            
             <label for="perNombre">Nombre:</label>
             <input type="text" name="perNombre" required maxlength=30 placeholder="Ingrese el nombre">
             <label for="perApellido">Apellido:</label>
@@ -32,12 +33,10 @@
             <input type="text" name="perTelefono" required maxlength=15 placeholder="Ingrese el teléfono">
             <label for="perDirección">Dirección:</label>
             <input type="text" name="perDirección" required maxlength=50 placeholder="Ingrese la dirección">
-            <label for="perDocumento">Número de documento:</label>
-            <input type="text" name="perDocumento" required maxlength=20 placeholder="Ingrese el número de documento">
-            <label for="perDocumento">Número de documento:</label>
-            <input type="text" name="perDocumento" required maxlength=20 placeholder="Ingrese el número de documento">
-            <label for="perDocumento">Número de documento:</label>
-            <input type="text" name="perDocumento" required maxlength=20 placeholder="Ingrese el número de documento">
+            <label for="perUsuario">Usuario:</label>
+            <input type="text" name="perUsuario" required maxlength=20 placeholder="Ingrese el usuario">
+            <label for="perSede">Sede:</label>
+            <input type="text" name="perSede" required maxlength=70 placeholder="Ingrese la sede">
             <input type="submit" value="Registrar">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="1">
