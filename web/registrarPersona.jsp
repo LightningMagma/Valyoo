@@ -10,19 +10,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registrar Persona</title>
-        <link href="../Estilos/Styles.css" rel="stylesheet" type="text/css"/>
+        <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <h2>Registro de personas</h2>
-        <form method="post" action="">
+        <form method="post" action="Persona">
             <label for="perDocumento">Número de documento:</label>
             <input type="text" name="perDocumento" required maxlength=20 placeholder="Ingrese el número de documento">
             <label for="perTipoDocumento">Tipo de documento:</label>
             <select name="perTipoDocumento">
                 <option>Seleccione...</option>
-                <option value="Cedula de Ciudadania">Cédula de Ciudadanía</option>
-                <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                <option value="Cedula de Ciudadania">C.C</option>
+                <option value="Cédula de Extranjería">C.E</option>
                 <option value="Pasaporte">Pasaporte</option>
+                
             </select>
             
             <label for="perNombre">Nombre:</label>
@@ -37,16 +38,17 @@
             <input type="text" name="perUsuario" required maxlength=20 placeholder="Ingrese el usuario">
             <label for="perSede">Sede:</label>
             <input type="text" name="perSede" required maxlength=70 placeholder="Ingrese la sede">
+            <input type="hidden" name="perEstado" value="">
             <input type="submit" value="Registrar">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="1">
         </form>
         <%
-            if (request.getAttribute("mensajeError") != null) {%>
-        <h2>${mensajeError}</h2>
-        <%} else {%>
-        <h2>${mensajeExito}</h2>    
-        <%}
-        %>
+            if (request.getAttribute("MensajeError") != null) { %>
+            ${MensajeError}
+            <%  } else { %>
+            ${MensajeExito}
+            <%  }
+            %>
     </body>
 </html>

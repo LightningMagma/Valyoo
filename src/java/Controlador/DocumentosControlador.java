@@ -5,8 +5,8 @@
  */
 package Controlador;
 
-import ModeloDAO.PersonaDAO;
-import ModeloVO.PersonaVO;
+import ModeloDAO.DocumentosDAO;
+import ModeloVO.DocumentosVO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ACER
  */
-@WebServlet(name = "PersonaControlador", urlPatterns = {"/Persona"})
-public class PersonaControlador extends HttpServlet {
+@WebServlet(name = "DocumentosControlador", urlPatterns = {"/Documentos"})
+public class DocumentosControlador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,46 +34,42 @@ public class PersonaControlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String perDocumento = request.getParameter("perDocumento");
-        String perTipoDocumento = request.getParameter("perTipoDocumento");
-        String perNombre = request.getParameter("perNombre");
-        String perApellido = request.getParameter("perApellido");
-        String perTelefono = request.getParameter("perTelefono");
-        String perDireccion = request.getParameter("perDireccion");
-        String perUsuario = request.getParameter("perUsuario");
-        String perSede = request.getParameter("perSede");
+        String docId=request.getParameter("docId");
+        String docNombre=request.getParameter("docNombre");
+        String docUrl=request.getParameter("docUrl");
+        String docPer=request.getParameter("docPer");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         
-        PersonaVO perVO = new PersonaVO(perDocumento, perTipoDocumento, perNombre, perApellido, perTelefono, perDireccion, perUsuario, perSede, perSede);
-        PersonaDAO perDAO=new PersonaDAO(perVO);
+        DocumentosVO docVO= new DocumentosVO(docId, docNombre, docUrl, docPer);
+        DocumentosDAO docDAO= new DocumentosDAO(docVO);
         
         switch(opcion){
             case 1: // Agregar Registro
-                if(perDAO.agregarRegistro()) {
-                    request.setAttribute("MensajeExito", "¡La persona se registró correctamente!");
+                if(docDAO.agregarRegistro()) {
+                    request.setAttribute("MensajeExito", "¡El documento se registró correctamente!");
                 }
                 else {
-                    request.setAttribute("MensajeError", "¡La persona NO se registró correctamente!");
+                    request.setAttribute("MensajeError", "¡El documento NO se registró correctamente!");
                 }
-                request.getRequestDispatcher("registrarPersona.jsp").forward(request, response);
+                request.getRequestDispatcher("registrarDocumento.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Registro
-                if(perDAO.actualizarRegistro()) {
-                    request.setAttribute("MensajeExito", "¡La persona se actualizó correctamente!");
+                if(docDAO.actualizarRegistro()) {
+                    request.setAttribute("MensajeExito", "¡El documento se actualizó correctamente!");
                 }
                 else {
-                    request.setAttribute("MensajeError", "¡La persona NO se actualizó correctamente!");
+                    request.setAttribute("MensajeError", "¡El documento NO se actualizó correctamente!");
                 }
-                request.getRequestDispatcher("actualizarPersona.jsp").forward(request, response);
+                request.getRequestDispatcher("actualizarDocumento.jsp").forward(request, response);
                 break;
             case 3: // Eliminar Registro
-                if(perDAO.eliminarRegistro()) {
-                    request.setAttribute("MensajeExito", "¡La persona se eliminó correctamente!");
+                if(docDAO.eliminarRegistro()) {
+                    request.setAttribute("MensajeExito", "¡El documento se eliminó correctamente!");
                 }
                 else {
-                    request.setAttribute("MensajeError", "¡La persona NO se eliminó correctamente!");
+                    request.setAttribute("MensajeError", "¡El documento NO se eliminó correctamente!");
                 }
-                request.getRequestDispatcher("eliminarPersona.jsp").forward(request, response);
+                request.getRequestDispatcher("eliminarDocumento.jsp").forward(request, response);
                 break;
         }
     }
