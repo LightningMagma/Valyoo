@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registrar Persona</title>
+        <title>Registrar Personas</title>
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
@@ -46,9 +46,9 @@
         <%
             if (request.getAttribute("MensajeError") != null) { %>
             ${MensajeError}
-            <%  } else { %>
+            <%} else {%>
             ${MensajeExito}
-            <%  }
+            <%}
             %>
     </body>
 </html>

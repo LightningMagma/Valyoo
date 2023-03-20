@@ -51,7 +51,7 @@ public class DocumentosControlador extends HttpServlet {
                 else {
                     request.setAttribute("MensajeError", "¡El documento NO se registró correctamente!");
                 }
-                request.getRequestDispatcher("registrarDocumento.jsp").forward(request, response);
+                request.getRequestDispatcher("registrarDocumentos.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Registro
                 if(docDAO.actualizarRegistro()) {
@@ -60,7 +60,7 @@ public class DocumentosControlador extends HttpServlet {
                 else {
                     request.setAttribute("MensajeError", "¡El documento NO se actualizó correctamente!");
                 }
-                request.getRequestDispatcher("actualizarDocumento.jsp").forward(request, response);
+                request.getRequestDispatcher("actualizarDocumentos.jsp").forward(request, response);
                 break;
             case 3: // Eliminar Registro
                 if(docDAO.eliminarRegistro()) {
@@ -69,7 +69,7 @@ public class DocumentosControlador extends HttpServlet {
                 else {
                     request.setAttribute("MensajeError", "¡El documento NO se eliminó correctamente!");
                 }
-                request.getRequestDispatcher("eliminarDocumento.jsp").forward(request, response);
+                request.getRequestDispatcher("eliminarDocumentos.jsp").forward(request, response);
                 break;
         }
     }
