@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import util.ConexionDB;
 import util.crud;
 import ModeloVO.PagoVO;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,6 +27,10 @@ public class PagoDAO extends ConexionDB implements crud {
     private boolean operacion = false;
     private String sql;
     private String PagId, PagDesc, PagValor, PagFecha, PagPres;
+    
+    public PagoDAO() {
+        
+    }
 
     public PagoDAO(PagoVO pagoVO) {
         super();
@@ -91,22 +96,68 @@ public class PagoDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql="delete from tblpago where PagID =?";
+            sql = "delete from tblpago where PagID =?";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PagId);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
-            Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE,null,e);
-        }
-        finally {
+            Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
             try {
                 this.cerrarConexion();
             } catch (Exception e) {
-                Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE,null,e);
+                Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         return operacion;
     }
 
+    public PagoVO consultarPago() {
+        PagoVO pagVO = null;
+
+        try {
+            puerta = this.obtenerConexion();
+            sql = "select * from tblpago where PagID = ?;";
+            puente = puerta.prepareStatement(sql);
+            puente.setString(1, PagId);
+            mensajero = puente.executeQuery();
+
+            while (mensajero.next()) {
+                pagVO = new PagoVO(PagId, mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return pagVO;
+    }
+
+    public ArrayList<PagoVO> listarPago() {
+        ArrayList<PagoVO> pagoLista = new ArrayList<>();
+        try {
+            puerta = this.obtenerConexion();
+            sql = "Select * from tblpago";
+            puente = puerta.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                PagoVO pagVO = new PagoVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5));
+                pagoLista.add(pagVO);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return pagoLista;
+    }
 }

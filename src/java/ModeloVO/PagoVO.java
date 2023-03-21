@@ -11,6 +11,10 @@ package ModeloVO;
  */
 public class PagoVO {
 
+    public PagoVO() {
+
+    }
+
     public PagoVO(String PagId, String PagDesc, String PagValor, String PagFecha, String PagPres) {
         this.PagId = PagId;
         this.PagDesc = PagDesc;
