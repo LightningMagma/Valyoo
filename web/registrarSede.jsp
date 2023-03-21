@@ -15,14 +15,10 @@
     <body>
         <h2>Registro de sede</h2>
         <form method="post" action="Sede">
-            <label for="sedeId">ID sede:</label>
-            <input type="text" name="sedeId" required maxlength=20 placeholder="Ingrese el ID de la sede">            
             <label for="sedeDireccion">Dirección</label>
             <input type="text" name="sedeDireccion" required maxlength=30 placeholder="Ingrese la dirección">
             <label for="sedeTelefono">Telefono:</label>
             <input type="text" name="sedeTelefono" required maxlength=100 placeholder="Ingrese el teléfono de la sede">
-            <label for="sedeEstado">Estado:</label>
-            <input type="text" name="sedeEstado" required maxlength=15 placeholder="Ingrese el estado">
             <input type="submit" value="Registrar">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="1">

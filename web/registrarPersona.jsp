@@ -32,8 +32,8 @@
             <input type="text" name="perApellido" required maxlength=30 placeholder="Ingrese el apellido">
             <label for="perTelefono">Teléfono</label>
             <input type="text" name="perTelefono" required maxlength=15 placeholder="Ingrese el teléfono">
-            <label for="perDirección">Dirección:</label>
-            <input type="text" name="perDirección" required maxlength=50 placeholder="Ingrese la dirección">
+            <label for="perDireccion">Dirección:</label>
+            <input type="text" name="perDireccion" required maxlength=50 placeholder="Ingrese la dirección">
             <label for="perUsuario">Usuario:</label>
             <input type="text" name="perUsuario" required maxlength=20 placeholder="Ingrese el usuario">
             <label for="perSede">Sede:</label>

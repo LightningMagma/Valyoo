@@ -45,11 +45,10 @@ public class SedeDAO extends ConexionDB implements crud{
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tblsede values (?,?,?);";
+            sql = "insert into tblsede (SEDEDIRECCION,SEDETELEFONO) values (?,?);";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, sedeDireccion);
             puente.setString(2, sedeTelefono);
-            puente.setString(3, sedeEstado);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {

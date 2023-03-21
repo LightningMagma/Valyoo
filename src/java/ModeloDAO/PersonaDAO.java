@@ -49,7 +49,7 @@ public class PersonaDAO extends ConexionDB implements crud{
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tblpersona values (?,?,?,?,?,?,?,?,?);";
+            sql = "insert into tblpersona (PERDOCUMENTO, PERTIPODOCUMENTO, PERNOMBRE, PERAPELLIDO, PERTELEFONO, PERDIRECCION, PERUSUARIO, PERSEDE) values (?,?,?,?,?,?,?,?);";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, perDocumento);
             puente.setString(2, perTipoDocumento);
@@ -59,7 +59,6 @@ public class PersonaDAO extends ConexionDB implements crud{
             puente.setString(6, perDireccion);
             puente.setString(7, perUsuario);
             puente.setString(8, perSede);
-            puente.setString(9, perEstado);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
