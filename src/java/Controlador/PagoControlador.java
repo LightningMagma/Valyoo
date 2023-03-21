@@ -74,7 +74,7 @@ public class PagoControlador extends HttpServlet {
             case 4: // Consultar Pago
                 pagVO = pagDAO.consultarPago();
                 if (pagVO != null) {
-                    request.setAttribute("PagoEncontrado", pagVO);
+                    request.setAttribute("pagoEncontrado", pagVO);
                     request.getRequestDispatcher("actualizarPago.jsp").forward(request,response);
                 } else {
                     request.setAttribute("MensajeError", "¡El pago NO existe!");

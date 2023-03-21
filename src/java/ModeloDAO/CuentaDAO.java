@@ -9,6 +9,7 @@ import ModeloVO.CuentaVO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.ConexionDB;
@@ -104,5 +105,53 @@ public class CuentaDAO extends ConexionDB implements crud{
             }
         }
         return operacion;
+    }
+    
+    public CuentaVO consultarPago() {
+        CuentaVO cuVO = null;
+
+        try {
+            puerta = this.obtenerConexion();
+            sql = "select * from tblcuenta where CuNumero = ?;";
+            puente = puerta.prepareStatement(sql);
+            puente.setString(1, CuNumero);
+            mensajero = puente.executeQuery();
+
+            while (mensajero.next()) {
+                cuVO = new CuentaVO(CuNumero, mensajero.getString(2), mensajero.getString(3), mensajero.getString(4));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(CuentaDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(CuentaDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return cuVO;
+    }
+
+    public ArrayList<CuentaVO> listarCuenta() {
+        ArrayList<CuentaVO> cuentaLista = new ArrayList<>();
+        try {
+            puerta = this.obtenerConexion();
+            sql = "Select * from tblcuenta";
+            puente = puerta.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                CuentaVO cuVO = new CuentaVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4));
+                cuentaLista.add(cuVO);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(CuentaDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(CuentaDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return cuentaLista;
     }
 }

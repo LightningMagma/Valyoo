@@ -9,6 +9,7 @@ import ModeloVO.PrestamosVO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.ConexionDB;
@@ -19,7 +20,7 @@ import util.crud;
  * @author APRENDIZ
  */
 public class PrestamosDAO extends ConexionDB implements crud {
-    
+
     private Connection puerta;
     private PreparedStatement puente;
     private ResultSet mensajero;
@@ -27,8 +28,12 @@ public class PrestamosDAO extends ConexionDB implements crud {
     private String sql;
     private String PreId, PreFechaInicio, PreFechaFin,
             PreCuotas, PreMonto, PreInteres, PreCuenta;
-    
-    public PrestamosDAO(PrestamosVO presVO){
+
+    public PrestamosDAO() {
+
+    }
+
+    public PrestamosDAO(PrestamosVO presVO) {
         super();
         try {
             puerta = this.obtenerConexion();
@@ -55,7 +60,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
             puente.setString(4, PreCuotas);
             puente.setString(5, PreMonto);
             puente.setString(6, PreInteres);
-            puente.setString(7, PreCuenta);            
+            puente.setString(7, PreCuenta);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
@@ -80,7 +85,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
             puente.setString(3, PreCuotas);
             puente.setString(4, PreMonto);
             puente.setString(5, PreInteres);
-            puente.setString(6, PreCuenta); 
+            puente.setString(6, PreCuenta);
             puente.setString(7, PreId);
             puente.executeUpdate();
             operacion = true;
@@ -99,21 +104,69 @@ public class PrestamosDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql="delete from tblprestamos where PreID =?";
+            sql = "delete from tblprestamos where PreID =?";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PreId);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
-            Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE,null,e);
-        }
-        finally {
+            Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
             try {
                 this.cerrarConexion();
             } catch (Exception e) {
-                Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE,null,e);
+                Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         return operacion;
+    }
+
+    public PrestamosVO consultarPrestamos() {
+        PrestamosVO presVO = null;
+
+        try {
+            puerta = this.obtenerConexion();
+            sql = "select * from tblprestamos where PreID = ?;";
+            puente = puerta.prepareStatement(sql);
+            puente.setString(1, PreId);
+            mensajero = puente.executeQuery();
+
+            while (mensajero.next()) {
+                presVO = new PrestamosVO(PreId, mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return presVO;
+    }
+
+    public ArrayList<PrestamosVO> listarPrestamos() {
+        ArrayList<PrestamosVO> prestamoLista = new ArrayList<>();
+        try {
+            puerta = this.obtenerConexion();
+            sql = "Select * from tblprestamos";
+            puente = puerta.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                PrestamosVO presVO = new PrestamosVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3),
+                        mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7));
+                prestamoLista.add(presVO);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return prestamoLista;
     }
 }

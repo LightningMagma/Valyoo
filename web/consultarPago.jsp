@@ -22,7 +22,7 @@
             <label>Codigo: </label>
             <input type="text" name="PagId">
             <input type="submit" value="Consultar">
-            <input type="hidden" name="opcion" value="2">
+            <input type="hidden" name="opcion" value="4">
         </form>
         <%
             if (request.getAttribute("MensajeError") != null) { %>

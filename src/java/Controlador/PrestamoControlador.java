@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author APRENDIZ
  */
-@WebServlet(name = "PrestamoControlador", urlPatterns = {"/PrestamoControlador"})
+@WebServlet(name = "PrestamoControlador", urlPatterns = {"/Prestamo"})
 public class PrestamoControlador extends HttpServlet {
 
     /**
@@ -74,6 +74,16 @@ public class PrestamoControlador extends HttpServlet {
                     request.setAttribute("MensajeError", "¡El prestamo NO se actualizó correctamente!");
                 }
                 request.getRequestDispatcher("eliminarPrestamos.jsp").forward(request, response);
+                break;
+            case 4: // Consultar Prestamos
+                presVO = presDAO.consultarPrestamos();
+                if (presVO != null) {
+                    request.setAttribute("prestamoEncontrado", presVO);
+                    request.getRequestDispatcher("actualizarPrestamos.jsp").forward(request,response);
+                } else {
+                    request.setAttribute("MensajeError", "¡El pago NO existe!");
+                    request.getRequestDispatcher("consultarPrestamos.jsp").forward(request,response);
+                }
                 break;
         }
     }

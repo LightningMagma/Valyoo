@@ -34,44 +34,51 @@ public class CuentaControlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String CuNumero = request.getParameter("CuNumero");
         String CuFechaRegistro = request.getParameter("CuFechaRegistro");
         String CuEstado = request.getParameter("CuEstado");
         String CuPersona = request.getParameter("CuPersona");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
-        
+
         CuentaVO cuVO = new CuentaVO(CuNumero, CuFechaRegistro, CuEstado, CuEstado, CuPersona);
-        
+
         CuentaDAO cuDAO = new CuentaDAO(cuVO);
-        
-        switch(opcion){
+
+        switch (opcion) {
             case 1: // Agregar Registro
-                if(cuDAO.agregarRegistro()) {
+                if (cuDAO.agregarRegistro()) {
                     request.setAttribute("MensajeExito", "¡La cuenta se registró correctamente!");
-                }
-                else {
+                } else {
                     request.setAttribute("MensajeError", "¡La cuenta NO se registró correctamente!");
                 }
                 request.getRequestDispatcher("registrarCuenta.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Registro
-                if(cuDAO.actualizarRegistro()) {
+                if (cuDAO.actualizarRegistro()) {
                     request.setAttribute("MensajeExito", "¡La cuenta se actualizó correctamente!");
-                }
-                else {
+                } else {
                     request.setAttribute("MensajeError", "¡La cuenta NO se actualizó correctamente!");
                 }
                 request.getRequestDispatcher("actualizarCuenta.jsp").forward(request, response);
                 break;
             case 3: // Eliminar Registro
-                if(cuDAO.eliminarRegistro()) {
+                if (cuDAO.eliminarRegistro()) {
                     request.setAttribute("MensajeExito", "¡La cuenta se actualizó correctamente!");
-                }
-                else {
+                } else {
                     request.setAttribute("MensajeError", "¡La cuenta NO se actualizó correctamente!");
                 }
                 request.getRequestDispatcher("eliminarCuenta.jsp").forward(request, response);
+                break;
+            case 4: // Consultar Prestamos
+                cuVO = cuDAO.consultarPago();
+                if (cuVO != null) {
+                    request.setAttribute("cuentaEncontrada", cuVO);
+                    request.getRequestDispatcher("actualizarCuenta.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("MensajeError", "¡El pago NO existe!");
+                    request.getRequestDispatcher("consultarCuenta.jsp").forward(request, response);
+                }
                 break;
         }
     }
