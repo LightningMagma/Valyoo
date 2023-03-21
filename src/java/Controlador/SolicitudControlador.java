@@ -72,7 +72,15 @@ public class SolicitudControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("eliminarSolicitud.jsp").forward(request, response);
                 break;
-            
+            case 4:
+                solVO = solDAO.consultarPorID(solId);
+                if (solVO != null) {
+                    request.setAttribute("solicitudEncontrada", solVO);
+                    request.getRequestDispatcher("actualizarSolicitud.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("mensajeError", "Solicitud no encontrado");
+                    request.getRequestDispatcher("listarSolicitud.jsp").forward(request, response);
+                }
         }
     }
 

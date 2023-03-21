@@ -13,7 +13,7 @@
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h2>inicio de sesion</h1>
+        <h2>Inicio de sesion</h1>
         <form method="post" action="Usuario">
             <label for="usuLogin">Usuario:</label>
             <input type="text" id="nombre" name="usuUsuario" required maxlength=20>

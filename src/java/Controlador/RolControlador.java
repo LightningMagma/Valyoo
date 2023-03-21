@@ -70,6 +70,15 @@ public class RolControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("eliminarRol.jsp").forward(request, response);
                 break;
+            case 4:
+                rolVO=rolDAO.consultarPorID(rolId);
+                if (rolVO!=null) {
+                    request.setAttribute("rolEncontrado", rolVO);
+                    request.getRequestDispatcher("actualizarRol.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("mensajeError","Rol no existe"); 
+                    request.getRequestDispatcher("listarRol.jsp").forward(request, response); 
+                }
             
         }
     }

@@ -115,7 +115,30 @@ public class RolDAO extends ConexionDB implements crud {
         }
 
         return operacion;
-    }     
+    }    
+    public RolVO consultarPorID(String id){
+        RolVO rolVO = null;
+        try {
+            conexion=this.obtenerConexion();
+            sql="select * from tblrol where rolID=?;";
+            puente= conexion.prepareStatement(sql);
+            puente.setString(1,id);            
+            mensajero=puente.executeQuery();            
+            while (mensajero.next()) {                
+                rolVO = new RolVO(id,mensajero.getString(2), mensajero.getString(3));
+            }            
+        } catch (Exception e) {
+            Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return rolVO;
+    }
     public ArrayList<RolVO> listarRol(){
         ArrayList<RolVO> listaRol = new ArrayList<>();
         try {
@@ -125,7 +148,7 @@ public class RolDAO extends ConexionDB implements crud {
             mensajero=puente.executeQuery();            
             while (mensajero.next()) {                
                 RolVO rolVO = new RolVO(mensajero.getString(1),mensajero.getString(2),mensajero.getString(3));
-                listarRol().add(rolVO);
+                listaRol.add(rolVO);
             }            
         } catch (Exception e) {
             Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, e);

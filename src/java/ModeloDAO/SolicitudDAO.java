@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.ConexionDB;
@@ -121,5 +122,50 @@ public class SolicitudDAO extends ConexionDB implements crud {
 
         return operacion;
     }
-
+     public SolicitudVO consultarPorID(String id){
+        SolicitudVO solVO = null;
+        try {
+            conexion=this.obtenerConexion();
+            sql="select * from tblsolicitud where solID=?;";
+            puente= conexion.prepareStatement(sql);
+            puente.setString(1,id);            
+            mensajero=puente.executeQuery();            
+            while (mensajero.next()) {                
+                solVO = new SolicitudVO(id,mensajero.getString(2), mensajero.getString(3),mensajero.getString(4),mensajero.getString(5));
+            }            
+        } catch (Exception e) {
+            Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return solVO;
+    }
+    public ArrayList<SolicitudVO> listarUsuarios(){
+        ArrayList<SolicitudVO> listaSolicitud = new ArrayList<>();
+        try {
+            conexion=this.obtenerConexion();
+            sql="select * from tblsolicitud;";
+            puente= conexion.prepareStatement(sql);                     
+            mensajero=puente.executeQuery();            
+            while (mensajero.next()) {                
+                SolicitudVO solVO = new SolicitudVO(mensajero.getString(1),mensajero.getString(2),mensajero.getString(3),mensajero.getString(4),mensajero.getString(5));
+                listaSolicitud.add(solVO);
+            }            
+        } catch (Exception e) {
+            Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listaSolicitud;
+    }
 }

@@ -77,6 +77,15 @@ public class UsuarioControlador extends HttpServlet {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;
+            case 5:
+                usuVO = usuDAO.consultarPorID(usuUsuario);
+                if (usuVO != null) {
+                    request.setAttribute("usuarioEncontrado", usuVO);
+                    request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("mensajeError", "Usuario no encontrado");
+                    request.getRequestDispatcher("listarUsuario.jsp").forward(request, response);
+                }
         }
     }
 

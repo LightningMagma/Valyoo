@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.ConexionDB;
@@ -132,6 +133,53 @@ public class UsuarioDAO extends ConexionDB implements crud{
             }
         }
         return operacion;
+    }
+     public UsuarioVO consultarPorID(String id){
+        UsuarioVO usuVO = null;
+        try {
+            conexion=this.obtenerConexion();
+            sql="select * from tblusuario where usuUsuario=?;";
+            puente= conexion.prepareStatement(sql);
+            puente.setString(1,id);            
+            mensajero=puente.executeQuery();            
+            while (mensajero.next()) {                
+                usuVO = new UsuarioVO(id,mensajero.getString(2), mensajero.getString(3));
+            }            
+        } catch (Exception e) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return usuVO;
+    }
+    public ArrayList<UsuarioVO> listarUsuarios(){
+        ArrayList<UsuarioVO> listaUsuario = new ArrayList<>();
+        try {
+            conexion=this.obtenerConexion();
+            sql="select * from tblusuario;";
+            puente= conexion.prepareStatement(sql);                     
+            mensajero=puente.executeQuery();            
+            while (mensajero.next()) {                
+                UsuarioVO usuVO = new UsuarioVO(mensajero.getString(1),mensajero.getString(2),mensajero.getString(3));
+                listaUsuario.add(usuVO);
+            }            
+        } catch (Exception e) {
+            Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listaUsuario;
+        
     }
     
 }

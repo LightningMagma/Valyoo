@@ -59,4 +59,7 @@ public class SolicitudVO {
         this.solEstado = solEstado;
     }
     private String solId,solMonto,solCuotas,solInteres,solEstado;
+
+    public SolicitudVO() {
+    }
 }
