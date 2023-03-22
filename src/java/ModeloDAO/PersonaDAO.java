@@ -19,28 +19,31 @@ import util.crud;
  *
  * @author xJuanDa
  */
-public class PersonaDAO extends ConexionDB implements crud{
+public class PersonaDAO extends ConexionDB implements crud {
+
     private Connection conexion;
     private PreparedStatement puente;
     private ResultSet mensajero;
     private boolean operacion = false;
     private String sql;
-    private String perDocumento="", perTipoDocumento="", perNombre="", perApellido="", perTelefono="", perDireccion="", perUsuario="", perSede="", perEstado="";
+    private String perDocumento = "", perTipoDocumento = "", perNombre = "", perApellido = "", perTelefono = "", perDireccion = "", perClave = "", perSede = "", perEstado = "";
 
-    public PersonaDAO() {}
-    public PersonaDAO(PersonaVO perVO){
+    public PersonaDAO() {
+    }
+
+    public PersonaDAO(PersonaVO perVO) {
         super();
         try {
             conexion = this.obtenerConexion();
-            perDocumento=perVO.getPerDocumento();
-            perTipoDocumento=perVO.getPerTipoDocumento();
-            perNombre=perVO.getPerNombre();
-            perApellido=perVO.getPerApellido();
-            perTelefono=perVO.getPerTelefono();
-            perDireccion=perVO.getPerDireccion();
-            perUsuario=perVO.getPerUsuario();
-            perSede=perVO.getPerSede();
-            perEstado=perVO.getPerEstado();
+            perDocumento = perVO.getPerDocumento();
+            perTipoDocumento = perVO.getPerTipoDocumento();
+            perNombre = perVO.getPerNombre();
+            perApellido = perVO.getPerApellido();
+            perTelefono = perVO.getPerTelefono();
+            perDireccion = perVO.getPerDireccion();
+            perClave = perVO.getPerClave();
+            perSede = perVO.getPerSede();
+            perEstado = perVO.getPerEstado();
         } catch (Exception e) {
             Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -49,7 +52,7 @@ public class PersonaDAO extends ConexionDB implements crud{
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tblpersona (PERDOCUMENTO, PERTIPODOCUMENTO, PERNOMBRE, PERAPELLIDO, PERTELEFONO, PERDIRECCION, PERUSUARIO, PERSEDE) values (?,?,?,?,?,?,?,?);";
+            sql = "insert into tblpersona (PERDOCUMENTO, PERTIPODOCUMENTO, PERNOMBRE, PERAPELLIDO, PERTELEFONO, PERDIRECCION, PERCLAVE) values (?,?,?,?,?,?,?);";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, perDocumento);
             puente.setString(2, perTipoDocumento);
@@ -57,8 +60,7 @@ public class PersonaDAO extends ConexionDB implements crud{
             puente.setString(4, perApellido);
             puente.setString(5, perTelefono);
             puente.setString(6, perDireccion);
-            puente.setString(7, perUsuario);
-            puente.setString(8, perSede);
+            puente.setString(7, perClave);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
@@ -76,14 +78,14 @@ public class PersonaDAO extends ConexionDB implements crud{
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update tblpersona set PERTIPODOCUMENTO=?, PERNOMBRE=?, PERAPELLIDO=?, PERTELEFONO=?, PERDIRECCION=?, PERUSUARIO=?, PERSEDE=?, PERESTADO=? where PERDOCUMENTO=?;";
+            sql = "update tblpersona set PERTIPODOCUMENTO=?, PERNOMBRE=?, PERAPELLIDO=?, PERTELEFONO=?, PERDIRECCION=?, PERCLAVE=?, PERSEDE=?, PERESTADO=? where PERDOCUMENTO=?;";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, perTipoDocumento);
             puente.setString(2, perNombre);
             puente.setString(3, perApellido);
             puente.setString(4, perTelefono);
             puente.setString(5, perDireccion);
-            puente.setString(6, perUsuario);
+            puente.setString(6, perClave);
             puente.setString(7, perSede);
             puente.setString(8, perEstado);
             puente.setString(9, perDocumento);
@@ -120,8 +122,8 @@ public class PersonaDAO extends ConexionDB implements crud{
         }
         return operacion;
     }
-    
-    public PersonaVO consultarPorDocumento(String documento){
+
+    public PersonaVO consultarPorDocumento(String documento) {
         PersonaVO perVO = null;
 
         try {
@@ -145,7 +147,7 @@ public class PersonaDAO extends ConexionDB implements crud{
         }
         return perVO;
     }
-    
+
     public ArrayList<PersonaVO> listar() {
         ArrayList<PersonaVO> personaLista = new ArrayList<>();
         try {

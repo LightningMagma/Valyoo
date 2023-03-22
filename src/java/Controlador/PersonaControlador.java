@@ -40,37 +40,35 @@ public class PersonaControlador extends HttpServlet {
         String perApellido = request.getParameter("perApellido");
         String perTelefono = request.getParameter("perTelefono");
         String perDireccion = request.getParameter("perDireccion");
-        String perUsuario = request.getParameter("perUsuario");
+        String perClave = request.getParameter("perClave");
         String perSede = request.getParameter("perSede");
+        String perEstado = request.getParameter("perEstado");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
-        
-        PersonaVO perVO = new PersonaVO(perDocumento, perTipoDocumento, perNombre, perApellido, perTelefono, perDireccion, perUsuario, perSede, perSede);
-        PersonaDAO perDAO=new PersonaDAO(perVO);
-        
-        switch(opcion){
+
+        PersonaVO perVO = new PersonaVO(perDocumento, perTipoDocumento, perNombre, perApellido, perTelefono, perDireccion, perClave, perSede, perEstado);
+        PersonaDAO perDAO = new PersonaDAO(perVO);
+
+        switch (opcion) {
             case 1: // Agregar Registro
-                if(perDAO.agregarRegistro()) {
+                if (perDAO.agregarRegistro()) {
                     request.setAttribute("MensajeExito", "¡La persona se registró correctamente!");
-                }
-                else {
+                } else {
                     request.setAttribute("MensajeError", "¡La persona NO se registró correctamente!");
                 }
                 request.getRequestDispatcher("registrarPersona.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Registro
-                if(perDAO.actualizarRegistro()) {
+                if (perDAO.actualizarRegistro()) {
                     request.setAttribute("MensajeExito", "¡La persona se actualizó correctamente!");
-                }
-                else {
+                } else {
                     request.setAttribute("MensajeError", "¡La persona NO se actualizó correctamente!");
                 }
                 request.getRequestDispatcher("actualizarPersona.jsp").forward(request, response);
                 break;
             case 3: // Eliminar Registro
-                if(perDAO.eliminarRegistro()) {
+                if (perDAO.eliminarRegistro()) {
                     request.setAttribute("MensajeExito", "¡La persona se eliminó correctamente!");
-                }
-                else {
+                } else {
                     request.setAttribute("MensajeError", "¡La persona NO se eliminó correctamente!");
                 }
                 request.getRequestDispatcher("eliminarPersona.jsp").forward(request, response);

@@ -10,18 +10,20 @@ package ModeloVO;
  * @author xJuanDa
  */
 public class PersonaVO {
-    private String perDocumento, perTipoDocumento, perNombre, perApellido, perTelefono, perDireccion, perUsuario, perSede, perEstado;
 
-    public PersonaVO() {}
+    private String perDocumento, perTipoDocumento, perNombre, perApellido, perTelefono, perDireccion, perClave, perSede, perEstado;
 
-    public PersonaVO(String perDocumento, String perTipoDocumento, String perNombre, String perApellido, String perTelefono, String perDireccion, String perUsuario, String perSede, String perEstado) {
+    public PersonaVO() {
+    }
+
+    public PersonaVO(String perDocumento, String perTipoDocumento, String perNombre, String perApellido, String perTelefono, String perDireccion, String perClave, String perSede, String perEstado) {
         this.perDocumento = perDocumento;
         this.perTipoDocumento = perTipoDocumento;
         this.perNombre = perNombre;
         this.perApellido = perApellido;
         this.perTelefono = perTelefono;
         this.perDireccion = perDireccion;
-        this.perUsuario = perUsuario;
+        this.perClave = perClave;
         this.perSede = perSede;
         this.perEstado = perEstado;
     }
@@ -74,12 +76,12 @@ public class PersonaVO {
         this.perDireccion = perDireccion;
     }
 
-    public String getPerUsuario() {
-        return perUsuario;
+    public String getPerClave() {
+        return perClave;
     }
 
-    public void setPerUsuario(String perUsuario) {
-        this.perUsuario = perUsuario;
+    public void setPerUsuario(String perClave) {
+        this.perClave = perClave;
     }
 
     public String getPerSede() {
@@ -97,5 +99,5 @@ public class PersonaVO {
     public void setPerEstado(String perEstado) {
         this.perEstado = perEstado;
     }
-    
+
 }

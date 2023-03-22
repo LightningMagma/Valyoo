@@ -18,25 +18,27 @@ import util.crud;
  *
  * @author ACER
  */
-public class SedeDAO extends ConexionDB implements crud{
+public class SedeDAO extends ConexionDB implements crud {
+
     private Connection conexion;
     private PreparedStatement puente;
     private ResultSet mensajero;
     private boolean operacion = false;
     private String sql;
-    private String sedeId="",sedeDireccion="",sedeTelefono="",sedeEstado="";
+    private String sedeId = "", sedeNombre = "", sedeDireccion = "", sedeTelefono = "", sedeEstado = "";
 
     public SedeDAO() {
     }
-    
-    public SedeDAO(SedeVO sedeVO){
+
+    public SedeDAO(SedeVO sedeVO) {
         super();
         try {
             conexion = this.obtenerConexion();
-            sedeId=sedeVO.getSedeId();
-            sedeDireccion=sedeVO.getSedeDireccion();
-            sedeTelefono=sedeVO.getSedeTelefono();
-            sedeEstado=sedeVO.getSedeEstado();
+            sedeId = sedeVO.getSedeId();
+            sedeNombre = sedeVO.getSedeNombre();
+            sedeDireccion = sedeVO.getSedeDireccion();
+            sedeTelefono = sedeVO.getSedeTelefono();
+            sedeEstado = sedeVO.getSedeEstado();
         } catch (Exception e) {
             Logger.getLogger(SedeDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -45,10 +47,11 @@ public class SedeDAO extends ConexionDB implements crud{
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tblsede (SEDEDIRECCION,SEDETELEFONO) values (?,?);";
+            sql = "insert into tblsede (SEDENOMBRE,SEDEDIRECCION,SEDETELEFONO) values (?,?,?);";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, sedeDireccion);
-            puente.setString(2, sedeTelefono);
+            puente.setString(1, sedeNombre);
+            puente.setString(2, sedeDireccion);
+            puente.setString(3, sedeTelefono);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
@@ -66,12 +69,13 @@ public class SedeDAO extends ConexionDB implements crud{
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update tblsede set SEDEDIRECCION=?,SEDETELEFONO=?,SEDEESTADO=? WHERE SEDEID=?";
+            sql = "update tblsede set SEDENOMBRE=?,SEDEDIRECCION=?,SEDETELEFONO=?,SEDEESTADO=? WHERE SEDEID=?";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, sedeDireccion);
-            puente.setString(2, sedeTelefono);
-            puente.setString(3, sedeEstado);
-            puente.setString(4, sedeId);
+            puente.setString(1, sedeNombre);
+            puente.setString(2, sedeDireccion);
+            puente.setString(3, sedeTelefono);
+            puente.setString(4, sedeEstado);
+            puente.setString(5, sedeId);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {

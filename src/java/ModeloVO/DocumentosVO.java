@@ -10,9 +10,11 @@ package ModeloVO;
  * @author ACER
  */
 public class DocumentosVO {
-    private String docId,docNombre,docUrl,docPer;
 
-    public DocumentosVO() {}
+    private String docId, docNombre, docUrl, docPer;
+
+    public DocumentosVO() {
+    }
 
     public DocumentosVO(String docId, String docNombre, String docUrl, String docPer) {
         this.docId = docId;
@@ -52,5 +54,5 @@ public class DocumentosVO {
     public void setDocPer(String docPer) {
         this.docPer = docPer;
     }
-    
+
 }

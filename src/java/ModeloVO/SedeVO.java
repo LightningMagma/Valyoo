@@ -10,12 +10,15 @@ package ModeloVO;
  * @author ACER
  */
 public class SedeVO {
-    private String sedeId,sedeDireccion,sedeTelefono,sedeEstado;
 
-    public SedeVO() {}
+    private String sedeId, sedeNombre, sedeDireccion, sedeTelefono, sedeEstado;
 
-    public SedeVO(String sedeId, String sedeDireccion, String sedeTelefono, String sedeEstado) {
+    public SedeVO() {
+    }
+
+    public SedeVO(String sedeId, String sedeNombre, String sedeDireccion, String sedeTelefono, String sedeEstado) {
         this.sedeId = sedeId;
+        this.sedeNombre = sedeNombre;
         this.sedeDireccion = sedeDireccion;
         this.sedeTelefono = sedeTelefono;
         this.sedeEstado = sedeEstado;
@@ -27,6 +30,14 @@ public class SedeVO {
 
     public void setSedeId(String sedeId) {
         this.sedeId = sedeId;
+    }
+
+    public String getSedeNombre() {
+        return sedeNombre;
+    }
+
+    public void setSedeNombre(String sedeNombre) {
+        this.sedeNombre = sedeNombre;
     }
 
     public String getSedeDireccion() {
@@ -52,5 +63,5 @@ public class SedeVO {
     public void setSedeEstado(String sedeEstado) {
         this.sedeEstado = sedeEstado;
     }
-    
+
 }

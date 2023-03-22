@@ -18,24 +18,26 @@ import util.crud;
  *
  * @author ACER
  */
-public class DocumentosDAO extends ConexionDB implements crud{
+public class DocumentosDAO extends ConexionDB implements crud {
+
     private Connection conexion;
     private PreparedStatement puente;
     private ResultSet mensajero;
     private boolean operacion = false;
     private String sql;
-    private String docId="",docNombre="",docUrl="",docPer="";
+    private String docId = "", docNombre = "", docUrl = "", docPer = "";
 
     public DocumentosDAO() {
     }
-    public DocumentosDAO(DocumentosVO docVO){
+
+    public DocumentosDAO(DocumentosVO docVO) {
         super();
         try {
             conexion = this.obtenerConexion();
-            docId=docVO.getDocId();
-            docNombre=docVO.getDocNombre();
-            docUrl=docVO.getDocUrl();
-            docPer=docVO.getDocPer();
+            docId = docVO.getDocId();
+            docNombre = docVO.getDocNombre();
+            docUrl = docVO.getDocUrl();
+            docPer = docVO.getDocPer();
         } catch (Exception e) {
             Logger.getLogger(SedeDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -44,12 +46,11 @@ public class DocumentosDAO extends ConexionDB implements crud{
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tbldocumentos values (?,?,?,?);";
+            sql = "insert into tbldocumentos (DOCNOMBRE, DOCURL, DOCPER) values (?,?,?);";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, docId);
-            puente.setString(2, docNombre);
-            puente.setString(3, docUrl);
-            puente.setString(4, docPer);
+            puente.setString(1, docNombre);
+            puente.setString(2, docUrl);
+            puente.setString(3, docPer);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {

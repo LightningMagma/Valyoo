@@ -1,7 +1,7 @@
 <%-- 
     Document   : registrarDocumentos
     Created on : 20/03/2023, 02:04:00 PM
-    Author     : ACER
+    Author     : Miguel Gil
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,8 +15,6 @@
     <body>
         <h2>Registro de documento</h2>
         <form method="post" action="Documentos">
-            <label for="docId">ID DOC:</label>
-            <input type="text" name="docId" required maxlength=20 placeholder="Ingrese el ID del documento">            
             <label for="docNombre">Nombre:</label>
             <input type="text" name="docNombre" required maxlength=30 placeholder="Ingrese el nombre del documento">
             <label for="docUrl">URL:</label>
@@ -29,10 +27,10 @@
         </form>
         <%
             if (request.getAttribute("MensajeError") != null) { %>
-            ${MensajeError}
-            <%} else {%>
-            ${MensajeExito}
-            <%}
-            %>
+        ${MensajeError}
+        <%} else {%>
+        ${MensajeExito}
+        <%}
+        %>
     </body>
 </html>

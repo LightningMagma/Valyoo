@@ -34,39 +34,37 @@ public class SedeControlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String sedeId=request.getParameter("sedeId");
-        String sedeDireccion=request.getParameter("sedeDireccion");
-        String sedeTelefono=request.getParameter("sedeTelefono");
-        String sedeEstado=request.getParameter("sedeEstado");
+        String sedeId = request.getParameter("sedeId");
+        String sedeNombre = request.getParameter("sedeNombre");
+        String sedeDireccion = request.getParameter("sedeDireccion");
+        String sedeTelefono = request.getParameter("sedeTelefono");
+        String sedeEstado = request.getParameter("sedeEstado");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
-        
-        SedeVO sedeVO=new SedeVO(sedeId, sedeDireccion, sedeTelefono, sedeEstado);
-        SedeDAO sedeDAO=new SedeDAO(sedeVO);
-        
-        switch(opcion){
+
+        SedeVO sedeVO = new SedeVO(sedeId, sedeNombre, sedeDireccion, sedeTelefono, sedeEstado);
+        SedeDAO sedeDAO = new SedeDAO(sedeVO);
+
+        switch (opcion) {
             case 1: // Agregar Registro
-                if(sedeDAO.agregarRegistro()) {
+                if (sedeDAO.agregarRegistro()) {
                     request.setAttribute("MensajeExito", "¡La sede se registró correctamente!");
-                }
-                else {
+                } else {
                     request.setAttribute("MensajeError", "¡La sede NO se registró correctamente!");
                 }
                 request.getRequestDispatcher("registrarSede.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Registro
-                if(sedeDAO.actualizarRegistro()) {
+                if (sedeDAO.actualizarRegistro()) {
                     request.setAttribute("MensajeExito", "¡La sede se actualizó correctamente!");
-                }
-                else {
+                } else {
                     request.setAttribute("MensajeError", "¡La sede NO se actualizó correctamente!");
                 }
                 request.getRequestDispatcher("actualizarSede.jsp").forward(request, response);
                 break;
             case 3: // Eliminar Registro
-                if(sedeDAO.eliminarRegistro()) {
+                if (sedeDAO.eliminarRegistro()) {
                     request.setAttribute("MensajeExito", "¡La sede se eliminó correctamente!");
-                }
-                else {
+                } else {
                     request.setAttribute("MensajeError", "¡La sede NO se eliminó correctamente!");
                 }
                 request.getRequestDispatcher("eliminarSede.jsp").forward(request, response);

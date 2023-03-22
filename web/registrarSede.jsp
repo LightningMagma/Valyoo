@@ -1,7 +1,7 @@
 <%-- 
     Document   : registrarSede
     Created on : 20/03/2023, 02:24:22 PM
-    Author     : ACER
+    Author     : Miguel Gil
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,7 +15,9 @@
     <body>
         <h2>Registro de sede</h2>
         <form method="post" action="Sede">
-            <label for="sedeDireccion">Dirección</label>
+            <label for="sedeNombre">Nombre:</label>
+            <input type="text" name="sedeNombre" required maxlength=30 placeholder="Ingrese el nombre">
+            <label for="sedeDireccion">Dirección:</label>
             <input type="text" name="sedeDireccion" required maxlength=30 placeholder="Ingrese la dirección">
             <label for="sedeTelefono">Telefono:</label>
             <input type="text" name="sedeTelefono" required maxlength=100 placeholder="Ingrese el teléfono de la sede">
@@ -25,10 +27,10 @@
         </form>
         <%
             if (request.getAttribute("MensajeError") != null) { %>
-            ${MensajeError}
-            <%} else {%>
-            ${MensajeExito}
-            <%}
-            %>
+        ${MensajeError}
+        <%} else {%>
+        ${MensajeExito}
+        <%}
+        %>
     </body>
 </html>
