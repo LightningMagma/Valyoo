@@ -21,13 +21,11 @@
         <form method="post" action="Pago">
             <table>
                 <label>Descripcion: </label><br>
-                <input type="text" name="PagDesc" value="<%=pagVO.getPagDesc()%>"><br>
+                <input type="text" name="PagDesc" value="<%=pagVO.getPagDesc()%>">
                 <label>Valor: </label><br>
-                <input type="text" name="PagValor" value="<%=pagVO.getPagValor()%>"><br>
-                <label>Fecha: </label><br>
-                <input type="text" name="PagFecha" value="<%=pagVO.getPagFecha()%>"><br>
+                <input type="text" name="PagValor" value="<%=pagVO.getPagValor()%>">
                 <label>Prestamo abonado: </label><br>
-                <input type="text" name="PagPres" value="<%=pagVO.getPagPres()%>"><br>
+                <input type="text" name="PagPrestamo" value="<%=pagVO.getPagPres()%>">
                 <input type="submit" value="Actualizar">
                 <input type="hidden" name="opcion" value="2">
             </table>

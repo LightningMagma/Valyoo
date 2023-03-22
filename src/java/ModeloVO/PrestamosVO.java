@@ -14,15 +14,15 @@ public class PrestamosVO {
     public PrestamosVO() {
     }
 
-    public PrestamosVO(String PreId, String PreFechaInicio, String PreFechaFin, String PreCuotas, String PreMonto, String PreInteres, String PreEstado, String PreCuenta) {
+    public PrestamosVO(String PreId, String PreFechaInicio, String PreFechaFin, String PreCuotas, String PreMonto, String PreInteres,String PreCuenta, String PreEstado) {
         this.PreId = PreId;
         this.PreFechaInicio = PreFechaInicio;
         this.PreFechaFin = PreFechaFin;
         this.PreCuotas = PreCuotas;
         this.PreMonto = PreMonto;
         this.PreInteres = PreInteres;
-        this.PreEstado = PreEstado;
         this.PreCuenta = PreCuenta;
+        this.PreEstado = PreEstado;
     }
 
     public String getPreId() {

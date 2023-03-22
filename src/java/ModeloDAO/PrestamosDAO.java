@@ -27,7 +27,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
     private boolean operacion = false;
     private String sql;
     private String PreId, PreFechaInicio, PreFechaFin,
-            PreCuotas, PreMonto, PreInteres, PreEstado, PreCuenta;
+            PreCuotas, PreMonto, PreInteres, PreCuenta, PreEstado;
 
     public PrestamosDAO() {
 
@@ -43,8 +43,8 @@ public class PrestamosDAO extends ConexionDB implements crud {
             PreCuotas = presVO.getPreCuotas();
             PreMonto = presVO.getPreMonto();
             PreInteres = presVO.getPreInteres();
-            PreEstado = presVO.getPreEstado();
             PreCuenta = presVO.getPreCuenta();
+            PreEstado = presVO.getPreEstado();
         } catch (Exception e) {
             Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
         }

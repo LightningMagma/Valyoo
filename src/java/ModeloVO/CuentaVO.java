@@ -10,20 +10,16 @@ package ModeloVO;
  * @author APRENDIZ
  */
 public class CuentaVO {
-    
+
     public CuentaVO() {
-        
+
     }
 
-    public CuentaVO(String CuNumero, String CuFechaRegistro, String CuEstado, String CuSede, String CuDeudor) {
+    public CuentaVO(String CuNumero, String CuFechaRegistro, String CuEstado, String CuPersona) {
         this.CuNumero = CuNumero;
         this.CuFechaRegistro = CuFechaRegistro;
         this.CuEstado = CuEstado;
         this.CuPersona = CuPersona;
-    }
-
-    public CuentaVO(String CuNumero, String string, String string0, String string1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getCuNumero() {
@@ -59,4 +55,5 @@ public class CuentaVO {
     }
 
     private String CuNumero, CuFechaRegistro, CuEstado, CuPersona;
+
 }

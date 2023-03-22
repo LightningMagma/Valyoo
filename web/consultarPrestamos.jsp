@@ -12,7 +12,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cosultar Prestamos</title>
+        <title>Consultar Prestamos</title>
+        <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <h2>Prestamos</h2>

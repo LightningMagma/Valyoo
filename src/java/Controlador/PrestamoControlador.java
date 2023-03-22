@@ -45,7 +45,7 @@ public class PrestamoControlador extends HttpServlet {
         String PreCuenta = request.getParameter("PreCuenta");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         
-        PrestamosVO presVO = new PrestamosVO(PreId, PreFechaInicio, PreFechaFin, PreCuotas, PreMonto, PreInteres, PreEstado, PreCuenta);
+        PrestamosVO presVO = new PrestamosVO(PreId, PreFechaInicio, PreFechaFin, PreCuotas, PreMonto, PreInteres, PreCuenta, PreEstado);
         PrestamosDAO presDAO = new PrestamosDAO(presVO);
         
         switch(opcion){

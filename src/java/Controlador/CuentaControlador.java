@@ -41,7 +41,7 @@ public class CuentaControlador extends HttpServlet {
         String CuPersona = request.getParameter("CuPersona");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
-        CuentaVO cuVO = new CuentaVO(CuNumero, CuFechaRegistro, CuEstado, CuEstado, CuPersona);
+        CuentaVO cuVO = new CuentaVO(CuNumero, CuFechaRegistro, CuEstado, CuPersona);
 
         CuentaDAO cuDAO = new CuentaDAO(cuVO);
 

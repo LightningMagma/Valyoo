@@ -90,7 +90,7 @@ public class CuentaDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql="delete from tblcuentacredito where CuNumero =?";
+            sql="update tblcuentacredito set CuEstado='Inactivo' where CuNumero=?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, CuNumero);
             puente.executeUpdate();
@@ -137,7 +137,7 @@ public class CuentaDAO extends ConexionDB implements crud {
         ArrayList<CuentaVO> cuentaLista = new ArrayList<>();
         try {
             puerta = this.obtenerConexion();
-            sql = "select * from tblcuentacredito";
+            sql = "select * from tblcuentacredito;";
             puente = puerta.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {

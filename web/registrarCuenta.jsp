@@ -20,7 +20,7 @@
             <label>Fecha Registro: </label>
             <input type="text" name="CuFechaRegistro" maxlength="10" placeholder="0000-00-00">
             <label>Persona: </label>
-            <select>
+            <select name="CuPersona">
                 <option>Seleccione...</option>
                 <%
                     PersonaDAO perDAO = new PersonaDAO();

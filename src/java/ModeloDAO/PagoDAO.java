@@ -71,13 +71,12 @@ public class PagoDAO extends ConexionDB implements crud {
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update tblpago set PagDescripcion=?, PagValor=?, PagPrestamo=?, PagFecha=? where PagoID =?;";
+            sql = "update tblpago set PagDescripcion=?, PagValor=?, PagPrestamo=? where PagoID =?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PagDesc);
             puente.setString(2, PagValor);
             puente.setString(3, PagPres);
-            puente.setString(4, PagFecha);
-            puente.setString(5, PagId);
+            puente.setString(4, PagId);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
@@ -95,7 +94,7 @@ public class PagoDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql = "delete from tblpago where PagoID =?";
+            sql = "delete from tblpago where PagoID =?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PagId);
             puente.executeUpdate();
