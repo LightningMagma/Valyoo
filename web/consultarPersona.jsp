@@ -70,14 +70,26 @@
                     <form method="post" action="Persona">
                         <input type="hidden" name="perDocumento" value="<%=perVO.getPerDocumento()%>">
                         <button class="btn btn-warning" name="opcion" value="3" >Editar</button>
-                        <button class="btn btn-danger" name="opcion" value="4">Eliminar</button>
+                        <button class="btn btn-danger" name="opcion" value="4" onclick="return confirmar()">Eliminar</button>
                     </form>
                 </td>
             </tr>
             <%}%>
         </table>
 
-
+   
+    <script>
+        function confirmar(){
+            var respuesta=confirm("¿Desea eliminar el registro");
+            if(respuesta==true){
+                return true;
+            }else{
+                return false;
+            }
+            
+        }
+    </script>
+    
 
     </body>
 </html>
