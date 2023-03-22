@@ -38,7 +38,6 @@
             <input type="text" name="perUsuario" required maxlength=20 placeholder="Ingrese el usuario">
             <label for="perSede">Sede:</label>
             <input type="text" name="perSede" required maxlength=70 placeholder="Ingrese la sede">
-            <input type="hidden" name="perEstado" value="">
             <input type="submit" value="Registrar">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="1">
