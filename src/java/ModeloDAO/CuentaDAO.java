@@ -47,12 +47,10 @@ public class CuentaDAO extends ConexionDB implements crud {
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tblcuenta(CuNumero, CuFechaRegistro, CuEstado, CuPersona) values (?,?,?,?);";
+            sql = "insert into tblcuentacredito(CuFechaRegistro, CuPersona) values (?,?);";
             puente = puerta.prepareStatement(sql);
-            puente.setString(1, CuNumero);
-            puente.setString(2, CuFechaRegistro);
-            puente.setString(3, CuEstado);
-            puente.setString(4, CuPersona);           
+            puente.setString(1, CuFechaRegistro);
+            puente.setString(2, CuPersona);           
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
@@ -70,12 +68,11 @@ public class CuentaDAO extends ConexionDB implements crud {
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update tblcuenta set CuFechaRegistro=?, CuEstado=?, CuPersona=? where CuNumero =?;";
+            sql = "update tblcuentacredito set CuFechaRegistro=?, CuPersona=? where CuNumero =?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, CuFechaRegistro);
-            puente.setString(2, CuEstado);
-            puente.setString(3, CuPersona); 
-            puente.setString(4, CuNumero);
+            puente.setString(2, CuPersona); 
+            puente.setString(3, CuNumero);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
@@ -93,7 +90,7 @@ public class CuentaDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql="delete from tblcuenta where CuNumero =?";
+            sql="delete from tblcuentacredito where CuNumero =?";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, CuNumero);
             puente.executeUpdate();
@@ -116,7 +113,7 @@ public class CuentaDAO extends ConexionDB implements crud {
 
         try {
             puerta = this.obtenerConexion();
-            sql = "select * from tblcuenta where CuNumero = ?;";
+            sql = "select * from tblcuentacredito where CuNumero = ?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, CuNumero);
             mensajero = puente.executeQuery();
@@ -140,7 +137,7 @@ public class CuentaDAO extends ConexionDB implements crud {
         ArrayList<CuentaVO> cuentaLista = new ArrayList<>();
         try {
             puerta = this.obtenerConexion();
-            sql = "Select * from tblcuenta";
+            sql = "select * from tblcuentacredito";
             puente = puerta.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {

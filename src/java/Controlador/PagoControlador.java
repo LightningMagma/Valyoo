@@ -39,7 +39,7 @@ public class PagoControlador extends HttpServlet {
         String PagDesc = request.getParameter("PagDesc");
         String PagValor = request.getParameter("PagValor");
         String PagFecha = request.getParameter("PagFecha");
-        String PagPres = request.getParameter("PagPres");
+        String PagPres = request.getParameter("PagPrestamo");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         PagoVO pagVO = new PagoVO(PagId, PagDesc, PagValor, PagFecha, PagPres);

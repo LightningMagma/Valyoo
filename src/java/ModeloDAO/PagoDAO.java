@@ -49,7 +49,7 @@ public class PagoDAO extends ConexionDB implements crud {
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tblpago(PagDesc, PreValor, PagFecha, PagPres) values (?,?,current_timestamp(),?);";
+            sql = "insert into tblpago(PagDescripcion, PagValor, PagPrestamo, PagFecha) values (?,?,?,current_timestamp());";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PagDesc);
             puente.setString(2, PagValor);
@@ -71,12 +71,12 @@ public class PagoDAO extends ConexionDB implements crud {
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update tblpago set PagDesc=?, PreValor=?, PagFecha=?, PagPres=? where PagID =?;";
+            sql = "update tblpago set PagDescripcion=?, PagValor=?, PagPrestamo=?, PagFecha=? where PagoID =?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PagDesc);
             puente.setString(2, PagValor);
-            puente.setString(3, PagFecha);
-            puente.setString(4, PagPres);
+            puente.setString(3, PagPres);
+            puente.setString(4, PagFecha);
             puente.setString(5, PagId);
             puente.executeUpdate();
             operacion = true;
@@ -95,7 +95,7 @@ public class PagoDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql = "delete from tblpago where PagID =?";
+            sql = "delete from tblpago where PagoID =?";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PagId);
             puente.executeUpdate();
@@ -117,7 +117,7 @@ public class PagoDAO extends ConexionDB implements crud {
 
         try {
             puerta = this.obtenerConexion();
-            sql = "select * from tblpago where PagID = ?;";
+            sql = "select * from tblpago where PagoID = ?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PagId);
             mensajero = puente.executeQuery();

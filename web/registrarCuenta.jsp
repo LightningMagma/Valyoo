@@ -4,6 +4,8 @@
     Author     : jpgar
 --%>
 
+<%@page import="ModeloVO.PersonaVO"%>
+<%@page import="ModeloDAO.PersonaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,19 +17,23 @@
     <body>
         <h2>Registrar Cuenta</h2>
         <form method="post" action="Cuenta">
-            <label>Codigo: </label>
-            <input type="text" name="CuNumero" maxlength="2" placeholder="Ingrese el codigo de cuenta">
             <label>Fecha Registro: </label>
             <input type="text" name="CuFechaRegistro" maxlength="10" placeholder="0000-00-00">
-            <label>Estado: </label>
-            <input type="text" name="CuEstado" maxlength="10" placeholder="Activo o inactivo">
             <label>Persona: </label>
-            <input type="text" name="CuPersona" maxlength="2" placeholder="Ingrese la persona a la cual se le va asigar la cuenta">
+            <select>
+                <option>Seleccione...</option>
+                <%
+                    PersonaDAO perDAO = new PersonaDAO();
+                    for (PersonaVO perVO : perDAO.listar()) {
+                %>
+                <option value="<%=perVO.getPerDocumento()%>" name="CuPersona"><%=perVO.getPerDocumento()%></option>
+                <% } %>
+            </select>
             <input type="submit" value="Registrar Cuenta">
             <input type="reset" value="Borrar">
-            <input type="hidden" name="opcion" value="1">
+            <input type="hidden" name="opcion" value="1"><br>
             <%
-            if (request.getAttribute("MensajeError") != null) { %>
+                if (request.getAttribute("MensajeError") != null) { %>
             ${MensajeError}
             <%  } else { %>
             ${MensajeExito}

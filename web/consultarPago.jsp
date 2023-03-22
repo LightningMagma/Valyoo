@@ -36,8 +36,8 @@
                     <th>CODIGO</th>
                     <th>DESCRIPCION</th>
                     <th>VALOR</th>
-                    <th>FECHA</th>
                     <th>PRESTAMO ABONADO</th>
+                    <th>FECHA</th>
                 </tr>
                 <%
                     PagoVO pagVO = new PagoVO();

@@ -53,15 +53,14 @@ public class PrestamosDAO extends ConexionDB implements crud {
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tblprestamos(PreID, PreFechaInicio, PreFechaFin, PreCuotas, PreMonto, PreInteres, PreCuenta) values (?,?,?,?,?,?,?);";
+            sql = "insert into tblprestamo(PreFechaInicio, PreFechaFin, PreCuotas, PreMonto, PreInteres, PreCuenta) values (?,?,?,?,?,?);";
             puente = puerta.prepareStatement(sql);
-            puente.setString(1, PreId);
-            puente.setString(2, PreFechaInicio);
-            puente.setString(3, PreFechaFin);
-            puente.setString(4, PreCuotas);
-            puente.setString(5, PreMonto);
-            puente.setString(6, PreInteres);
-            puente.setString(7, PreCuenta);
+            puente.setString(1, PreFechaInicio);
+            puente.setString(2, PreFechaFin);
+            puente.setString(3, PreCuotas);
+            puente.setString(4, PreMonto);
+            puente.setString(5, PreInteres);
+            puente.setString(6, PreCuenta);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
@@ -79,7 +78,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update tblprestamos set PreFechaInicio=?, PreFechaFin=?, PreCuotas=?, PreMonto=?, PreInteres=?, PreCuenta=? where PreID =?;";
+            sql = "update tblprestamo set PreFechaInicio=?, PreFechaFin=?, PreCuotas=?, PreMonto=?, PreInteres=?, PreCuenta=? where PreID =?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PreFechaInicio);
             puente.setString(2, PreFechaFin);
@@ -105,7 +104,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql = "delete from tblprestamos where PreID =?";
+            sql = "delete from tblprestamo where PreID =?";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PreId);
             puente.executeUpdate();
@@ -127,7 +126,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
 
         try {
             puerta = this.obtenerConexion();
-            sql = "select * from tblprestamos where PreID = ?;";
+            sql = "select * from tblprestamo where PreID = ?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PreId);
             mensajero = puente.executeQuery();
@@ -152,7 +151,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
         ArrayList<PrestamosVO> prestamoLista = new ArrayList<>();
         try {
             puerta = this.obtenerConexion();
-            sql = "Select * from tblprestamos";
+            sql = "Select * from tblprestamo";
             puente = puerta.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {

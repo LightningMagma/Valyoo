@@ -4,6 +4,8 @@
     Author     : APRENDIZ
 --%>
 
+<%@page import="ModeloVO.CuentaVO"%>
+<%@page import="ModeloDAO.CuentaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,8 +17,6 @@
     <body>
         <h2>Registrar Prestamo</h2>
         <form method="post" action="Prestamo">
-            <label>Codigo: </label>
-            <input type="text" name="PreId" maxlength="3" placeholder="Ingrese el codigo que va a tener el prestamo">
             <label>Fecha inicio: </label>
             <input type="text" name="PreFechaInicio" maxlength="10" placeholder="0000-00-00">
             <label>Fecha fin: </label>
@@ -27,15 +27,21 @@
             <input type="text" name="PreMonto" maxlength="10" placeholder="Ingresé el monto">
             <label>Intereses: </label>
             <input type="text" name="PreInteres" maxlength="2" placeholder="Ingresé los intereses">
-            <label>Estado: </label>
-            <input type="text" name="PreInteres" maxlength="2" placeholder="Ingresé los intereses">
             <label>Cuenta: </label>
-            <input type="text" name="PreCuenta" maxlength="2" placeholder="A que cuenta se le va asignar el prestamo">
+            <select name="PreCuenta">
+                <option>Seleccione...</option>
+                <%
+                    CuentaDAO cuDAO = new CuentaDAO();
+                    for (CuentaVO cuVO : cuDAO.listarCuenta()) {
+                %>
+                <option value="<%=cuVO.getCuNumero()%>"><%=cuVO.getCuNumero()%></option>
+                <% } %>
+            </select>
             <input type="submit" value="Registrar prestamo">
             <input type="reset" value="Borrar">
             <input type="hidden" name="opcion" value="1">
             <%
-            if (request.getAttribute("MensajeError") != null) { %>
+                if (request.getAttribute("MensajeError") != null) { %>
             ${MensajeError}
             <%  } else { %>
             ${MensajeExito}
