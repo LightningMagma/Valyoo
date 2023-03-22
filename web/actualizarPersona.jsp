@@ -43,7 +43,7 @@
             <input type="text" name="perDireccion" required maxlength=50 value="<%=perVO.getPerDireccion()%>" >
             <label for="perClave">Contraseña:</label>
             <input type="text" name="perClave" required maxlength=20 value="<%=perVO.getPerClave()%>">
-            <input type="submit" value="Registrar">
+            <input type="submit" value="Actualizar">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="2">
             </form>

@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Personas</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-        <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
         <h2>Personas:</h2>
@@ -23,12 +23,12 @@
                 <tr>
                     <th>
                         Documento
-                        <input type="text" name="perDocumento">
+                        <input type="text" name="perDocumento" >
                         <input type="submit" value="Buscar">
                     </th>
                 </tr>
             </table>
-            <input type="hidden" name="opcion" value="3">
+            <input type="hidden" name="opcion" value="3">            
         </form>
 
         <%
@@ -38,9 +38,6 @@
         ${mensajeExito}
         <% }
         %>
-
-
-
         <table class="table">
             <tr>
                 <th>Documento</th>
@@ -51,6 +48,7 @@
                 <th>Direccion</th>
                 <th>Sede</th>
                 <th>Estado</th>
+                <th>Acciones</th>
             </tr>
             <%
                 PersonaVO perVO = new PersonaVO();
@@ -68,6 +66,13 @@
                 <td> <%=perVO.getPerDireccion()%> </td>
                 <td> <%=perVO.getPerSede()%> </td>
                 <td> <%=perVO.getPerEstado()%> </td>
+                <td>
+                    <form method="post" action="Persona">
+                        <input type="hidden" name="perDocumento" value="<%=perVO.getPerDocumento()%>">
+                        <button class="btn btn-warning" name="opcion" value="3" >Editar</button>
+                        <button class="btn btn-danger" name="opcion" value="4">Eliminar</button>
+                    </form>
+                </td>
             </tr>
             <%}%>
         </table>
