@@ -78,7 +78,7 @@ public class PersonaDAO extends ConexionDB implements crud {
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update tblpersona set PERTIPODOCUMENTO=?, PERNOMBRE=?, PERAPELLIDO=?, PERTELEFONO=?, PERDIRECCION=?, PERCLAVE=?, PERSEDE=?, PERESTADO=? where PERDOCUMENTO=?;";
+            sql = "update tblpersona set PERTIPODOCUMENTO=?, PERNOMBRE=?, PERAPELLIDO=?, PERTELEFONO=?, PERDIRECCION=?, PERCLAVE=? where PERDOCUMENTO=?;";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, perTipoDocumento);
             puente.setString(2, perNombre);
@@ -86,9 +86,7 @@ public class PersonaDAO extends ConexionDB implements crud {
             puente.setString(4, perTelefono);
             puente.setString(5, perDireccion);
             puente.setString(6, perClave);
-            puente.setString(7, perSede);
-            puente.setString(8, perEstado);
-            puente.setString(9, perDocumento);
+            puente.setString(7, perDocumento);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {

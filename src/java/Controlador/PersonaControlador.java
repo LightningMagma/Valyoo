@@ -65,7 +65,17 @@ public class PersonaControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("actualizarPersona.jsp").forward(request, response);
                 break;
-            case 3: // Eliminar Registro
+            case 3: // Listar por documento
+                perVO=perDAO.consultarPorDocumento(perDocumento);
+                if (perVO!=null) {
+                    request.setAttribute("personaEncontrada",perVO);
+                    request.getRequestDispatcher("actualizarPersona.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("mensajeError", "¡La persona no existe!");
+                    request.getRequestDispatcher("consultarPersona.jsp").forward(request, response);
+                }
+                break;
+            case 4: // Eliminar Registro
                 if (perDAO.eliminarRegistro()) {
                     request.setAttribute("MensajeExito", "¡La persona se eliminó correctamente!");
                 } else {
