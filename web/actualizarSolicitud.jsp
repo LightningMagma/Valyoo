@@ -27,8 +27,8 @@
             <input type="text" name="solMonto" required value="<%=solVO.getSolMonto()%>">  
             <label for="solCuotas">Cuotas:</label>
             <input type="text" name="solCuotas" required value="<%=solVO.getSolCuotas()%>"> 
-            <label for="solInteres">Interes:</label>
-            <input type="text" name="solInteres" required value="<%=solVO.getSolInteres()%>"> 
+            <label for="solInteres">Solicitud persona:</label>
+            <input type="text" name="solPersona" required value="<%=solVO.getSolPersona()%>"> 
             <label for="solEstado">Estado solicitud:</label>
             <input type="text" name="solEstado" required value="<%=solVO.getSolEstado()%>"> 
             
@@ -36,15 +36,17 @@
             <input type="hidden" name="opcion" value="2">
         </form>
             
-            <%
+             <%
                 }%>
+            
+           
             <%
-            if (request.getAttribute("MensajeError") != null) { %>
-            ${MensajeError}
-            <%} else {%>
-            ${MensajeExito}
-            <%}
-            %>
-            <a href="listarSolicitud.jsp">Volver</a>
+             if (request.getAttribute("mensajeError") != null) {%>
+        <h2>${mensajeError}</h2>
+        <%} else {%>
+        <h2>${mensajeExito}</h2>    
+        <%}
+        %>
+        <a href="listarSolicitud.jsp">Volver</a>
     </body>
 </html>

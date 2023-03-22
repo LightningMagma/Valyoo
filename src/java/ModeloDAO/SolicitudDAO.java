@@ -27,7 +27,7 @@ public class SolicitudDAO extends ConexionDB implements crud {
     private ResultSet mensajero;
     private boolean operacion = false;
     private String sql;
-    private String solId = "", solMonto = "", solCuotas = "", solInteres = "", solEstado = "";
+    private String solId = "", solMonto = "", solCuotas = "", solEstado = "" ,solPersona="";
 
     public SolicitudDAO() {
     }
@@ -40,9 +40,9 @@ public class SolicitudDAO extends ConexionDB implements crud {
             //4. Trare los datos del VO al DAO
             solId = solVO.getSolId();
             solMonto = solVO.getSolMonto();
-            solCuotas = solVO.getSolCuotas();
-            solInteres = solVO.getSolInteres();
+            solCuotas = solVO.getSolCuotas();            
             solEstado = solVO.getSolEstado();
+            solPersona = solVO.getSolPersona();
         } catch (Exception e) {
             //Logger atrapa la trasavilidad como nivel severo
             Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -53,11 +53,11 @@ public class SolicitudDAO extends ConexionDB implements crud {
     public boolean agregarRegistro() {
         try {
 
-            sql = "insert into tblsolicitud(solMonto,solCuotas,solInteres) values (?,?,?);";
+            sql = "insert into tblsolicitud(solMonto,solCuotas,solPersona) values (?,?,?);";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, solMonto);
             puente.setString(2, solCuotas);
-            puente.setString(3, solInteres);
+            puente.setString(3, solPersona);
             puente.executeUpdate();
             operacion = true;
 
@@ -78,11 +78,11 @@ public class SolicitudDAO extends ConexionDB implements crud {
     public boolean actualizarRegistro() {
         try {
 
-            sql = "update tblsolicitud set solMonto=?,solCuotas=?,solInteres=? where SolID=?;";
+            sql = "update tblsolicitud set solMonto=?,solCuotas=?,solPersona=? where SolID=?;";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, solMonto);
             puente.setString(2, solCuotas);
-            puente.setString(3, solInteres);
+            puente.setString(3, solPersona);
             puente.setString(4, solId);
             puente.executeUpdate();
             operacion = true;
@@ -131,7 +131,7 @@ public class SolicitudDAO extends ConexionDB implements crud {
             puente.setString(1,id);            
             mensajero=puente.executeQuery();            
             while (mensajero.next()) {                
-                solVO = new SolicitudVO(id,mensajero.getString(2), mensajero.getString(3),mensajero.getString(4),mensajero.getString(5));
+                solVO = new SolicitudVO(id, mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5));
             }            
         } catch (Exception e) {
             Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, e);

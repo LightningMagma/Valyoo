@@ -37,8 +37,8 @@
                 <th>Id Solicitud</th>
                 <th>Monto</th>
                 <th>Cuotas</th>  
-                <th>Interes</th> 
-                <th>Estado</th>  
+                <th>Estado</th> 
+                <th>Persona</th>  
             </tr>
             <%
                 SolicitudVO solVO = new SolicitudVO();
@@ -52,8 +52,8 @@
                 <td><%=solVO.getSolId()%> </td>
                 <td><%=solVO.getSolMonto()%></td>
                 <td><%=solVO.getSolCuotas()%></td>   
-                <td><%=solVO.getSolInteres()%> </td>  
-                <td><%=solVO.getSolEstado()%></td>  
+                <td><%=solVO.getSolEstado()%> </td>  
+                <td><%=solVO.getSolPersona()%></td>  
             </tr>
             <%
                 }

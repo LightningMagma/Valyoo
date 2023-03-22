@@ -18,7 +18,8 @@
             <input type="number" name="solMonto" required placeholder="Digite el monto del prestamo">
             <label for="usuCuotas">Cuotas:</label>
             <input type="number" name="solCuotas" required placeholder="Ingrese la cantidad de cuotas" > 
-            <input type="hidden" name="solInteres" value="4">
+            <label for="usuCuotas">Persona de la solicitud</label>
+            <input type="number" name="solPersona" required placeholder="Ingrese identificacion de la persona" >           
             <input type="submit" value="Registrar solicitud">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="1">

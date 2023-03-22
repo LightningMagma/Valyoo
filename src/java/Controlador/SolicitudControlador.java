@@ -36,12 +36,12 @@ public class SolicitudControlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String solId = request.getParameter("solId");
         String solMonto = request.getParameter("solMonto");
-        String solCuotas = request.getParameter("solCuotas"); 
-        String solInteres = request.getParameter("solInteres"); 
+        String solCuotas = request.getParameter("solCuotas");         
         String solEstado = request.getParameter("solEstado");
+        String solPersona = request.getParameter("solPersona");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         
-        SolicitudVO solVO = new SolicitudVO(solId, solMonto, solCuotas, solInteres, solEstado);
+        SolicitudVO solVO = new SolicitudVO(solId, solMonto, solCuotas,solEstado,solPersona);
         SolicitudDAO solDAO = new SolicitudDAO(solVO);
         
         switch(opcion){

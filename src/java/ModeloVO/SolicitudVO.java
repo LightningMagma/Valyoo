@@ -10,14 +10,18 @@ package ModeloVO;
  * @author APRENDIZ
  */
 public class SolicitudVO {
-
-    public SolicitudVO(String solId, String solMonto, String solCuotas, String solInteres, String solEstado) {
+    private String solId,solMonto,solCuotas,solEstado,SolPersona;
+    
+    public SolicitudVO() {
+    }
+    
+    public SolicitudVO(String solId, String solMonto, String solCuotas, String solEstado, String SolPersona) {
         this.solId = solId;
         this.solMonto = solMonto;
-        this.solCuotas = solCuotas;
-        this.solInteres = solInteres;
+        this.solCuotas = solCuotas;       
         this.solEstado = solEstado;
-    }
+        this.SolPersona = SolPersona;
+    }    
 
     public String getSolId() {
         return solId;
@@ -41,15 +45,7 @@ public class SolicitudVO {
 
     public void setSolCuotas(String solCuotas) {
         this.solCuotas = solCuotas;
-    }
-
-    public String getSolInteres() {
-        return solInteres;
-    }
-
-    public void setSolInteres(String solInteres) {
-        this.solInteres = solInteres;
-    }
+    } 
 
     public String getSolEstado() {
         return solEstado;
@@ -58,8 +54,11 @@ public class SolicitudVO {
     public void setSolEstado(String solEstado) {
         this.solEstado = solEstado;
     }
-    private String solId,solMonto,solCuotas,solInteres,solEstado;
 
-    public SolicitudVO() {
+    public String getSolPersona() {
+        return SolPersona;
+    }
+    public void setSolPersona(String SolPersona) {
+        this.SolPersona = SolPersona;
     }
 }
