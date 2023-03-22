@@ -37,7 +37,7 @@
                     <th>FECHA FIN</th>
                     <th>CUOTAS</th>
                     <th>MONTO</th>
-                    <th>INTERESES</th>
+                    <th>ESTADO</th>
                     <th>CUENTA</th>
                 </tr>
                 <%
@@ -53,7 +53,7 @@
                     <td><%=presVO.getPreFechaFin()%></td>
                     <td><%=presVO.getPreCuotas()%></td>
                     <td><%=presVO.getPreMonto()%></td>
-                    <td><%=presVO.getPreInteres()%></td>
+                    <td><%=presVO.getPreEstado()%></td>
                     <td><%=presVO.getPreCuenta()%></td>
                 </tr>
                 <% }%>

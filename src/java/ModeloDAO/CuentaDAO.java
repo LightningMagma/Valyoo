@@ -19,13 +19,17 @@ import util.crud;
  *
  * @author APRENDIZ
  */
-public class CuentaDAO extends ConexionDB implements crud{
+public class CuentaDAO extends ConexionDB implements crud {
     private Connection puerta;
     private PreparedStatement puente;
     private ResultSet mensajero;
     private boolean operacion = false;
     private String sql;
     private String CuNumero, CuFechaRegistro, CuEstado, CuPersona;
+    
+    public CuentaDAO() {
+        
+    }
     
     public CuentaDAO(CuentaVO cuVO){
         super();

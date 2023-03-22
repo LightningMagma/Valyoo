@@ -14,13 +14,14 @@ public class PrestamosVO {
     public PrestamosVO() {
     }
 
-    public PrestamosVO(String PreId, String PreFechaInicio, String PreFechaFin, String PreCuotas, String PreMonto, String PreInteres, String PreCuenta) {
+    public PrestamosVO(String PreId, String PreFechaInicio, String PreFechaFin, String PreCuotas, String PreMonto, String PreInteres, String PreEstado, String PreCuenta) {
         this.PreId = PreId;
         this.PreFechaInicio = PreFechaInicio;
         this.PreFechaFin = PreFechaFin;
         this.PreCuotas = PreCuotas;
         this.PreMonto = PreMonto;
         this.PreInteres = PreInteres;
+        this.PreEstado = PreEstado;
         this.PreCuenta = PreCuenta;
     }
 
@@ -72,6 +73,14 @@ public class PrestamosVO {
         this.PreInteres = PreInteres;
     }
 
+    public String getPreEstado() {
+        return PreEstado;
+    }
+
+    public void setPreEstado(String PreEstado) {
+        this.PreEstado = PreEstado;
+    }
+
     public String getPreCuenta() {
         return PreCuenta;
     }
@@ -79,6 +88,7 @@ public class PrestamosVO {
     public void setPreCuenta(String PreCuenta) {
         this.PreCuenta = PreCuenta;
     }
+
     private String PreId, PreFechaInicio, PreFechaFin,
-            PreCuotas, PreMonto, PreInteres, PreCuenta;
+            PreCuotas, PreMonto, PreInteres, PreEstado, PreCuenta;
 }

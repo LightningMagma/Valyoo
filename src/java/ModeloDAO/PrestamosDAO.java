@@ -27,7 +27,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
     private boolean operacion = false;
     private String sql;
     private String PreId, PreFechaInicio, PreFechaFin,
-            PreCuotas, PreMonto, PreInteres, PreCuenta;
+            PreCuotas, PreMonto, PreInteres, PreEstado, PreCuenta;
 
     public PrestamosDAO() {
 
@@ -43,6 +43,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
             PreCuotas = presVO.getPreCuotas();
             PreMonto = presVO.getPreMonto();
             PreInteres = presVO.getPreInteres();
+            PreEstado = presVO.getPreEstado();
             PreCuenta = presVO.getPreCuenta();
         } catch (Exception e) {
             Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -132,7 +133,8 @@ public class PrestamosDAO extends ConexionDB implements crud {
             mensajero = puente.executeQuery();
 
             while (mensajero.next()) {
-                presVO = new PrestamosVO(PreId, mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7));
+                presVO = new PrestamosVO(PreId, mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5),
+                        mensajero.getString(6), mensajero.getString(7), mensajero.getString(8));
             }
         } catch (Exception e) {
             Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -155,7 +157,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
                 PrestamosVO presVO = new PrestamosVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3),
-                        mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7));
+                        mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7), mensajero.getString(8));
                 prestamoLista.add(presVO);
             }
         } catch (Exception e) {

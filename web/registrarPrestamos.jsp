@@ -15,22 +15,24 @@
     <body>
         <h2>Registrar Prestamo</h2>
         <form method="post" action="Prestamo">
-            <label>Codigo: </label><br>
+            <label>Codigo: </label>
             <input type="text" name="PreId" maxlength="3" placeholder="Ingrese el codigo que va a tener el prestamo">
-            <label>Fecha inicio: </label><br>
+            <label>Fecha inicio: </label>
             <input type="text" name="PreFechaInicio" maxlength="10" placeholder="0000-00-00">
-            <label>Fecha fin: </label><br>
+            <label>Fecha fin: </label>
             <input type="text" name="PreFechaFin" maxlength="10" placeholder="0000-00-00">
-            <label>Cuotas: </label><br>
+            <label>Cuotas: </label>
             <input type="text" name="PreCuotas" maxlength="2" placeholder="Ingrese las cuotas del pestamo">
-            <label>Monto: </label><br>
+            <label>Monto: </label>
             <input type="text" name="PreMonto" maxlength="10" placeholder="Ingresé el monto">
-            <label>Intereses: </label><br>
+            <label>Intereses: </label>
             <input type="text" name="PreInteres" maxlength="2" placeholder="Ingresé los intereses">
-            <label>Cuenta: </label><br>
+            <label>Estado: </label>
+            <input type="text" name="PreInteres" maxlength="2" placeholder="Ingresé los intereses">
+            <label>Cuenta: </label>
             <input type="text" name="PreCuenta" maxlength="2" placeholder="A que cuenta se le va asignar el prestamo">
             <input type="submit" value="Registrar prestamo">
-            <input type="reset" value="Borrar"><br>
+            <input type="reset" value="Borrar">
             <input type="hidden" name="opcion" value="1">
             <%
             if (request.getAttribute("MensajeError") != null) { %>

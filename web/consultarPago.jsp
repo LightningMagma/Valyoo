@@ -16,7 +16,6 @@
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-    <center>
         <h2>Pago</h2>
         <form method="post" action="Pago">
             <label>Codigo: </label>
@@ -57,6 +56,5 @@
                 <% }%>
             </table>
         </form>
-    </center>
-</body>
+    </body>
 </html>

@@ -15,16 +15,14 @@
     <body>
         <h2>Registrar Pago</h2>
         <form method="post" action="Pago">
-            <label>Descripción: </label><br>
+            <label>Descripción: </label>
             <input type="text" name="PagDesc" maxlength="30" placeholder="Ingresé la descripción del pago">
-            <label>Valor: </label><br>
+            <label>Valor: </label>
             <input type="text" name="PagValor" maxlength="10" placeholder="Ingresé la cantidad a pagar">
-            <label>Fecha del pago: </label><br>
-            <input type="text" name="PagFecha" placeholder="0000-00-00">
-            <label>Préstamo: </label><br>
+            <label>Préstamo: </label>
             <input type="text" name="PagPres" maxlength="2" placeholder="Ingresé el préstamo a abonar">
             <input type="submit" value="Registrar pago">
-            <input type="reset" value="Borrar"><br>
+            <input type="reset" value="Borrar">
             <input type="hidden" name="opcion" value="1">
             <%
             if (request.getAttribute("MensajeError") != null) { %>

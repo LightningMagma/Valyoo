@@ -49,12 +49,11 @@ public class PagoDAO extends ConexionDB implements crud {
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tblpago(PagDesc, PreValor, PagFecha, PagPres) values (?,?,?,?);";
+            sql = "insert into tblpago(PagDesc, PreValor, PagFecha, PagPres) values (?,?,current_timestamp(),?);";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PagDesc);
             puente.setString(2, PagValor);
-            puente.setString(3, PagFecha);
-            puente.setString(4, PagPres);
+            puente.setString(3, PagPres);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {

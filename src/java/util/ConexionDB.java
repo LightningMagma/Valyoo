@@ -22,7 +22,7 @@ public class ConexionDB {
         driver = "com.mysql.jdbc.Driver";
         user = "root";
         password = "";
-        nameDB = "valyoo_db";
+        nameDB = "valyoodb";
         port = "3306";
         urlDB = "jdbc:mysql://localhost:" + port + "/" + nameDB;
 

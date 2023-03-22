@@ -10,6 +10,10 @@ package ModeloVO;
  * @author APRENDIZ
  */
 public class CuentaVO {
+    
+    public CuentaVO() {
+        
+    }
 
     public CuentaVO(String CuNumero, String CuFechaRegistro, String CuEstado, String CuSede, String CuDeudor) {
         this.CuNumero = CuNumero;
