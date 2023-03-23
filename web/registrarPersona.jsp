@@ -35,7 +35,7 @@
             <label for="perDireccion">Dirección:</label>
             <input type="text" name="perDireccion" required maxlength=50 placeholder="Ingrese la dirección">
             <label for="perClave">Contraseña:</label>
-            <input type="text" name="perClave" required maxlength=20 placeholder="Ingrese la Contraseña">
+            <input type="password" name="perClave" required maxlength=20 placeholder="Ingrese la Contraseña">
             <input type="submit" value="Registrar">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="1">
