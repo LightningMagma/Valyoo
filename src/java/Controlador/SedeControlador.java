@@ -61,7 +61,7 @@ public class SedeControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("actualizarSede.jsp").forward(request, response);
                 break;
-            case 3: // Listar por documento
+            case 3: // Listar por id
                 sedeVO = sedeDAO.consultarPorId("sedeId");
                 if (sedeVO != null) {
                     request.setAttribute("sedeEncontrada", sedeVO);

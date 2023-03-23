@@ -9,6 +9,7 @@ import ModeloVO.DocumentosVO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.ConexionDB;
@@ -106,5 +107,57 @@ public class DocumentosDAO extends ConexionDB implements crud {
             }
         }
         return operacion;
+    }
+
+    public DocumentosVO consultarPorId(String Id) {
+        DocumentosVO docVO = null;
+
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select * from tbldocumento where DOCID=?;";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, Id);
+            mensajero = puente.executeQuery();
+
+            while (mensajero.next()) {
+                docVO = new DocumentosVO(Id, mensajero.getString(2), mensajero.getString(3), mensajero.getString(4));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(DocumentosDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(DocumentosDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return docVO;
+    }
+
+    public ArrayList<DocumentosVO> listar() {
+        ArrayList<DocumentosVO> docuLista = new ArrayList<>();
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select * from tbldocumento;";
+            puente = conexion.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+
+            while (mensajero.next()) {
+                DocumentosVO docVO = new DocumentosVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4));
+
+                docuLista.add(docVO);
+
+            }
+
+        } catch (Exception e) {
+            Logger.getLogger(DocumentosDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(DocumentosDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return docuLista;
     }
 }

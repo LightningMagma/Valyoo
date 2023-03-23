@@ -34,39 +34,46 @@ public class DocumentosControlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String docId=request.getParameter("docId");
-        String docNombre=request.getParameter("docNombre");
-        String docUrl=request.getParameter("docUrl");
-        String docPer=request.getParameter("docPer");
+        String docId = request.getParameter("docId");
+        String docNombre = request.getParameter("docNombre");
+        String docUrl = request.getParameter("docUrl");
+        String docPer = request.getParameter("docPer");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
-        
-        DocumentosVO docVO= new DocumentosVO(docId, docNombre, docUrl, docPer);
-        DocumentosDAO docDAO= new DocumentosDAO(docVO);
-        
-        switch(opcion){
+
+        DocumentosVO docVO = new DocumentosVO(docId, docNombre, docUrl, docPer);
+        DocumentosDAO docDAO = new DocumentosDAO(docVO);
+
+        switch (opcion) {
             case 1: // Agregar Registro
-                if(docDAO.agregarRegistro()) {
+                if (docDAO.agregarRegistro()) {
                     request.setAttribute("MensajeExito", "¡El documento se registró correctamente!");
-                }
-                else {
+                } else {
                     request.setAttribute("MensajeError", "¡El documento NO se registró correctamente!");
                 }
                 request.getRequestDispatcher("registrarDocumentos.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Registro
-                if(docDAO.actualizarRegistro()) {
+                if (docDAO.actualizarRegistro()) {
                     request.setAttribute("MensajeExito", "¡El documento se actualizó correctamente!");
-                }
-                else {
+                } else {
                     request.setAttribute("MensajeError", "¡El documento NO se actualizó correctamente!");
                 }
                 request.getRequestDispatcher("actualizarDocumentos.jsp").forward(request, response);
                 break;
-            case 3: // Eliminar Registro
-                if(docDAO.eliminarRegistro()) {
-                    request.setAttribute("MensajeExito", "¡El documento se eliminó correctamente!");
+            case 3: // Listar por id
+                docVO = docDAO.consultarPorId("docId");
+                if (docVO != null) {
+                    request.setAttribute("documentoEncontrado", docVO);
+                    request.getRequestDispatcher("actualizarDocumentos.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("mensajeError", "¡El documento no existe!");
+                    request.getRequestDispatcher("consultarDocumentos.jsp").forward(request, response);
                 }
-                else {
+                break;
+            case 4: // Eliminar Registro
+                if (docDAO.eliminarRegistro()) {
+                    request.setAttribute("MensajeExito", "¡El documento se eliminó correctamente!");
+                } else {
                     request.setAttribute("MensajeError", "¡El documento NO se eliminó correctamente!");
                 }
                 request.getRequestDispatcher("eliminarDocumentos.jsp").forward(request, response);
