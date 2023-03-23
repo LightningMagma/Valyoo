@@ -47,6 +47,6 @@
         <h2>${mensajeExito}</h2>    
         <%}
         %>
-        <a href="listarSolicitud.jsp">Volver</a>
+        <a href="indexSolicitud.jsp">Volver</a>
     </body>
 </html>

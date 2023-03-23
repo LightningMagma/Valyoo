@@ -38,6 +38,6 @@
         ${MensajeExito}
         <%  }
         %>
-        <a href="consultarCuenta.jsp">Volver</a>
+        <a href="indexCuenta.jsp">Volver</a>
     </body>
 </html>

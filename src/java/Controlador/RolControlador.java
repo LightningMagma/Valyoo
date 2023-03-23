@@ -77,7 +77,7 @@ public class RolControlador extends HttpServlet {
                     request.getRequestDispatcher("actualizarRol.jsp").forward(request, response);
                 } else {
                     request.setAttribute("mensajeError","Rol no existe"); 
-                    request.getRequestDispatcher("listarRol.jsp").forward(request, response); 
+                    request.getRequestDispatcher("indexRol.jsp").forward(request, response); 
                 }
             
         }

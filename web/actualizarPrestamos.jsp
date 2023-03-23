@@ -47,6 +47,6 @@
         ${MensajeExito}
         <%  }
         %>
-        <a href="consultarPrestamos.jsp">Volver</a>
+        <a href="indexPrestamos.jsp">Volver</a>
     </body>
 </html>

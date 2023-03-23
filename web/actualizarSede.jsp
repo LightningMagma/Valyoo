@@ -32,7 +32,7 @@
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="2">
         </form>
-        <a href="consultarSede.jsp">Volver</a>
+        <a href="indexSede.jsp">Volver</a>
         <%}%>
         <%
                 if (request.getAttribute("MensajeError") != null) {%>

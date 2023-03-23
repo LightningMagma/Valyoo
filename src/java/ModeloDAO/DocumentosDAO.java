@@ -92,7 +92,7 @@ public class DocumentosDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql = "update tbldocumentos set DOCESTADO='Inactivo' WHERE DOCID=?";
+            sql = "delete from tbldocumento WHERE DOCID=?";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, docId);
             puente.executeUpdate();

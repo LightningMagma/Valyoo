@@ -78,7 +78,7 @@ public class PagoControlador extends HttpServlet {
                     request.getRequestDispatcher("").forward(request,response);
                 } else {
                     request.setAttribute("MensajeError", "¡El pago NO existe!");
-                    request.getRequestDispatcher("consultarPago.jsp").forward(request,response);
+                    request.getRequestDispatcher("indexPago.jsp").forward(request,response);
                 }
                 break;
         }

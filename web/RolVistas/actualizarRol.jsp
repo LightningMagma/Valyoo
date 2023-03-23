@@ -39,6 +39,6 @@
             ${MensajeExito}
             <%}
             %>
-            <a href="listarRol.jsp">Volver</a>
+            <a href="indexRol.jsp">Volver</a>
     </body>
 </html>

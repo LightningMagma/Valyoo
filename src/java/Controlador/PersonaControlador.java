@@ -72,7 +72,7 @@ public class PersonaControlador extends HttpServlet {
                     request.getRequestDispatcher("actualizarPersona.jsp").forward(request, response);
                 } else {
                     request.setAttribute("mensajeError", "¡La persona no existe!");
-                    request.getRequestDispatcher("consultarPersona.jsp").forward(request, response);
+                    request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
                 }
                 break;
             case 4: // Eliminar Registro

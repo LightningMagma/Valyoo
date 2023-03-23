@@ -38,5 +38,6 @@
         ${MensajeExito}
         <%  }
         %>
+        <a href="indexPago.jsp">Volver</a>
     </body>
 </html>

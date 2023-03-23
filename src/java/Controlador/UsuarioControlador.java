@@ -84,7 +84,7 @@ public class UsuarioControlador extends HttpServlet {
                     request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
                 } else {
                     request.setAttribute("mensajeError", "Usuario no encontrado");
-                    request.getRequestDispatcher("listarUsuario.jsp").forward(request, response);
+                    request.getRequestDispatcher("indexUsuario.jsp").forward(request, response);
                 }
         }
     }

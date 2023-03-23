@@ -79,7 +79,7 @@ public class SolicitudControlador extends HttpServlet {
                     request.getRequestDispatcher("actualizarSolicitud.jsp").forward(request, response);
                 } else {
                     request.setAttribute("mensajeError", "Solicitud no encontrado");
-                    request.getRequestDispatcher("listarSolicitud.jsp").forward(request, response);
+                    request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
                 }
         }
     }

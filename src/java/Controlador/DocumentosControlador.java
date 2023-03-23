@@ -67,7 +67,7 @@ public class DocumentosControlador extends HttpServlet {
                     request.getRequestDispatcher("actualizarDocumentos.jsp").forward(request, response);
                 } else {
                     request.setAttribute("mensajeError", "¡El documento no existe!");
-                    request.getRequestDispatcher("consultarDocumentos.jsp").forward(request, response);
+                    request.getRequestDispatcher("indexDocumentos.jsp").forward(request, response);
                 }
                 break;
             case 4: // Eliminar Registro
