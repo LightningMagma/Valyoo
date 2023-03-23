@@ -16,6 +16,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     </head>
     <body>
+        <jsp:include page="menu.jsp" />
         <h2>Sedes</h2>
         <form method="post" action="Sede">
             <table class="table">

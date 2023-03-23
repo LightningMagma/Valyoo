@@ -16,6 +16,7 @@
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <jsp:include page="menu.jsp" />
         <h2>Cuenta</h2>
         <form method="post" action="Cuenta">
             <label>Codigo: </label>

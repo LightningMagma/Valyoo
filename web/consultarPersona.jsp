@@ -17,6 +17,7 @@
 
     </head>
     <body>
+        <jsp:include page="menu.jsp" />
         <h2>Personas:</h2>
         <form method="post" action="Persona">
             <table class="table">
