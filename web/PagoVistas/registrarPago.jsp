@@ -33,7 +33,8 @@
             </select>
             <input type="submit" value="Registrar pago">
             <input type="reset" value="Borrar">
-            <input type="hidden" name="opcion" value="1">
+            <input type="hidden" name="opcion" value="1">            
+        </form>
             <%
                 if (request.getAttribute("MensajeError") != null) { %>
             ${MensajeError}
@@ -41,6 +42,5 @@
             ${MensajeExito}
             <%  }
             %>
-        </form>
     </body>
 </html>
