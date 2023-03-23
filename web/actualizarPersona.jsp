@@ -47,7 +47,7 @@
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="2">
         </form>
-        <a href="indexPersona.jsp">Volver</a>
+        
         <%}%>
         <%
                 if (request.getAttribute("MensajeError") != null) {%>
@@ -56,5 +56,6 @@
         ${MensajeExito}
         <% }
         %>
+        <a href="indexPersona.jsp">Volver</a>
     </body>
 </html>

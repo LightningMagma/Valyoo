@@ -1,7 +1,7 @@
 <%-- 
     Document   : consultarSede
     Created on : 22/03/2023, 09:38:33 PM
-    Author     : ACER
+    Author     : Miguel Gil
 --%>
 
 <%@page import="java.util.ArrayList"%>

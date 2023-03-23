@@ -22,6 +22,8 @@
             if (sedeVO != null) {
         %>
         <form method="post" action="Sede">
+            <label for="sedeId">ID:</label>
+            <input type="text" name="sedeId" required maxlength=30 value="<%=sedeVO.getSedeId()%>">
             <label for="sedeNombre">Nombre:</label>
             <input type="text" name="sedeNombre" required maxlength=30 value="<%=sedeVO.getSedeNombre()%>">
             <label for="sedeDireccion">Dirección:</label>
@@ -32,7 +34,7 @@
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="2">
         </form>
-        <a href="indexSede.jsp">Volver</a>
+        
         <%}%>
         <%
                 if (request.getAttribute("MensajeError") != null) {%>
@@ -41,5 +43,6 @@
         ${MensajeExito}
         <% }
         %>
+        <a href="indexSede.jsp">Volver</a>
     </body>
 </html>

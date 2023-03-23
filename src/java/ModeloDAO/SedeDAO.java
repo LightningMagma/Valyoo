@@ -17,7 +17,7 @@ import util.crud;
 
 /**
  *
- * @author ACER
+ * @author Miguel Gil
  */
 public class SedeDAO extends ConexionDB implements crud {
 

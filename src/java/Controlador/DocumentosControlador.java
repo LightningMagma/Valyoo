@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ACER
+ * @author Miguel Gil
  */
 @WebServlet(name = "DocumentosControlador", urlPatterns = {"/Documentos"})
 public class DocumentosControlador extends HttpServlet {
@@ -61,7 +61,7 @@ public class DocumentosControlador extends HttpServlet {
                 request.getRequestDispatcher("actualizarDocumentos.jsp").forward(request, response);
                 break;
             case 3: // Listar por id
-                docVO = docDAO.consultarPorId("docId");
+                docVO = docDAO.consultarPorId(docId);
                 if (docVO != null) {
                     request.setAttribute("documentoEncontrado", docVO);
                     request.getRequestDispatcher("actualizarDocumentos.jsp").forward(request, response);

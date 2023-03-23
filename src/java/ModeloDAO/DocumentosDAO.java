@@ -17,7 +17,7 @@ import util.crud;
 
 /**
  *
- * @author ACER
+ * @author Miguel Gil
  */
 public class DocumentosDAO extends ConexionDB implements crud {
 
@@ -40,14 +40,14 @@ public class DocumentosDAO extends ConexionDB implements crud {
             docUrl = docVO.getDocUrl();
             docPer = docVO.getDocPer();
         } catch (Exception e) {
-            Logger.getLogger(SedeDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DocumentosDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tbldocumentos (DOCNOMBRE, DOCURL, DOCPER) values (?,?,?);";
+            sql = "insert into tbldocumento (DOCNOMBRE, DOCURL, DOCPERSONA) values (?,?,?);";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, docNombre);
             puente.setString(2, docUrl);
@@ -69,7 +69,7 @@ public class DocumentosDAO extends ConexionDB implements crud {
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update tbldocumentos set DOCNOMBRE=?,DOCURL=?,DOCPER=? WHERE DOCID=?";
+            sql = "update tbldocumento set DOCNOMBRE=?,DOCURL=?,DOCPERSONA=? WHERE DOCID=?";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, docNombre);
             puente.setString(2, docUrl);

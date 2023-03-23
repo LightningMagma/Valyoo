@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ACER
+ * @author Miguel Gil
  */
 @WebServlet(name = "SedeControlador", urlPatterns = {"/Sede"})
 public class SedeControlador extends HttpServlet {
@@ -62,7 +62,7 @@ public class SedeControlador extends HttpServlet {
                 request.getRequestDispatcher("actualizarSede.jsp").forward(request, response);
                 break;
             case 3: // Listar por id
-                sedeVO = sedeDAO.consultarPorId("sedeId");
+                sedeVO = sedeDAO.consultarPorId(sedeId);
                 if (sedeVO != null) {
                     request.setAttribute("sedeEncontrada", sedeVO);
                     request.getRequestDispatcher("actualizarSede.jsp").forward(request, response);

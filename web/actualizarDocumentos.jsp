@@ -22,17 +22,19 @@
             if (docVO != null) {
         %>
         <form method="post" action="Documentos">
+            <label for="docId">ID:</label>
+            <input type="text" name="docId" required maxlength=30 value="<%=docVO.getDocId()%>">
             <label for="docNombre">Nombre:</label>
-            <input type="text" name="docNombre" required maxlength=30 placeholder="Ingrese el nombre del documento">
+            <input type="text" name="docNombre" required maxlength=30 value="<%=docVO.getDocNombre()%>">
             <label for="docUrl">URL:</label>
-            <input type="text" name="docUrl" required maxlength=100 placeholder="Ingrese la URL del documento">
+            <input type="text" name="docUrl" required maxlength=100 value="<%=docVO.getDocUrl()%>">
             <label for="docPer">Persona:</label>
-            <input type="text" name="docPer" required maxlength=15 placeholder="Ingrese la persona">
+            <input type="text" name="docPer" required maxlength=15 value="<%=docVO.getDocPer()%>">
             <input type="submit" value="Actualizar">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="2">
         </form>
-        <a href="indexDocumentos.jsp">Volver</a>
+        
         <%}%>
         <%
             if (request.getAttribute("MensajeError") != null) {%>
@@ -41,5 +43,6 @@
         ${MensajeExito}
         <% }
         %>
+        <a href="indexDocumentos.jsp">Volver</a>
     </body>
 </html>
