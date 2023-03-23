@@ -9,6 +9,7 @@ import ModeloVO.SedeVO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.ConexionDB;
@@ -69,13 +70,12 @@ public class SedeDAO extends ConexionDB implements crud {
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update tblsede set SEDENOMBRE=?,SEDEDIRECCION=?,SEDETELEFONO=?,SEDEESTADO=? WHERE SEDEID=?";
+            sql = "update tblsede set SEDENOMBRE=?,SEDEDIRECCION=?,SEDETELEFONO=? WHERE SEDEID=?";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, sedeNombre);
             puente.setString(2, sedeDireccion);
             puente.setString(3, sedeTelefono);
-            puente.setString(4, sedeEstado);
-            puente.setString(5, sedeId);
+            puente.setString(4, sedeId);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
@@ -108,5 +108,57 @@ public class SedeDAO extends ConexionDB implements crud {
             }
         }
         return operacion;
+    }
+
+    public SedeVO consultarPorId(String Id) {
+        SedeVO sedeVO = null;
+
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select * from tblsede where SEDEID=?;";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, Id);
+            mensajero = puente.executeQuery();
+
+            while (mensajero.next()) {
+                sedeVO = new SedeVO(Id, mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(SedeDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(SedeDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return sedeVO;
+    }
+
+    public ArrayList<SedeVO> listar() {
+        ArrayList<SedeVO> sedeLista = new ArrayList<>();
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select * from tblsede;";
+            puente = conexion.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+
+            while (mensajero.next()) {
+                SedeVO sedeVO = new SedeVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5));
+
+                sedeLista.add(sedeVO);
+
+            }
+
+        } catch (Exception e) {
+            Logger.getLogger(SedeDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(SedeDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return sedeLista;
     }
 }

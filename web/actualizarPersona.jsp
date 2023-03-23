@@ -17,16 +17,16 @@
     <body>
         <h2>Actualizar Persona</h2>
         <%
-            PersonaVO perVO=(PersonaVO)request.getAttribute("personaEncontrada");
-            
-            if (perVO!=null) {
-            %>
-            <form method="post" action="Persona">
+            PersonaVO perVO = (PersonaVO) request.getAttribute("personaEncontrada");
+
+            if (perVO != null) {
+        %>
+        <form method="post" action="Persona">
             <label for="perDocumento">Número de documento:</label>
             <input type="text" name="perDocumento" required maxlength=20 value="<%=perVO.getPerDocumento()%>">
             <label for="perTipoDocumento">Tipo de documento:</label>
             <select name="perTipoDocumento">
-                
+
                 <option value="Cedula de Ciudadania">C.C</option>
                 <option value="Cédula de Extranjería">C.E</option>
                 <option value="Pasaporte">Pasaporte</option>
@@ -46,11 +46,11 @@
             <input type="submit" value="Actualizar">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="2">
-            </form>
-            <a href="consultarPersona.jsp">Volver</a>
+        </form>
+        <a href="consultarPersona.jsp">Volver</a>
         <%}%>
-            <%
-            if (request.getAttribute("MensajeError") != null) {%>
+        <%
+                if (request.getAttribute("MensajeError") != null) {%>
         ${MensajeError}
         <% } else {%>
         ${MensajeExito}

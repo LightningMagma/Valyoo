@@ -61,7 +61,17 @@ public class SedeControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("actualizarSede.jsp").forward(request, response);
                 break;
-            case 3: // Eliminar Registro
+            case 3: // Listar por documento
+                sedeVO = sedeDAO.consultarPorId("sedeId");
+                if (sedeVO != null) {
+                    request.setAttribute("sedeEncontrada", sedeVO);
+                    request.getRequestDispatcher("actualizarSede.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("mensajeError", "¡La sede no existe!");
+                    request.getRequestDispatcher("consultarSede.jsp").forward(request, response);
+                }
+                break;
+            case 4: // Eliminar Registro
                 if (sedeDAO.eliminarRegistro()) {
                     request.setAttribute("MensajeExito", "¡La sede se eliminó correctamente!");
                 } else {
