@@ -14,6 +14,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="Estilos/estilonavland.css" rel="stylesheet" type="text/css"/>
         <link href="Estilos/css/font-face.css" rel="stylesheet" media="all">
         <link href="Estilos/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
         <link href="Estilos/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
@@ -86,25 +87,39 @@
 
     %>
     <body>
-        <div>
-            <h2>Bienvenido <%=persona%></h2>
-            <form method="post" action="Sesiones">
-                <input type="submit" value="Cerra Sesion">
-            </form>
-        </div>
-        <div class="container">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-            <a href="indexCuenta.jsp">Cuenta</a>
-            <a href="indexSede.jsp">Sede</a>
-            <a href="indexPersona.jsp">Persona</a>              
-            <a href="indexDocumentos.jsp">Documentos</a>               
-            <a href="indexPago.jsp">Pago</a>
-            <a href="indexPersonaRol.jsp">Asignacion rol</a>               
-            <a href="indexPrestamos.jsp">Prestamo</a>
-            <a href="indexRol.jsp">Rol</a>
-            <a href="indexSolicitud.jsp">Solicitud</a>               
+        <nav class="navbar navbar-expand-lg bg-body-teriary">
+            <h3><img src="Estilos/tituloValyoo.png" alt="Título Valyoo" width="175px"></h3>
+            <ul>
+                <li><a href="indexCuenta.jsp">Cuenta</a></li>
+                <li><a href="indexSede.jsp">Sede</a></li>
+                <li><a href="indexPersona.jsp">Persona</a></li>              
+                <li><a href="indexDocumentos.jsp">Documentos</a></li>               
+                <li><a href="indexPago.jsp">Pago</a></li>
+                <li><a href="indexPersonaRol.jsp">Asignacion rol</a></li>              
+                <li><a href="indexPrestamos.jsp">Prestamo</a></li>
+                <li><a href="indexRol.jsp">Rol</a></li>
+                <li><a href="indexSolicitud.jsp">Solicitud</a></li>
+            </ul>
 
-        </div> 
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Bienvenido <%=persona%></a>
+                <ul class="dropdown-menu">
+                    <a> <%=documento%> </a>
+                    <li><a class="dropdown-item">
+                            <form method="post" action="Sesiones">
+                                <input type="submit" value="Cerra Sesion">
+                            </form>
+                        </a></li>
+                </ul>
+            </li>
+
+
+        </nav>
+        <form method="post" action="Sesiones">
+            <input class="btn btn-danger cerrarSesion" type="submit" value="Cerrar Sesión" style="margin-left: 88%; margin-top: 0.7%;">
+        </form>
         <script>
             function confirmar() {
                 var respuesta = confirm("¿Desea eliminar el registro");

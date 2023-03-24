@@ -23,7 +23,7 @@
         <form method="post" action="Rol">
             <label for="RolId">Rol</label>
             <input type="text" name="rolId" placeholder="Ingrese ID rol">
-            <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar Rol">               
+            <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">               
             <input type="hidden" name="opcion" value="4">
         </form>       
         <div class="table-data__tool">

@@ -18,7 +18,7 @@
     </head>
     <body>  
         <div class="col-md-12">
-            <h3 class="title-5 m-b-35">Cuentas </h3>        
+            <h2 class="title-5 m-b-35">Cuentas </h2>        
             <form method="post" action="Cuenta">
                 <table class="table">
                     <tr>

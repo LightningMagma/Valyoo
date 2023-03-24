@@ -25,7 +25,7 @@
                         <th>
                             ID
                             <input type="text" name="docId" >
-                            <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Buscar">
+                            <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
                         </th>
                     </tr>
                 </table>

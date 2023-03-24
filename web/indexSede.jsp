@@ -25,7 +25,7 @@
                     <th>
                         ID
                         <input type="text" name="sedeId" >
-                        <input type="submit" value="Buscar">
+                        <input type="submit" value="Consultar" class="au-btn au-btn-icon au-btn--green au-btn--small">
                     </th>
                 </tr>
             </table>

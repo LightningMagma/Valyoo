@@ -21,12 +21,10 @@
         <form method="post" action="Solicitud">
             <label for="solId">Id de la solicitud</label>
             <input type="text" name="solId" placeholder="Ingrese ID de la solicitud">
-            <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar solicitud">               
+            <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">               
             <input type="hidden" name="opcion" value="4">
         </form>
-        <a href="registrarSolicitud.jsp">
-            <button class="btn btn-success">Agregar solicitud</button>
-        </a> 
+        
         <div class="table-data__tool">
                 <div class="table-data__tool-right">
                     <a href="registrarSolicitud.jsp">
