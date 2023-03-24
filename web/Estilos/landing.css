@@ -1,0 +1,221 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24/03/2023, 08:11:26 AM
+    Author     : ACER
+*/
+
+/* reset de estilos para asegurar que no hayan diferencias entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* estilos para la sección principal */
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1587502536402-6f5c6e539b30');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #666666;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #f5f5f5;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #f2f2f2;
+  }
+  
+  .hero button {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .hero button:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* estilos para la sección de servicios */
+  .services {
+    background-color: #e69120;
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .services h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #dad6d6;
+  }
+  
+  .services ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .services li {
+    width: 30%;
+    padding: 20px;
+    background-color: rgb(247, 175, 77);
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .services li h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .services li p {
+    font-size: 1.2rem;
+  }
+  
+  /* estilos para la sección "acerca de nosotros" */
+  .about {
+    padding: 50px;
+    text-align: center;
+    background-color: #32681C;
+    color:#dad6d6;
+  }
+  
+  .about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .about p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* estilos para la sección de contacto */
+.contact {
+    background-color: #333;
+    color: #fff;
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .contact form label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .contact form input,
+  .contact form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+  }
+  
+  .contact form textarea {
+    height: 150px;
+  }
+  
+  .contact form button {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .contact form button:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* estilos para el pie de página */
+  footer {
+    background-color: rgb(112, 114, 112);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  footer p {
+    font-size: 1.2rem;
+  }
+
+  /*estilos navbar*/
+
+  html, body, header{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 7vh;
+    background-color: #121312;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.4);
+}
+h3{
+    padding: 1em;
+    color: #f5f5f5;
+    letter-spacing: 3px;
+}
+ul, li{
+    list-style: none;
+    display: flex;
+    padding: 1em;
+    margin: 0;
+}
+li{
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    margin: 0.5em;
+    padding: 10px 15px;
+    color: #f5f5f5;
+    border-radius: 20px;
+}
+li:hover{
+    background-color: #7fc31b;
+    box-shadow: 3px 5px 5px;
+}
+a:link, a:visited {
+    text-decoration: none;
+  }

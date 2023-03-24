@@ -10,19 +10,30 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Iniciar sesión</title>
-        <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
+        <link href="Estilos/styless.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h2>Inicio de sesion</h1>
-        <form method="post" action="Persona">
-            <label for="usuLogin">Usuario:</label>
-            <input type="text"  name="perDocumento" required maxlength=20>
-            <label for="usuLogin">Contraseña:</label>
-            <input type="password" name="perClave" required maxlength=20>
-            <input type="submit" value="Iniciar">
-            <input type="reset" value="Limpiar">
-            <input type="hidden" name="opcion" value="4">
-        </form>
+        <div class="login-box">
+            <h2>Inicios de sesión</h2>
+            <form method="post" action="Persona">
+                <div class="user-box">
+                    <label for="perDocumento">Usuario</label><br>
+                    <input type="text" name="perDocumento" required>
+                </div>
+                <div class="user-box">
+                    <label for="perClave">Contraseña</label><br>
+                    <input type="password" name="perClave" required>
+                </div>
+                <a href="#">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <input type="submit" value="Iniciar">
+                    <input type="hidden" value="4">
+                </a>
+            </form>
+        </div>
         <%
             if (request.getAttribute("mensajeError") != null) {%>
         <h2>${mensajeError}</h2>
