@@ -52,7 +52,7 @@ public class CuentaControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡La cuenta NO se registró correctamente!");
                 }
-                request.getRequestDispatcher("registrarCuenta.jsp").forward(request, response);
+                request.getRequestDispatcher("indexCuenta.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Registro
                 if (cuDAO.actualizarRegistro()) {
@@ -60,7 +60,7 @@ public class CuentaControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡La cuenta NO se actualizó correctamente!");
                 }
-                request.getRequestDispatcher("actualizarCuenta.jsp").forward(request, response);
+                request.getRequestDispatcher("indexCuenta.jsp").forward(request, response);
                 break;
             case 3: // Eliminar Registro
                 if (cuDAO.eliminarRegistro()) {
@@ -68,7 +68,7 @@ public class CuentaControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡La cuenta NO se actualizó correctamente!");
                 }
-                request.getRequestDispatcher("eliminarCuenta.jsp").forward(request, response);
+                request.getRequestDispatcher("indexCuenta.jsp").forward(request, response);
                 break;
             case 4: // Consultar Prestamos
                 cuVO = cuDAO.consultarPago();

@@ -48,7 +48,7 @@ public class PerRolControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡Rol no asignado!");
                 }
-                request.getRequestDispatcher("agregarPersonaRol.jsp").forward(request, response);
+                request.getRequestDispatcher("indexPersonaRol.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Registro
                 if (prDAO.actualizarRegistro()) {
@@ -74,7 +74,7 @@ public class PerRolControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡Registro NO se eliminó correctamente!");
                 }
-                request.getRequestDispatcher("eliminarPersonaRol.jsp").forward(request, response);
+                request.getRequestDispatcher("indexPersonaRol.jsp").forward(request, response);
                 break;
         }
     }

@@ -56,7 +56,7 @@ public class PrestamoControlador extends HttpServlet {
                 else {
                     request.setAttribute("MensajeError", "¡El prestamo NO se registró correctamente!");
                 }
-                request.getRequestDispatcher("registrarPrestamos.jsp").forward(request, response);
+                request.getRequestDispatcher("indexPrestamos.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Registro
                 if(presDAO.actualizarRegistro()) {
@@ -65,7 +65,7 @@ public class PrestamoControlador extends HttpServlet {
                 else {
                     request.setAttribute("MensajeError", "¡El prestamo NO se actualizó correctamente!");
                 }
-                request.getRequestDispatcher("actualizarPrestamos.jsp").forward(request, response);
+                request.getRequestDispatcher("indexPrestamos.jsp").forward(request, response);
                 break;
             case 3: // Eliminar Registro
                 if(presDAO.eliminarRegistro()) {

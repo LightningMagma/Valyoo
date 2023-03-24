@@ -51,7 +51,7 @@ public class SedeControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡La sede NO se registró correctamente!");
                 }
-                request.getRequestDispatcher("registrarSede.jsp").forward(request, response);
+                request.getRequestDispatcher("indexSede.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Registro
                 if (sedeDAO.actualizarRegistro()) {
@@ -59,7 +59,7 @@ public class SedeControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡La sede NO se actualizó correctamente!");
                 }
-                request.getRequestDispatcher("actualizarSede.jsp").forward(request, response);
+                request.getRequestDispatcher("indexSede.jsp").forward(request, response);
                 break;
             case 3: // Listar por id
                 sedeVO = sedeDAO.consultarPorId(sedeId);
@@ -77,7 +77,7 @@ public class SedeControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡La sede NO se eliminó correctamente!");
                 }
-                request.getRequestDispatcher("eliminarSede.jsp").forward(request, response);
+                request.getRequestDispatcher("indexSede.jsp").forward(request, response);
                 break;
         }
     }

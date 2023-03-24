@@ -52,7 +52,7 @@ public class SolicitudControlador extends HttpServlet {
                 }else{
                    request.setAttribute("mensajeError","La solicitud no se registro correctamente!"); 
                 }
-                request.getRequestDispatcher("registrarSolicitud.jsp").forward(request, response);                
+                request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);                
                 break;
             case 2:
                 if(solDAO.actualizarRegistro()){
@@ -61,7 +61,7 @@ public class SolicitudControlador extends HttpServlet {
                 }else{
                    request.setAttribute("mensajeError","La solicitud no se actualizó correctamente!"); 
                 }
-                request.getRequestDispatcher("actualizarSolicitud.jsp").forward(request, response);
+                request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
                 break;
             case 3:
                 if(solDAO.eliminarRegistro()){
@@ -70,7 +70,7 @@ public class SolicitudControlador extends HttpServlet {
                 }else{
                    request.setAttribute("mensajeError","La solicitud no se eliminó correctamente!"); 
                 }
-                request.getRequestDispatcher("eliminarSolicitud.jsp").forward(request, response);
+                request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
                 break;
             case 4:
                 solVO = solDAO.consultarPorID(solId);

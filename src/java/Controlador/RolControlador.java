@@ -50,7 +50,7 @@ public class RolControlador extends HttpServlet {
                 }else{
                    request.setAttribute("mensajeError","El rol no se registro correctamente!"); 
                 }
-                request.getRequestDispatcher("registrarRol.jsp").forward(request, response);                
+                request.getRequestDispatcher("indexRol.jsp").forward(request, response);                
                 break;
             case 2:
                 if(rolDAO.actualizarRegistro()){
@@ -59,7 +59,7 @@ public class RolControlador extends HttpServlet {
                 }else{
                    request.setAttribute("mensajeError","El rol no se actualizó correctamente!"); 
                 }
-                request.getRequestDispatcher("actualizarRol.jsp").forward(request, response);
+                request.getRequestDispatcher("indexRol.jsp").forward(request, response);
                 break;
             case 3:
                 if(rolDAO.eliminarRegistro()){
@@ -68,7 +68,7 @@ public class RolControlador extends HttpServlet {
                 }else{
                    request.setAttribute("mensajeError","El rol no se eliminó correctamente!"); 
                 }
-                request.getRequestDispatcher("eliminarRol.jsp").forward(request, response);
+                request.getRequestDispatcher("indexRol.jsp").forward(request, response);
                 break;
             case 4:
                 rolVO=rolDAO.consultarPorID(rolId);

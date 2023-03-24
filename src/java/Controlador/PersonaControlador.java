@@ -61,7 +61,7 @@ public class PersonaControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡La persona NO se registró correctamente!");
                 }
-                request.getRequestDispatcher("registrarPersona.jsp").forward(request, response);
+                request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Registro
                 if (perDAO.actualizarRegistro()) {
@@ -69,7 +69,7 @@ public class PersonaControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡La persona NO se actualizó correctamente!");
                 }
-                request.getRequestDispatcher("actualizarPersona.jsp").forward(request, response);
+                request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
                 break;
             case 3: // Listar por documento
                 perVO=perDAO.consultarPorDocumento(perDocumento);

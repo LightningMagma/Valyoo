@@ -53,7 +53,7 @@ public class PagoControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡El pago NO se registró correctamente!");
                 }
-                request.getRequestDispatcher("registrarPago.jsp").forward(request, response);
+                request.getRequestDispatcher("indexPago.jsp").forward(request, response);
                 break;
             case 2: // Actualizar Pago
                 if (pagDAO.actualizarRegistro()) {
@@ -61,7 +61,7 @@ public class PagoControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡El pago NO se actualizó correctamente!");
                 }
-                request.getRequestDispatcher("actualizarPago.jsp").forward(request, response);
+                request.getRequestDispatcher("indexPago.jsp").forward(request, response);
                 break;
             case 3: // Eliminar Pago
                 if (pagDAO.eliminarRegistro()) {
@@ -69,7 +69,7 @@ public class PagoControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡El pago NO se actualizó correctamente!");
                 }
-                request.getRequestDispatcher("eliminarPago.jsp").forward(request, response);
+                request.getRequestDispatcher("indexPago.jsp").forward(request, response);
                 break;
             case 4: // Consultar Pago
                 pagVO = pagDAO.consultarPago();
