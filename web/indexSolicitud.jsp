@@ -8,12 +8,13 @@
 <%@page import="ModeloDAO.SolicitudDAO"%>
 <%@page import="ModeloVO.SolicitudVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar solicitud</title>
-        <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
+        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     </head>
     <body>
@@ -39,6 +40,7 @@
                 <th>Cuotas</th>  
                 <th>Estado</th> 
                 <th>Persona</th>  
+                <th>Acciones</th>
             </tr>
             <%
                 SolicitudVO solVO = new SolicitudVO();
@@ -54,6 +56,13 @@
                 <td><%=solVO.getSolCuotas()%></td>   
                 <td><%=solVO.getSolEstado()%> </td>  
                 <td><%=solVO.getSolPersona()%></td>  
+                <td>
+                        <form method="post" action="Solicitud">
+                            <input type="hidden" name="solId" value="<%=solVO.getSolId()%>">
+                            <button class="btn btn-warning" name="opcion" value="4" >Editar</button>
+                            <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmar()">Eliminar</button>
+                        </form>
+                    </td>
             </tr>
             <%
                 }

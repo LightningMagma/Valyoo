@@ -14,11 +14,11 @@
     </head>
     <body>
         <h2>Inicio de sesion</h1>
-        <form method="post" action="Usuario">
+        <form method="post" action="Persona">
             <label for="usuLogin">Usuario:</label>
-            <input type="text" id="nombre" name="usuUsuario" required maxlength=20>
+            <input type="text"  name="perDocumento" required maxlength=20>
             <label for="usuLogin">Contraseña:</label>
-            <input type="password" id="apellido" name="usuContrasena" required maxlength=20>
+            <input type="password" name="perClave" required maxlength=20>
             <input type="submit" value="Iniciar">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="4">

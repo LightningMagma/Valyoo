@@ -8,6 +8,7 @@
 <%@page import="ModeloDAO.SedeDAO"%>
 <%@page import="ModeloVO.SedeVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,8 +16,7 @@
         <title>Consultar Sede</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     </head>
-    <body>
-        <jsp:include page="menu.jsp" />
+    <body>        
         <h2>Sedes</h2>
         <form method="post" action="Sede">
             <table class="table">
@@ -41,10 +41,10 @@
         <table class="table">
             <tr>
                 <th>ID</th>
-                <th>NOMBRE</th>
-                <th>DIRECCIÓN</th>
-                <th>TELÉFONO</th>
-                <th>ESTADO</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Estado</th>
                 <th>Acciones</th>
             </tr>
             <%

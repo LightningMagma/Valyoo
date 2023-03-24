@@ -9,6 +9,7 @@ import ModeloVO.PersonaVO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -171,5 +172,27 @@ public class PersonaDAO extends ConexionDB implements crud {
             }
         }
         return personaLista;
+    }
+    public boolean iniciarSesion(String usuario, String clave) {
+        try {
+            conexion=this.obtenerConexion();
+            sql="select * from tblpersona where perDocumento=? and perClave=?;";
+            puente= conexion.prepareStatement(sql);
+            puente.setString(1, perDocumento);
+            puente.setString(2, perClave);
+            mensajero=puente.executeQuery();
+            if (mensajero.next()) {
+                operacion=true;
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+               // this.cerrarConexion();
+            } catch (Exception ex) {
+                Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return operacion;
     }
 }

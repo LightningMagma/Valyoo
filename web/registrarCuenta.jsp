@@ -7,6 +7,7 @@
 <%@page import="ModeloVO.PersonaVO"%>
 <%@page import="ModeloDAO.PersonaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>

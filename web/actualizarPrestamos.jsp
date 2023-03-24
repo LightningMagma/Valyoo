@@ -8,6 +8,7 @@
 <%@page import="ModeloDAO.CuentaDAO"%>
 <%@page import="ModeloVO.PrestamosVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>

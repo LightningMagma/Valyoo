@@ -8,6 +8,7 @@
 <%@page import="ModeloDAO.PersonaDAO"%>
 <%@page import="ModeloVO.PersonaVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,8 +17,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
     </head>
-    <body>
-        <jsp:include page="menu.jsp" />
+    <body>        
         <h2>Personas:</h2>
         <form method="post" action="Persona">
             <table class="table">
@@ -79,17 +79,7 @@
         </table>
 
 
-        <script>
-            function confirmar() {
-                var respuesta = confirm("¿Desea eliminar el registro");
-                if (respuesta == true) {
-                    return true;
-                } else {
-                    return false;
-                }
-
-            }
-        </script>
+        
 
 
     </body>

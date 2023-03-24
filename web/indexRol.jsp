@@ -8,13 +8,14 @@
 <%@page import="ModeloDAO.RolDAO"%>
 <%@page import="ModeloVO.RolVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista de roles</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-        <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
         <h2>Roles</h2>
@@ -24,9 +25,7 @@
             <input type="submit" value="Consultar Rol">               
             <input type="hidden" name="opcion" value="4">
         </form>
-        <%
-
-            if (request.getAttribute("mensajeError") != null) {%>
+        <%            if (request.getAttribute("mensajeError") != null) {%>
         ${mensajeError}
 
         <%} else {%>
@@ -36,7 +35,8 @@
             <tr>
                 <th>ID Rol</th>
                 <th>Nombre de rol</th>
-                <th>Estado del rol</th>                
+                <th>Estado del rol</th>     
+                <th>Acciones</th>
             </tr>
             <%
                 RolVO rolVO = new RolVO();
@@ -49,7 +49,14 @@
             <tr>
                 <td><%=rolVO.getRolId()%> </td>
                 <td><%=rolVO.getRolNombre()%> </td>
-                <td><%=rolVO.getRolEstado()%> </td>                
+                <td><%=rolVO.getRolEstado()%> </td>   
+                <td>
+                    <form method="post" action="Rol">
+                        <input type="hidden" name="rolId" value="<%=rolVO.getRolId()%>">
+                        <button class="btn btn-warning" name="opcion" value="4" >Editar</button>
+                        <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmar()">Eliminar</button>
+                    </form>
+                </td>
             </tr>
             <%
                 }

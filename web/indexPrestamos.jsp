@@ -8,6 +8,7 @@
 <%@page import="ModeloVO.PrestamosVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,13 +34,14 @@
         <form method="post" action="Prestamo">
             <table border="1"><br>
                 <tr>
-                    <th>CODIGO</th>
-                    <th>FECHA INICIO</th>
-                    <th>FECHA FIN</th>
-                    <th>CUOTAS</th>
-                    <th>MONTO</th>
-                    <th>ESTADO</th>
-                    <th>CUENTA</th>
+                    <th>Codigo</th>
+                    <th>Fecha inicio</th>
+                    <th>Fecha fin</th>
+                    <th>Cuotas</th>
+                    <th>Monto</th>
+                    <th>Estado</th>
+                    <th>Cuenta</th>
+                    <th>Acciones</th>
                 </tr>
                 <%
                     PrestamosVO presVO = new PrestamosVO();
@@ -56,6 +58,13 @@
                     <td><%=presVO.getPreMonto()%></td>
                     <td><%=presVO.getPreEstado()%></td>
                     <td><%=presVO.getPreCuenta()%></td>
+                    <td>
+                     <form method="post" action="Prestamo">
+                        <input type="hidden" name="PreId" value="<%=presVO.getPreId()%>">
+                        <button class="btn btn-warning" name="opcion" value="4" >Editar</button>
+                        <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmar()">Eliminar</button>
+                    </form>
+                    </td>
                 </tr>
                 <% }%>
             </table>

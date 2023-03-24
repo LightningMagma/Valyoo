@@ -104,7 +104,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql = "delete from tblprestamo where PreID =?";
+            sql = "update tblprestamo set preestado='Inactivo' where PreID =?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PreId);
             puente.executeUpdate();

@@ -9,6 +9,7 @@ import ModeloVO.PerRolVO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -155,6 +156,31 @@ public class PerRolDAO extends ConexionDB implements crud {
             }
         }
         return personarolLista;
+    }
+    public ArrayList<PerRolVO> listarPerRol(String idPersona){
+        ArrayList<PerRolVO> listaPerRol = new ArrayList<>();
+        try {
+            conexion=this.obtenerConexion();
+            sql="select * from personarol where PRPersona=?;";
+            puente= conexion.prepareStatement(sql);                     
+            puente.setString(1,idPersona);
+            mensajero=puente.executeQuery();            
+            while (mensajero.next()) {                
+                PerRolVO prVO = new PerRolVO(mensajero.getString(1),mensajero.getString(2),mensajero.getString(3));
+                listaPerRol.add(prVO);
+            }            
+        } catch (Exception e) {
+            Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listaPerRol;
+        
     }
 
 }

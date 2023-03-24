@@ -5,15 +5,19 @@
  */
 package Controlador;
 
+import ModeloDAO.PerRolDAO;
 import ModeloDAO.PersonaDAO;
+import ModeloVO.PerRolVO;
 import ModeloVO.PersonaVO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,7 +50,9 @@ public class PersonaControlador extends HttpServlet {
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         PersonaVO perVO = new PersonaVO(perDocumento, perTipoDocumento, perNombre, perApellido, perTelefono, perDireccion, perClave, perSede, perEstado);
+        PerRolVO prVO = new PerRolVO();
         PersonaDAO perDAO = new PersonaDAO(perVO);
+        PerRolDAO prDAO = new PerRolDAO();
 
         switch (opcion) {
             case 1: // Agregar Registro
@@ -75,13 +81,30 @@ public class PersonaControlador extends HttpServlet {
                     request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
                 }
                 break;
-            case 4: // Eliminar Registro
-                if (perDAO.eliminarRegistro()) {
-                    request.setAttribute("MensajeExito", "¡La persona se eliminó correctamente!");
+            case 4:
+                if (perDAO.iniciarSesion(perDocumento, perClave)) {
+                    HttpSession miSesion = request.getSession(true);
+                    perVO = perDAO.consultarPorDocumento(perDocumento);
+                    miSesion.setAttribute("datosPersona", perVO);
+                    String personaDocumento = perVO.getPerDocumento();
+                    //request.getRequestDispatcher("menu.jsp").forward(request, response);
+                    ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(perDocumento);
+                    
+                    for (int i = 0; i < listaPerRoles.size(); i++) {
+                        prVO = listaPerRoles.get(i);
+                        if (listaPerRoles.size() > 1) {
+                            request.getRequestDispatcher("menu.jsp").forward(request, response);
+                        }
+                        if (prVO.getPRRol().equals("1")) {
+                            request.getRequestDispatcher("menuComprador.jsp").forward(request, response);
+                        }if(prVO.getPRRol().equals("2")){
+                           request.getRequestDispatcher("menuSecretario.jsp").forward(request, response);
+                        }
+                    }
                 } else {
-                    request.setAttribute("MensajeError", "¡La persona NO se eliminó correctamente!");
+                    request.setAttribute("mensajeError", "No se pudo iniciar sesion");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
-                request.getRequestDispatcher("eliminarPersona.jsp").forward(request, response);
                 break;
         }
     }

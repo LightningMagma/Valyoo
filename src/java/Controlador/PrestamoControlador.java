@@ -69,12 +69,12 @@ public class PrestamoControlador extends HttpServlet {
                 break;
             case 3: // Eliminar Registro
                 if(presDAO.eliminarRegistro()) {
-                    request.setAttribute("MensajeExito", "¡El prestamo se actualizó correctamente!");
+                    request.setAttribute("MensajeExito", "¡El prestamo se eliminó correctamente!");
                 }
                 else {
-                    request.setAttribute("MensajeError", "¡El prestamo NO se actualizó correctamente!");
+                    request.setAttribute("MensajeError", "¡El prestamo NO se eliminó correctamente!");
                 }
-                request.getRequestDispatcher("eliminarPrestamos.jsp").forward(request, response);
+                request.getRequestDispatcher("indexPrestamos.jsp").forward(request, response);
                 break;
             case 4: // Consultar Prestamos
                 presVO = presDAO.consultarPrestamos();

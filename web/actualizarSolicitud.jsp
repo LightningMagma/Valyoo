@@ -7,6 +7,7 @@
 <%@page import="com.sun.prism.shader.Solid_TextureYV12_Loader"%>
 <%@page import="ModeloVO.SolicitudVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +16,7 @@
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-         <h2>Actualizar usuario</h2>
+         <h2>Actualizar solicitud</h2>
         <% 
            SolicitudVO solVO = (SolicitudVO)request.getAttribute("solicitudEncontrada");
            if(solVO!=null){

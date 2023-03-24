@@ -8,6 +8,7 @@
 <%@page import="ModeloDAO.DocumentosDAO"%>
 <%@page import="ModeloVO.DocumentosVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,8 +16,7 @@
         <title>Consultar Documento</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     </head>
-    <body>
-        <jsp:include page="menu.jsp" />
+    <body>        
         <h2>Documentos</h2>
         <form method="post" action="Documentos">
             <table class="table">
@@ -31,8 +31,7 @@
             <input type="hidden" name="opcion" value="3">            
         </form>
 
-        <%
-            if (request.getAttribute("mensajeError") != null) {%>
+        <%            if (request.getAttribute("mensajeError") != null) {%>
         ${mensajeError}
         <% } else {%>
         ${mensajeExito}
@@ -41,9 +40,9 @@
         <table class="table">
             <tr>
                 <th>ID</th>
-                <th>NOMBRE</th>
+                <th>Nombre</th>
                 <th>URL</th>
-                <th>PERSONA</th>
+                <th>Persona</th>
                 <th>Acciones</th>
             </tr>
             <%
@@ -70,16 +69,5 @@
         </table>
 
 
-        <script>
-            function confirmar() {
-                var respuesta = confirm("¿Desea eliminar el registro");
-                if (respuesta == true) {
-                    return true;
-                } else {
-                    return false;
-                }
-
-            }
-        </script>
     </body>
 </html>

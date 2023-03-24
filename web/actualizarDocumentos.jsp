@@ -6,6 +6,7 @@
 
 <%@page import="ModeloVO.DocumentosVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +16,7 @@
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h2>Actualizar</h2>
+        <h2>Actualizar documentos</h2>
         <%
             DocumentosVO docVO = (DocumentosVO) request.getAttribute("documentoEncontrado");
 
