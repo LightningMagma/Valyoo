@@ -155,4 +155,27 @@ public class CuentaDAO extends ConexionDB implements crud {
         }
         return cuentaLista;
     }
+    
+    public CuentaVO listarCuPer(String cuPersona) {
+        CuentaVO cuVO = null;
+        try {
+            puerta = this.obtenerConexion();
+            sql="select * from tblcuentacredito where CuPersona = ?";
+            puente = puerta.prepareStatement(sql);
+            puente.setString(1, cuPersona);
+            mensajero = puente.executeQuery();
+            while(mensajero.next()){ 
+                cuVO = new CuentaVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(CuentaDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(CuentaDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return cuVO;
+    }
 }

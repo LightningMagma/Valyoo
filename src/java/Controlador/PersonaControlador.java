@@ -5,10 +5,16 @@
  */
 package Controlador;
 
+import ModeloDAO.CuentaDAO;
+import ModeloDAO.PagoDAO;
 import ModeloDAO.PerRolDAO;
 import ModeloDAO.PersonaDAO;
+import ModeloDAO.PrestamosDAO;
+import ModeloVO.CuentaVO;
+import ModeloVO.PagoVO;
 import ModeloVO.PerRolVO;
 import ModeloVO.PersonaVO;
+import ModeloVO.PrestamosVO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -51,8 +57,14 @@ public class PersonaControlador extends HttpServlet {
 
         PersonaVO perVO = new PersonaVO(perDocumento, perTipoDocumento, perNombre, perApellido, perTelefono, perDireccion, perClave, perSede, perEstado);
         PerRolVO prVO = new PerRolVO();
+        CuentaVO cuVO = new CuentaVO();
+        PrestamosVO presVO = new PrestamosVO();
+        PagoVO pagVO = new PagoVO();
         PersonaDAO perDAO = new PersonaDAO(perVO);
         PerRolDAO prDAO = new PerRolDAO();
+        CuentaDAO cuDAO = new CuentaDAO();
+        PrestamosDAO presDAO = new PrestamosDAO();
+        PagoDAO pagDAO = new PagoDAO();
 
         switch (opcion) {
             case 1: // Agregar Registro
@@ -72,9 +84,9 @@ public class PersonaControlador extends HttpServlet {
                 request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
                 break;
             case 3: // Listar por documento
-                perVO=perDAO.consultarPorDocumento(perDocumento);
-                if (perVO!=null) {
-                    request.setAttribute("personaEncontrada",perVO);
+                perVO = perDAO.consultarPorDocumento(perDocumento);
+                if (perVO != null) {
+                    request.setAttribute("personaEncontrada", perVO);
                     request.getRequestDispatcher("actualizarPersona.jsp").forward(request, response);
                 } else {
                     request.setAttribute("mensajeError", "¡La persona no existe!");
@@ -87,9 +99,18 @@ public class PersonaControlador extends HttpServlet {
                     perVO = perDAO.consultarPorDocumento(perDocumento);
                     miSesion.setAttribute("datosPersona", perVO);
                     String personaDocumento = perVO.getPerDocumento();
+                    cuVO = cuDAO.listarCuPer(personaDocumento);
+                    miSesion.setAttribute("datosCuenta", cuVO);
+                    String numeroCuenta = cuVO.getCuNumero();
+                    presVO = presDAO.listarPresPer(numeroCuenta);
+                    miSesion.setAttribute("datosPrestamo", presVO);
+                    String numeroPrestamo = presVO.getPreId();
+                    pagVO = pagDAO.listarPagoPer(numeroPrestamo);
+                    miSesion.setAttribute("datosPago", pagVO);
+
                     //request.getRequestDispatcher("menu.jsp").forward(request, response);
                     ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(perDocumento);
-                    
+
                     for (int i = 0; i < listaPerRoles.size(); i++) {
                         prVO = listaPerRoles.get(i);
                         if (listaPerRoles.size() > 1) {
@@ -97,14 +118,26 @@ public class PersonaControlador extends HttpServlet {
                         }
                         if (prVO.getPRRol().equals("1")) {
                             request.getRequestDispatcher("menuComprador.jsp").forward(request, response);
-                        }if(prVO.getPRRol().equals("2")){
-                           request.getRequestDispatcher("menuSecretario.jsp").forward(request, response);
+                        }
+                        if (prVO.getPRRol().equals("2")) {
+                            request.getRequestDispatcher("menuSecretario.jsp").forward(request, response);
+                        }
+                        if (prVO.getPRRol().equals("4")) {
+                            request.getRequestDispatcher("menuDeudor.jsp").forward(request, response);
                         }
                     }
                 } else {
                     request.setAttribute("mensajeError", "No se pudo iniciar sesion");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
+                break;
+            case 5: // Eliminar Registro
+                if (perDAO.eliminarRegistro()) {
+                    request.setAttribute("MensajeExito", "¡La persona se elimino correctamente!");
+                } else {
+                    request.setAttribute("MensajeError", "¡La persona NO se elimino correctamente!");
+                }
+                request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
                 break;
         }
     }

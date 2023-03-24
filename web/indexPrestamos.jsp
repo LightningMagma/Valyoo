@@ -14,7 +14,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Prestamos</title>
-        <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" >
     </head>
     <body>
         <h2>Prestamos</h2>
@@ -27,50 +27,47 @@
         <a href="registrarPrestamos.jsp">
             <button class="btn btn-success">Agregar prestamo</button>
         </a> 
-        <%
-            if (request.getAttribute("MensajeError") != null) { %>
+        <%            if (request.getAttribute("MensajeError") != null) { %>
         ${MensajeError}
         <%  } else { %>
         ${MensajeExito}
         <%  }
         %>
-        <form method="post" action="Prestamo">
-            <table border="1"><br>
-                <tr>
-                    <th>Codigo</th>
-                    <th>Fecha inicio</th>
-                    <th>Fecha fin</th>
-                    <th>Cuotas</th>
-                    <th>Monto</th>
-                    <th>Estado</th>
-                    <th>Cuenta</th>
-                    <th>Acciones</th>
-                </tr>
-                <%
-                    PrestamosVO presVO = new PrestamosVO();
-                    PrestamosDAO presDAO = new PrestamosDAO();
-                    ArrayList<PrestamosVO> listarPrestamos = presDAO.listarPrestamos();
-                    for (int i = 0; i < listarPrestamos.size(); i++) {
-                        presVO = listarPrestamos.get(i);
-                %>
-                <tr>
-                    <td><%=presVO.getPreId()%></td>
-                    <td><%=presVO.getPreFechaInicio()%></td>
-                    <td><%=presVO.getPreFechaFin()%></td>
-                    <td><%=presVO.getPreCuotas()%></td>
-                    <td><%=presVO.getPreMonto()%></td>
-                    <td><%=presVO.getPreEstado()%></td>
-                    <td><%=presVO.getPreCuenta()%></td>
-                    <td>
-                     <form method="post" action="Prestamo">
+        <table class="table"><br>
+            <tr>
+                <th>Codigo</th>
+                <th>Fecha inicio</th>
+                <th>Fecha fin</th>
+                <th>Cuotas</th>
+                <th>Monto</th>
+                <th>Estado</th>
+                <th>Cuenta</th>
+                <th>Acciones</th>
+            </tr>
+            <%
+                PrestamosVO presVO = new PrestamosVO();
+                PrestamosDAO presDAO = new PrestamosDAO();
+                ArrayList<PrestamosVO> listarPrestamos = presDAO.listarPrestamos();
+                for (int i = 0; i < listarPrestamos.size(); i++) {
+                    presVO = listarPrestamos.get(i);
+            %>
+            <tr>
+                <td><%=presVO.getPreId()%></td>
+                <td><%=presVO.getPreFechaInicio()%></td>
+                <td><%=presVO.getPreFechaFin()%></td>
+                <td><%=presVO.getPreCuotas()%></td>
+                <td><%=presVO.getPreMonto()%></td>
+                <td><%=presVO.getPreEstado()%></td>
+                <td><%=presVO.getPreCuenta()%></td>
+                <td>
+                    <form method="post" action="Prestamo">
                         <input type="hidden" name="PreId" value="<%=presVO.getPreId()%>">
                         <button class="btn btn-warning" name="opcion" value="4" >Editar</button>
                         <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmar()">Eliminar</button>
                     </form>
-                    </td>
-                </tr>
-                <% }%>
-            </table>
-        </form>
+                </td>
+            </tr>
+            <% }%>
+        </table>
     </body>
 </html>

@@ -15,7 +15,7 @@ public class PagoVO {
 
     }
 
-    public PagoVO(String PagId, String PagDesc, String PagValor, String PagFecha, String PagPres) {
+    public PagoVO(String PagId, String PagDesc, String PagValor, String PagPres, String PagFecha) {
         this.PagId = PagId;
         this.PagDesc = PagDesc;
         this.PagValor = PagValor;

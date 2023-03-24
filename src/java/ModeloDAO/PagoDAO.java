@@ -39,8 +39,8 @@ public class PagoDAO extends ConexionDB implements crud {
             PagId = pagoVO.getPagId();
             PagDesc = pagoVO.getPagDesc();
             PagValor = pagoVO.getPagValor();
-            PagFecha = pagoVO.getPagFecha();
             PagPres = pagoVO.getPagPres();
+            PagFecha = pagoVO.getPagFecha();
         } catch (Exception e) {
             Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -157,5 +157,28 @@ public class PagoDAO extends ConexionDB implements crud {
             }
         }
         return pagoLista;
+    }
+    
+    public PagoVO listarPagoPer(String pagPrestamo) {
+        PagoVO pagVO = null;
+        try {
+            puerta = this.obtenerConexion();
+            sql="select * from tblpago where PagPrestamo = ?";
+            puente = puerta.prepareStatement(sql);
+            puente.setString(1, pagPrestamo);
+            mensajero = puente.executeQuery();
+            while(mensajero.next()){ 
+                pagVO = new PagoVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return pagVO;
     }
 }

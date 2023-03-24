@@ -23,6 +23,8 @@
         <form method="post" action="Pago">
             <table>
                 <label>Descripcion: </label><br>
+                <input type="text" name="PagId" value="<%=pagVO.getPagId()%>">
+                <label>Descripcion: </label><br>
                 <input type="text" name="PagDesc" value="<%=pagVO.getPagDesc()%>">
                 <label>Valor: </label><br>
                 <input type="text" name="PagValor" value="<%=pagVO.getPagValor()%>">
