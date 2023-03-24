@@ -19,7 +19,7 @@
     </head>
     <body>
         <div class="col-md-12">
-        <h2>Roles</h2>
+        <h3 class="title-5 m-b-35">Roles</h3>
         <form method="post" action="Rol">
             <label for="RolId">Rol</label>
             <input type="text" name="rolId" placeholder="Ingrese ID rol">

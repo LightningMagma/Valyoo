@@ -18,7 +18,7 @@
     </head>
     <body>   
         <div class="col-md-12">
-            <h2>Persona rol</h2>
+            <h3 class="title-5 m-b-35">Persona rol</h3>
             <form method="post" action="PersonaRol">
                 <label>Codigo: </label>
                 <input type="text" name="PRID">

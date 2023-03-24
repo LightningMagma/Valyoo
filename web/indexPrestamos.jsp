@@ -17,7 +17,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" >
     </head>
     <body>
-        <h2>Prestamos</h2>
+        <h3 class="title-5 m-b-35">Prestamos</h3>
         <form method="post" action="Prestamo">
             <label>Codigo: </label>
             <input type="text" name="PreId">

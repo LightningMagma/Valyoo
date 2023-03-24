@@ -18,7 +18,7 @@
     </head>
     <body>
         <div class="col-md-12">
-            <h2>Pago</h2>
+            <h3 class="title-5 m-b-35">Pago</h3>
             <form method="post" action="Pago">
                 <label>Codigo: </label>
                 <input type="text" name="PagId">

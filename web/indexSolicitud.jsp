@@ -17,7 +17,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        <h2>Solicitud</h2>
+        <h3 class="title-5 m-b-35">Solicitud</h3>
         <form method="post" action="Solicitud">
             <label for="solId">Id de la solicitud</label>
             <input type="text" name="solId" placeholder="Ingrese ID de la solicitud">
