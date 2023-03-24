@@ -30,7 +30,7 @@
                     <span></span>
                     <span></span>
                     <input type="submit" value="Iniciar">
-                    <input type="hidden" value="4">
+                    <input name="opcion" type="hidden" value="4">
                 </a>
             </form>
         </div>
