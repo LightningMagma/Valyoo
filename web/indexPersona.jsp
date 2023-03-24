@@ -19,7 +19,7 @@
     </head>
     <body>
         <div class="col-md-12">
-            <h3 class="title-5 m-b-35">Personas </h3>
+
             <form method="post" action="Persona">
                 <table class="table">
                     <tr>
@@ -27,10 +27,11 @@
                             Documento
                             <input type="text" name="perDocumento">
                             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Buscar">
+                            <input type="hidden" name="opcion" value="3">  
                         </th>
                     </tr>
                 </table>
-                <input type="hidden" name="opcion" value="3">            
+
             </form>
             <%            if (request.getAttribute("mensajeError") != null) {%>
             <h1 class="title-5 m-b-35">${mensajeError}</h1>
@@ -85,8 +86,7 @@
                             </form>
                         </td>
                     </tr>
-                    <tr class="spacer"></tr>
-                    </tr>
+                    <tr class="spacer"></tr>                    
                 </tbody>
                 <% }%>
             </table>

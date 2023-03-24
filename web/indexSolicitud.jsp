@@ -21,12 +21,20 @@
         <form method="post" action="Solicitud">
             <label for="solId">Id de la solicitud</label>
             <input type="text" name="solId" placeholder="Ingrese ID de la solicitud">
-            <input type="submit" value="Consultar solicitud">               
+            <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar solicitud">               
             <input type="hidden" name="opcion" value="4">
         </form>
         <a href="registrarSolicitud.jsp">
             <button class="btn btn-success">Agregar solicitud</button>
         </a> 
+        <div class="table-data__tool">
+                <div class="table-data__tool-right">
+                    <a href="registrarSolicitud.jsp">
+                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>Agregar solicitud</button>
+                    </a>
+                </div>
+            </div>
         <%
 
             if (request.getAttribute("mensajeError") != null) {%>
@@ -35,7 +43,7 @@
         <%} else {%>
         ${mensajeExito}
         <%}%>
-        <table class="table">
+        <table class="table table-data2">
             <tr>
                 <th>Id Solicitud</th>
                 <th>Monto</th>
@@ -52,7 +60,7 @@
                     solVO = listaSolicitud.get(i);
 
             %>
-            <tr>
+            <tr class="tr-shadow">
                 <td><%=solVO.getSolId()%> </td>
                 <td><%=solVO.getSolMonto()%></td>
                 <td><%=solVO.getSolCuotas()%></td>   

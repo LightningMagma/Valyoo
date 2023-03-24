@@ -16,7 +16,8 @@
         <title>Consultar Sede</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     </head>
-    <body>        
+    <body>  
+        <div class="col-md-12">
         <h2>Sedes</h2>
         <form method="post" action="Sede">
             <table class="table">
@@ -29,17 +30,22 @@
                 </tr>
             </table>
             <input type="hidden" name="opcion" value="3">            
-        </form>
-        <a href="registrarSede.jsp">
-            <button class="btn btn-success">Agregar sede</button>
-        </a> 
+        </form>       
+        <div class="table-data__tool">
+                <div class="table-data__tool-right">
+                    <a href="registrarSede.jsp.jsp">
+                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>Agregar sede</button>
+                    </a>
+                </div>
+            </div>
         <%            if (request.getAttribute("mensajeError") != null) {%>
         ${mensajeError}
         <% } else {%>
         ${mensajeExito}
         <% }
         %>
-        <table class="table">
+        <table class="table table-data2">
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
@@ -55,7 +61,7 @@
                 for (int i = 0; i < sedeLista.size(); i++) {
                     sedeVO = sedeLista.get(i);
             %>
-            <tr>
+            <tr class="tr-shadow">
                 <td> <%=sedeVO.getSedeId()%> </td>
                 <td> <%=sedeVO.getSedeNombre()%> </td>
                 <td> <%=sedeVO.getSedeDireccion()%> </td>
@@ -72,17 +78,6 @@
             <%}%>
         </table>
 
-
-        <script>
-            function confirmar() {
-                var respuesta = confirm("¿Desea eliminar el registro");
-                if (respuesta == true) {
-                    return true;
-                } else {
-                    return false;
-                }
-
-            }
-        </script>
+        </div>
     </body>
 </html>

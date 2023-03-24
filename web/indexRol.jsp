@@ -18,23 +18,29 @@
         
     </head>
     <body>
+        <div class="col-md-12">
         <h2>Roles</h2>
         <form method="post" action="Rol">
             <label for="RolId">Rol</label>
             <input type="text" name="rolId" placeholder="Ingrese ID rol">
-            <input type="submit" value="Consultar Rol">               
+            <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar Rol">               
             <input type="hidden" name="opcion" value="4">
-        </form>
-        <a href="registrarRol.jsp">
-            <button class="btn btn-success">Agregar rol</button>
-        </a> 
+        </form>       
+        <div class="table-data__tool">
+                <div class="table-data__tool-right">
+                    <a href="registrarRol.jsp">
+                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>Agregar rol</button>
+                    </a>
+                </div>
+            </div>
         <%            if (request.getAttribute("mensajeError") != null) {%>
         ${mensajeError}
 
         <%} else {%>
         ${mensajeExito}
         <%}%>
-        <table class="table">
+        <table class="table table-data2">
             <tr>
                 <th>ID Rol</th>
                 <th>Nombre de rol</th>
@@ -49,7 +55,7 @@
                     rolVO = listaRol.get(i);
 
             %>
-            <tr>
+            <tr class="tr-shadow">
                 <td><%=rolVO.getRolId()%> </td>
                 <td><%=rolVO.getRolNombre()%> </td>
                 <td><%=rolVO.getRolEstado()%> </td>   
@@ -65,5 +71,6 @@
                 }
             %>
         </table>
+        </div>
     </body>
 </html>

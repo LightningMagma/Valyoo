@@ -21,19 +21,24 @@
         <form method="post" action="Prestamo">
             <label>Codigo: </label>
             <input type="text" name="PreId">
-            <input type="submit" value="Consultar">
+            <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
             <input type="hidden" name="opcion" value="4">
         </form>
-        <a href="registrarPrestamos.jsp">
-            <button class="btn btn-success">Agregar prestamo</button>
-        </a> 
+        <div class="table-data__tool">
+            <div class="table-data__tool-right">
+                <a href="registrarPrestamos.jsp">
+                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="zmdi zmdi-plus"></i>Agregar prestamo</button>
+                </a>
+            </div>
+        </div>
         <%            if (request.getAttribute("MensajeError") != null) { %>
         ${MensajeError}
         <%  } else { %>
         ${MensajeExito}
         <%  }
         %>
-        <table class="table"><br>
+        <table class="table table-data2"><br>
             <tr>
                 <th>Codigo</th>
                 <th>Fecha inicio</th>
@@ -51,7 +56,7 @@
                 for (int i = 0; i < listarPrestamos.size(); i++) {
                     presVO = listarPrestamos.get(i);
             %>
-            <tr>
+            <tr class="tr-shadow">
                 <td><%=presVO.getPreId()%></td>
                 <td><%=presVO.getPreFechaInicio()%></td>
                 <td><%=presVO.getPreFechaFin()%></td>
