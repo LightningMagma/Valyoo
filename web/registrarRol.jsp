@@ -22,12 +22,14 @@
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="1">
         </form>
-        <%
-            if (request.getAttribute("mensajeError") != null) {%>
+        <%            if (request.getAttribute("mensajeError") != null) {%>
         <h2>${mensajeError}</h2>
         <%} else {%>
         <h2>${mensajeExito}</h2>    
         <%}
         %>
-</body>
+        <a href="indexSede.jsp">
+            <button class="btn btn-primary">Volver</button>
+        </a>
+    </body>
 </html>

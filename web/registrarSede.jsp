@@ -33,5 +33,8 @@
         ${MensajeExito}
         <%}
         %>
+        <a href="indexSede.jsp">
+            <button class="btn btn-primary">Volver</button>
+        </a>
     </body>
 </html>

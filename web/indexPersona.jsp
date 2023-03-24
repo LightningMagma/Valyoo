@@ -31,9 +31,10 @@
             </table>
             <input type="hidden" name="opcion" value="3">            
         </form>
-
-        <%
-            if (request.getAttribute("mensajeError") != null) {%>
+        <a href="registrarPersona.jsp">
+            <button class="btn btn-success">Agregar persona</button>
+        </a> 
+        <%            if (request.getAttribute("mensajeError") != null) {%>
         ${mensajeError}
         <% } else {%>
         ${mensajeExito}
@@ -79,7 +80,7 @@
         </table>
 
 
-        
+
 
 
     </body>

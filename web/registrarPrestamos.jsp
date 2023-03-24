@@ -49,5 +49,8 @@
             <%  }
             %>
         </form>
+        <a href="indexPrestamos.jsp">
+            <button class="btn btn-primary">Volver</button>
+        </a>
     </body>
 </html>

@@ -30,7 +30,9 @@
             </table>
             <input type="hidden" name="opcion" value="3">            
         </form>
-
+        <a href="registrarDocumentos.jsp">
+            <button class="btn btn-success">Agregar documento</button>
+        </a> 
         <%            if (request.getAttribute("mensajeError") != null) {%>
         ${mensajeError}
         <% } else {%>

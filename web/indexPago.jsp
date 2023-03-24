@@ -24,6 +24,9 @@
             <input type="submit" value="Consultar">
             <input type="hidden" name="opcion" value="4">
         </form>
+        <a href="registrarPago.jsp">
+            <button class="btn btn-success">Agregar pago</button>
+        </a> 
         <%            if (request.getAttribute("MensajeError") != null) { %>
         ${MensajeError}
         <%  } else { %>

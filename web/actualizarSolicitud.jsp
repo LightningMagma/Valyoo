@@ -48,6 +48,8 @@
         <h2>${mensajeExito}</h2>    
         <%}
         %>
-        <a href="indexSolicitud.jsp">Volver</a>
+        <a href="indexSolicitud.jsp">
+            <button class="btn btn-primary">Volver</button>
+        </a>
     </body>
 </html>

@@ -25,8 +25,7 @@
             <label>Préstamo: </label>
             <select name="PagPrestamo">
                 <option>Seleccione...</option>
-                <%
-                    PrestamosDAO presDAO = new PrestamosDAO();
+                <%                    PrestamosDAO presDAO = new PrestamosDAO();
                     for (PrestamosVO presVO : presDAO.listarPrestamos()) {
                 %>
                 <option value="<%=presVO.getPreId()%>"><%=presVO.getPreId()%></option>
@@ -36,12 +35,15 @@
             <input type="reset" value="Borrar">
             <input type="hidden" name="opcion" value="1">            
         </form>
-            <%
+        <%
                 if (request.getAttribute("MensajeError") != null) { %>
-            ${MensajeError}
-            <%  } else { %>
-            ${MensajeExito}
-            <%  }
-            %>
+        ${MensajeError}
+        <%  } else { %>
+        ${MensajeExito}
+        <%  }
+        %>
+        <a href="indexPago.jsp">
+            <button class="btn btn-primary">Volver</button>
+        </a>
     </body>
 </html>

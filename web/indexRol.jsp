@@ -25,6 +25,9 @@
             <input type="submit" value="Consultar Rol">               
             <input type="hidden" name="opcion" value="4">
         </form>
+        <a href="registrarRol.jsp">
+            <button class="btn btn-success">Agregar rol</button>
+        </a> 
         <%            if (request.getAttribute("mensajeError") != null) {%>
         ${mensajeError}
 

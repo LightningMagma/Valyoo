@@ -23,8 +23,7 @@
             <label>Persona: </label>
             <select name="CuPersona">
                 <option>Seleccione...</option>
-                <%
-                    PersonaDAO perDAO = new PersonaDAO();
+                <%                    PersonaDAO perDAO = new PersonaDAO();
                     for (PersonaVO perVO : perDAO.listar()) {
                 %>
                 <option value="<%=perVO.getPerDocumento()%>" name="CuPersona"><%=perVO.getPerDocumento()%></option>
@@ -40,6 +39,10 @@
             ${MensajeExito}
             <%  }
             %>
+            
         </form>
+            <a href="indexCuenta.jsp">
+                <button class="btn btn-primary">Volver</button>
+            </a>
     </body>
 </html>

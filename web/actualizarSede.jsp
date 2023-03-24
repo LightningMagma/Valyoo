@@ -44,6 +44,8 @@
         ${MensajeExito}
         <% }
         %>
-        <a href="indexSede.jsp">Volver</a>
+        <a href="indexSede.jsp">
+        <button class="btn btn-primary">Volver</button>
+        </a>
     </body>
 </html>

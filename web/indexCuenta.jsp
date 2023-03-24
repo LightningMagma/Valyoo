@@ -14,7 +14,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar cuenta</title>
-        <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
+        
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     </head>
     <body>        
         <h2>Cuenta</h2>
@@ -24,14 +25,17 @@
             <input type="submit" value="Consultar">
             <input type="hidden" name="opcion" value="4">
         </form>
+        <a href="registrarCuenta.jsp">
+            <button class="btn btn-success">Agregar cuenta</button>
+        </a> 
+
         <%            if (request.getAttribute("MensajeError") != null) { %>
         ${MensajeError}
         <%  } else { %>
         ${MensajeExito}
         <%  }
-        %>
-        <form method="post" action="Cuenta">
-            <table border="1"><br>
+        %>       
+            <table class="table"><br>
                 <tr>
                     <th>Codigo</th>
                     <th>Fecha registro</th>
@@ -60,7 +64,6 @@
                     </td>
                 </tr>
                 <% }%>
-            </table>
-        </form>
+            </table>        
     </body>
 </html>
