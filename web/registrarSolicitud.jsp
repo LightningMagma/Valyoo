@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registrar solicitud</title>
+        <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <h2>Registro solitud</h2>

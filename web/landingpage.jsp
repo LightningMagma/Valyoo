@@ -25,7 +25,7 @@
         </div>
     </header>
     <section class="hero">
-        <h1>Bienvenido a mi Landing Page</h1>
+        <h1>Bienvenido a Valyoo</h1>
         <p>Descubre nuestros servicios y lo que podemos hacer por ti.</p>
       </section>
       

@@ -13,8 +13,6 @@
         <title>Menu</title>
         <link href="Estilos/MenuPrincipal.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-    <header> 
-    </header>  
+    <body>  
   </body>   
 </html>

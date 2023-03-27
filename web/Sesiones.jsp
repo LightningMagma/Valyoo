@@ -65,6 +65,15 @@
                 CuentaVO cuVO = (CuentaVO) buscarSesion.getAttribute("datosCuenta");
                 nuCuenta = cuVO.getCuNumero();
                 fechaInicio = cuVO.getCuFechaRegistro();
+                PrestamosVO presVO = (PrestamosVO) buscarSesion.getAttribute("datosPrestamo");
+                nuPrestamo = presVO.getPreId();
+                cuotasPrestamo = presVO.getPreCuotas();
+                montoPrestamo = presVO.getPreMonto();
+                interesPrestamo = presVO.getPreInteres();
+                PagoVO pagVO = (PagoVO) buscarSesion.getAttribute("datosPago");
+                descripcionPago = pagVO.getPagDesc();
+                valorPago = pagVO.getPagValor();
+                fechaPago = pagVO.getPagFecha();
 //if unificar. poner genericos. yo me entiendo. dejelo ahi, ya vuelvo. sigan viendo
             }
         } else {
@@ -78,6 +87,7 @@
         <nav class="navbar navbar-expand-lg bg-body-teriary">
             <h3><img src="Estilos/tituloValyoo.png" alt="Título Valyoo" width="175px"></h3>
             <ul>
+                <%if (buscarSesion.getAttribute("datosPrestamo") == null) {%>
                 <li><a href="indexCuenta.jsp">Cuenta</a></li>
                 <li><a href="indexSede.jsp">Sede</a></li>
                 <li><a href="indexPersona.jsp">Persona</a></li>              
@@ -87,6 +97,11 @@
                 <li><a href="indexPrestamos.jsp">Prestamo</a></li>
                 <li><a href="indexRol.jsp">Rol</a></li>
                 <li><a href="indexSolicitud.jsp">Solicitud</a></li>
+                    <%} else {%>
+                <li><a href="menuDeudor.jsp">Perfil</a></li>
+                <li><a href="solicitudDeudor.jsp">Solicitud</a></li>
+                <%}%>
+
             </ul>
 
             <li class="dropdown">

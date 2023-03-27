@@ -33,7 +33,7 @@
         </form>       
         <div class="table-data__tool">
                 <div class="table-data__tool-right">
-                    <a href="registrarSede.jsp.jsp">
+                    <a href="registrarSede.jsp">
                         <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                             <i class="zmdi zmdi-plus"></i>Agregar sede</button>
                     </a>

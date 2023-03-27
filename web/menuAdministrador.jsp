@@ -1,16 +1,16 @@
 <%-- 
-    Document   : menuSecretario
-    Created on : Mar 23, 2023, 11:27:48 PM
+    Document   : menuAdministrador
+    Created on : Mar 27, 2023, 12:17:33 AM
     Author     : xJuanDa
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Menu administrador</title>
+        <%@include file="Sesiones.jsp" %>
     </head>
     <body>
         <div class="container">
@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <img src="img/perfil.png" class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <h2>Secretario</h2>
+                                <h2>Administrador</h2>
                                 <hr>
                                 <h3><%=persona%> <%=apellido%></h3>
                                 <hr>

@@ -100,14 +100,16 @@ public class PersonaControlador extends HttpServlet {
                     perVO = perDAO.consultarPorDocumento(perDocumento);
                     miSesion.setAttribute("datosPersona", perVO);
                     String personaDocumento = perVO.getPerDocumento();
-                    cuVO = cuDAO.listarCuPer(personaDocumento);
-                    miSesion.setAttribute("datosCuenta", cuVO);
-                    String numeroCuenta = cuVO.getCuNumero();
-                    presVO = presDAO.listarPresPer(numeroCuenta);
-                    miSesion.setAttribute("datosPrestamo", presVO);
-                    String numeroPrestamo = presVO.getPreId();
-                    pagVO = pagDAO.listarPagoPer(numeroPrestamo);
-                    miSesion.setAttribute("datosPago", pagVO);
+
+                    if ((cuVO=cuDAO.listarCuPer(personaDocumento) ) != null) {                        
+                        miSesion.setAttribute("datosCuenta", cuVO);
+                        String numeroCuenta = cuVO.getCuNumero();
+                        presVO = presDAO.listarPresPer(numeroCuenta);
+                        miSesion.setAttribute("datosPrestamo", presVO);
+                        String numeroPrestamo = presVO.getPreId();
+                        pagVO = pagDAO.listarPagoPer(numeroPrestamo);
+                        miSesion.setAttribute("datosPago", pagVO);                        
+                    }                   
 
                     //request.getRequestDispatcher("menu.jsp").forward(request, response);
                     ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(perDocumento);
@@ -115,10 +117,10 @@ public class PersonaControlador extends HttpServlet {
                     for (int i = 0; i < listaPerRoles.size(); i++) {
                         prVO = listaPerRoles.get(i);
                         if (listaPerRoles.size() > 1) {
-                            request.getRequestDispatcher("menu.jsp").forward(request, response);
+                            request.getRequestDispatcher("menuAdministrador.jsp").forward(request, response);
                         }
-                        if (prVO.getPRRol().equals("1")) {
-                            request.getRequestDispatcher("menuComprador.jsp").forward(request, response);
+                        if (prVO.getPRRol().equals("2")) {
+                            request.getRequestDispatcher("menuSupervisor.jsp").forward(request, response);
                         }
                         if (prVO.getPRRol().equals("3")) {
                             request.getRequestDispatcher("menuSecretario.jsp").forward(request, response);

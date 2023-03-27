@@ -1,6 +1,6 @@
 <%-- 
-    Document   : menuSecretario
-    Created on : Mar 23, 2023, 11:27:48 PM
+    Document   : menuSupervisor
+    Created on : Mar 26, 2023, 11:23:04 PM
     Author     : xJuanDa
 --%>
 
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Menu supervisor</title>        
     </head>
     <body>
         <div class="container">
@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <img src="img/perfil.png" class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <h2>Secretario</h2>
+                                <h2>Supervisor</h2>
                                 <hr>
                                 <h3><%=persona%> <%=apellido%></h3>
                                 <hr>
