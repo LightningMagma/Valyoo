@@ -27,7 +27,7 @@ public class PersonaDAO extends ConexionDB implements crud {
     private ResultSet mensajero;
     private boolean operacion = false;
     private String sql;
-    private String perDocumento = "", perTipoDocumento = "", perNombre = "", perApellido = "", perTelefono = "", perDireccion = "", perClave = "", perSede = "", perEstado = "";
+    private String perDocumento = "", perTipoDocumento = "", perNombre = "", perApellido = "", perCorreo = "", perTelefono = "", perDireccion = "", perClave = "", perSede = "", perEstado = "";
 
     public PersonaDAO() {
     }
@@ -53,15 +53,16 @@ public class PersonaDAO extends ConexionDB implements crud {
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tblpersona (PERDOCUMENTO, PERTIPODOCUMENTO, PERNOMBRE, PERAPELLIDO, PERTELEFONO, PERDIRECCION, PERCLAVE) values (?,?,?,?,?,?,?);";
+            sql = "insert into tblpersona (PERDOCUMENTO, PERTIPODOCUMENTO, PERNOMBRE, PERAPELLIDO, PERCORREO, PERTELEFONO, PERDIRECCION, PERCLAVE) values (?,?,?,?,?,?,?);";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, perDocumento);
             puente.setString(2, perTipoDocumento);
             puente.setString(3, perNombre);
             puente.setString(4, perApellido);
-            puente.setString(5, perTelefono);
-            puente.setString(6, perDireccion);
-            puente.setString(7, perClave);
+            puente.setString(5, perCorreo);
+            puente.setString(6, perTelefono);
+            puente.setString(7, perDireccion);
+            puente.setString(8, perClave);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
@@ -133,7 +134,7 @@ public class PersonaDAO extends ConexionDB implements crud {
             mensajero = puente.executeQuery();
 
             while (mensajero.next()) {
-                perVO = new PersonaVO(documento, mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7), mensajero.getString(8), mensajero.getString(9));
+                perVO = new PersonaVO(documento, mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7), mensajero.getString(8), mensajero.getString(9), mensajero.getString(10));
             }
         } catch (Exception e) {
             Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -156,7 +157,7 @@ public class PersonaDAO extends ConexionDB implements crud {
             mensajero = puente.executeQuery();
 
             while (mensajero.next()) {
-                PersonaVO perVO = new PersonaVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7), mensajero.getString(8), mensajero.getString(9));
+                PersonaVO perVO = new PersonaVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7), mensajero.getString(8), mensajero.getString(9), mensajero.getString(10));
 
                 personaLista.add(perVO);
 
@@ -173,22 +174,23 @@ public class PersonaDAO extends ConexionDB implements crud {
         }
         return personaLista;
     }
+
     public boolean iniciarSesion(String usuario, String clave) {
         try {
-            conexion=this.obtenerConexion();
-            sql="select * from tblpersona where perDocumento=? and perClave=?;";
-            puente= conexion.prepareStatement(sql);
+            conexion = this.obtenerConexion();
+            sql = "select * from tblpersona where perDocumento=? and perClave=?;";
+            puente = conexion.prepareStatement(sql);
             puente.setString(1, perDocumento);
             puente.setString(2, perClave);
-            mensajero=puente.executeQuery();
+            mensajero = puente.executeQuery();
             if (mensajero.next()) {
-                operacion=true;
+                operacion = true;
             }
         } catch (Exception e) {
             Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             try {
-               // this.cerrarConexion();
+                // this.cerrarConexion();
             } catch (Exception ex) {
                 Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, ex);
             }

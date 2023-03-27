@@ -65,21 +65,7 @@
                 CuentaVO cuVO = (CuentaVO) buscarSesion.getAttribute("datosCuenta");
                 nuCuenta = cuVO.getCuNumero();
                 fechaInicio = cuVO.getCuFechaRegistro();
-
-                if (buscarSesion.getAttribute("datosPrestamo") != null) {
-                    PrestamosVO presVO = (PrestamosVO) buscarSesion.getAttribute("datosPrestamo");
-                    nuPrestamo = presVO.getPreId();
-                    cuotasPrestamo = presVO.getPreCuotas();
-                    montoPrestamo = presVO.getPreMonto();
-                    interesPrestamo = presVO.getPreInteres();
-
-                    if (buscarSesion.getAttribute("datosPago") != null) {
-                        PagoVO pagVO = (PagoVO) buscarSesion.getAttribute("datosPago");
-                        descripcionPago = pagVO.getPagDesc();
-                        valorPago = pagVO.getPagValor();
-                        fechaPago = pagVO.getPagFecha();
-                    }
-                }
+//if unificar. poner genericos. yo me entiendo. dejelo ahi, ya vuelvo. sigan viendo
             }
         } else {
             request.getRequestDispatcher("index.jsp").forward(request, response);

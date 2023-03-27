@@ -48,6 +48,7 @@ public class PersonaControlador extends HttpServlet {
         String perTipoDocumento = request.getParameter("perTipoDocumento");
         String perNombre = request.getParameter("perNombre");
         String perApellido = request.getParameter("perApellido");
+        String perCorreo = request.getParameter("perCorreo");
         String perTelefono = request.getParameter("perTelefono");
         String perDireccion = request.getParameter("perDireccion");
         String perClave = request.getParameter("perClave");
@@ -55,7 +56,7 @@ public class PersonaControlador extends HttpServlet {
         String perEstado = request.getParameter("perEstado");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
-        PersonaVO perVO = new PersonaVO(perDocumento, perTipoDocumento, perNombre, perApellido, perTelefono, perDireccion, perClave, perSede, perEstado);
+        PersonaVO perVO = new PersonaVO(perDocumento, perTipoDocumento, perNombre, perApellido, perCorreo, perTelefono, perDireccion, perClave, perSede, perEstado);
         PerRolVO prVO = new PerRolVO();
         CuentaVO cuVO = new CuentaVO();
         PrestamosVO presVO = new PrestamosVO();
@@ -93,7 +94,7 @@ public class PersonaControlador extends HttpServlet {
                     request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
                 }
                 break;
-            case 4:
+            case 4: //iniciar sesion
                 if (perDAO.iniciarSesion(perDocumento, perClave)) {
                     HttpSession miSesion = request.getSession(true);
                     perVO = perDAO.consultarPorDocumento(perDocumento);
@@ -119,7 +120,7 @@ public class PersonaControlador extends HttpServlet {
                         if (prVO.getPRRol().equals("1")) {
                             request.getRequestDispatcher("menuComprador.jsp").forward(request, response);
                         }
-                        if (prVO.getPRRol().equals("2")) {
+                        if (prVO.getPRRol().equals("3")) {
                             request.getRequestDispatcher("menuSecretario.jsp").forward(request, response);
                         }
                         if (prVO.getPRRol().equals("4")) {
@@ -127,15 +128,15 @@ public class PersonaControlador extends HttpServlet {
                         }
                     }
                 } else {
-                    request.setAttribute("mensajeError", "No se pudo iniciar sesion");
+                    request.setAttribute("mensajeError", "Usuario o contraseña incorrectos");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;
             case 5: // Eliminar Registro
                 if (perDAO.eliminarRegistro()) {
-                    request.setAttribute("MensajeExito", "¡La persona se elimino correctamente!");
+                    request.setAttribute("MensajeExito", "¡La persona se eliminó correctamente!");
                 } else {
-                    request.setAttribute("MensajeError", "¡La persona NO se elimino correctamente!");
+                    request.setAttribute("MensajeError", "¡La persona NO se eliminó correctamente!");
                 }
                 request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
                 break;

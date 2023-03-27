@@ -10,37 +10,79 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registrar Personas</title>
-        <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
+        <link href="Estilos/style.css" rel="stylesheet" type="text/css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        <h2>Registro de personas</h2>
-        <form method="post" action="Persona">
-            <label for="perDocumento">Número de documento:</label>
-            <input type="text" name="perDocumento" required maxlength=20 placeholder="Ingrese el número de documento">
-            <label for="perTipoDocumento">Tipo de documento:</label>
-            <select name="perTipoDocumento">
-                <option>Seleccione...</option>
-                <option value="Cedula de Ciudadania">C.C</option>
-                <option value="Cédula de Extranjería">C.E</option>
-                <option value="Pasaporte">Pasaporte</option>
+        <section>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="box">
+                <div class="fondo" style="--i:0;"></div>
+                <div class="fondo" style="--i:1;"></div>
+                <div class="fondo" style="--i:2;"></div>
+                <div class="fondo" style="--i:3;"></div>
+                <div class="fondo" style="--i:4;"></div>
+                <div class="fondo" style="--i:5;"></div>
+                <div class="contenedor">
+                    <div class="formulario">
 
-            </select>
+                        <h2>Registro de persona</h2>
+                        <form action="Persona" method="post">
+                            <img src="Estilos/tituloValyooConSlogan.png" alt="" width="70%"/>
+                            <div class="input">
+                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}*$" title="Debe ingresar un número de documento" required placeholder="Número de documento">
+                            </div>
+                            <div class="input">
+                                <select name="perTipoDocumento">
+                                    <option>Tipo de documento...</option>
+                                    <option value="Cedula de Ciudadania">C.C</option>
+                                    <option value="Cedula de Extranjeria">C.E</option>
+                                    <option value="Pasaporte">Pasaporte</option>
+                                </select>
+                            </div>
+                            <div class="input">
+                                <input type="text" name="perNombre" pattern="^[A-Za-z]{3,30}*$" title="Debe ingresar un nombre" required placeholder="Nombre">
+                            </div>
+                            <div class="input">
+                                <input type="text" name="perApellido" pattern="^[A-Za-z]{3,30}*$" title="Debe ingresar un apellido" required placeholder="Apellido">
+                            </div>
+                            <div class="input">
+                                <input type="email" name="perCorreo" pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" title="Debe ingresar un correo electrónico" required placeholder="Correo electrónico">
+                            </div>
+                            <div class="input">
+                                <input type="text" name="perTelefono" pattern="^[0-9]{7,15}*$" title="Debe ingresar un número telefónico" required placeholder="Teléfono">
+                            </div>
+                            <div class="input">
+                                <input type="text" name="perDirección" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required placeholder="Dirección">
+                            </div>
+                            <div class="input">
+                                <input type="password" name="perClave" pattern="^[0-9]{2,10}*$" required placeholder="Ingrese la contraseña">
+                            </div>
+                            <div class="input">
+                                <input type="submit" value="Registrar">
+                                <input name="opcion" type="hidden" value="1">
+                            </div>
 
-            <label for="perNombre">Nombre:</label>
-            <input type="text" name="perNombre" required maxlength=30 placeholder="Ingrese el nombre">
-            <label for="perApellido">Apellido:</label>
-            <input type="text" name="perApellido" required maxlength=30 placeholder="Ingrese el apellido">
-            <label for="perTelefono">Teléfono</label>
-            <input type="text" name="perTelefono" required maxlength=15 placeholder="Ingrese el teléfono">
-            <label for="perDireccion">Dirección:</label>
-            <input type="text" name="perDireccion" required maxlength=50 placeholder="Ingrese la dirección">
-            <label for="perClave">Contraseña:</label>
-            <input type="password" name="perClave" required maxlength=20 placeholder="Ingrese la Contraseña">
-            <input type="submit" value="Registrar">
-            <input type="reset" value="Limpiar">
-            <input type="hidden" name="opcion" value="1">
-        </form>
+                            <%
+                                if (request.getAttribute("mensajeError") != null) {%>
+                            <h2>${mensajeError}</h2>
+                            <%} else {%>
+                            <h2>${mensajeExito}</h2>    
+                            <%}
+                            %>
+                        </form>
+                        <a href="landingpage.jsp">
+                            <button class="btn btn-primary">Volver</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <%
             if (request.getAttribute("MensajeError") != null) { %>
         ${MensajeError}
@@ -48,8 +90,5 @@
         ${MensajeExito}
         <%}
         %>
-        <a href="indexPersona.jsp">
-            <button class="btn btn-primary">Volver</button>
-        </a>
     </body>
 </html>

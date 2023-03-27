@@ -11,16 +11,17 @@ package ModeloVO;
  */
 public class PersonaVO {
 
-    private String perDocumento, perTipoDocumento, perNombre, perApellido, perTelefono, perDireccion, perClave, perSede, perEstado;
+    private String perDocumento, perTipoDocumento, perNombre, perApellido, perCorreo, perTelefono, perDireccion, perClave, perSede, perEstado;
 
     public PersonaVO() {
     }
 
-    public PersonaVO(String perDocumento, String perTipoDocumento, String perNombre, String perApellido, String perTelefono, String perDireccion, String perClave, String perSede, String perEstado) {
+    public PersonaVO(String perDocumento, String perTipoDocumento, String perNombre, String perApellido, String perCorreo, String perTelefono, String perDireccion, String perClave, String perSede, String perEstado) {
         this.perDocumento = perDocumento;
         this.perTipoDocumento = perTipoDocumento;
         this.perNombre = perNombre;
         this.perApellido = perApellido;
+        this.perCorreo = perCorreo;
         this.perTelefono = perTelefono;
         this.perDireccion = perDireccion;
         this.perClave = perClave;
@@ -58,6 +59,14 @@ public class PersonaVO {
 
     public void setPerApellido(String perApellido) {
         this.perApellido = perApellido;
+    }
+
+    public String getPerCorreo() {
+        return perCorreo;
+    }
+
+    public void setPerCorreo(String perCorreo) {
+        this.perCorreo = perCorreo;
     }
 
     public String getPerTelefono() {

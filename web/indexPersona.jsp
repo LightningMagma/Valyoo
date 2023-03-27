@@ -19,7 +19,7 @@
     </head>
     <body>
         <div class="col-md-12">
-                <h3 class="title-5 m-b-35">Personas</h3> 
+            <h3 class="title-5 m-b-35">Personas</h3> 
             <form method="post" action="Persona">
                 <table class="table">
                     <tr>
@@ -54,6 +54,7 @@
                         <th>Tipo de documento</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
+                        <th>Correo</th>
                         <th>Teléfono</th>
                         <th>Dirección</th>
                         <th>Sede</th>
@@ -74,6 +75,7 @@
                         <td> <%=perVO.getPerTipoDocumento()%> </td>
                         <td> <%=perVO.getPerNombre()%> </td>
                         <td> <%=perVO.getPerApellido()%> </td>
+                        <td> <%=perVO.getPerCorreo()%> </td>
                         <td> <%=perVO.getPerTelefono()%> </td>
                         <td> <%=perVO.getPerDireccion()%> </td>
                         <td> <%=perVO.getPerSede()%> </td>
