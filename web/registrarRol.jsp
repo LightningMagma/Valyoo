@@ -17,7 +17,7 @@
         <h2>Registro de rol</h2>
         <form method="post" action="Rol">
             <label for="rolNombre">Nombre del rol:</label>
-            <input type="text" name="rolNombre" required maxlength=20 placeholder="Ingrese el nombre del rol">            
+            <input type="text" name="rolNombre" maxlength=20 placeholder="Ingrese el nombre del rol" pattern="^[A-Za-z]{3,30}$" title="Debe ingresar un apellido" required>            
             <input type="submit" value="Registrar">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="1">

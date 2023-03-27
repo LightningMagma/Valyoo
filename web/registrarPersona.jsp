@@ -32,7 +32,7 @@
                         <form action="Persona" method="post">
                             <img src="Estilos/tituloValyooConSlogan.png" alt="" width="70%"/>
                             <div class="input">
-                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}*$" title="Debe ingresar un número de documento" required placeholder="Número de documento">
+                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}$" title="Debe ingresar un número de documento" required placeholder="Número de documento">
                             </div>
                             <div class="input">
                                 <select name="perTipoDocumento">
@@ -43,22 +43,22 @@
                                 </select>
                             </div>
                             <div class="input">
-                                <input type="text" name="perNombre" pattern="^[A-Za-z]{3,30}*$" title="Debe ingresar un nombre" required placeholder="Nombre">
+                                <input type="text" name="perNombre" pattern="^[A-Za-z]{3,30}$" title="Debe ingresar un nombre" required placeholder="Nombre">
                             </div>
                             <div class="input">
-                                <input type="text" name="perApellido" pattern="^[A-Za-z]{3,30}*$" title="Debe ingresar un apellido" required placeholder="Apellido">
+                                <input type="text" name="perApellido" pattern="^[A-Za-z]{3,30}$" title="Debe ingresar un apellido" required placeholder="Apellido">
                             </div>
                             <div class="input">
                                 <input type="email" name="perCorreo" pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" title="Debe ingresar un correo electrónico" required placeholder="Correo electrónico">
                             </div>
                             <div class="input">
-                                <input type="text" name="perTelefono" pattern="^[0-9]{7,15}*$" title="Debe ingresar un número telefónico" required placeholder="Teléfono">
+                                <input type="text" name="perTelefono" pattern="^[0-9]{7,15}$" title="Debe ingresar un número telefónico" required placeholder="Teléfono">
                             </div>
                             <div class="input">
                                 <input type="text" name="perDirección" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required placeholder="Dirección">
                             </div>
                             <div class="input">
-                                <input type="password" name="perClave" pattern="^[0-9]{2,10}*$" required placeholder="Ingrese la contraseña">
+                                <input type="password" name="perClave" pattern="^[0-9]{2,10}$" required placeholder="Ingrese la contraseña">
                             </div>
                             <div class="input">
                                 <input type="submit" value="Registrar">

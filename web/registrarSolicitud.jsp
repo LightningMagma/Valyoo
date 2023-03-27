@@ -17,11 +17,11 @@
         <h2>Registro solitud</h2>
         <form method="post" action="Solicitud">
             <label for="usuMonto">Monto del prestamo:</label>
-            <input type="number" name="solMonto" required placeholder="Digite el monto del prestamo">
+            <input type="text" name="solMonto" placeholder="Digite el monto del prestamo" pattern="^[0-9]{6,10}$" title="Debe ingresar un monto adecuado" required>
             <label for="usuCuotas">Cuotas:</label>
-            <input type="number" name="solCuotas" required placeholder="Ingrese la cantidad de cuotas" > 
+            <input type="number" name="solCuotas" required placeholder="Ingrese la cantidad de cuotas" pattern="^[0-9]{1,2}$" title="Debe ingresar una cantidad valida" required> 
             <label for="usuCuotas">Persona de la solicitud</label>
-            <input type="number" name="solPersona" required placeholder="Ingrese identificacion de la persona" >           
+            <input type="number" name="solPersona" required placeholder="Ingrese identificacion de la persona" pattern="^[0-9]{7,10}$" title="Debe ingresar un número de documento" required>           
             <input type="submit" value="Registrar solicitud">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="1">

@@ -19,13 +19,13 @@
         <h2>Registrar Prestamo</h2>
         <form method="post" action="Prestamo">
             <label>Fecha inicio: </label>
-            <input type="text" name="PreFechaInicio" maxlength="10" placeholder="0000-00-00">
+            <input type="date" name="PreFechaInicio" maxlength="10" placeholder="0000-00-00">
             <label>Fecha fin: </label>
-            <input type="text" name="PreFechaFin" maxlength="10" placeholder="0000-00-00">
+            <input type="date" name="PreFechaFin" maxlength="10" placeholder="0000-00-00">
             <label>Cuotas: </label>
-            <input type="text" name="PreCuotas" maxlength="2" placeholder="Ingrese las cuotas del pestamo">
+            <input type="text" name="PreCuotas" maxlength="2" placeholder="Ingrese las cuotas del pestamo" required pattern="[0-9]{1,2}" title="Debe ingresar una cantidad valida" >
             <label>Monto: </label>
-            <input type="text" name="PreMonto" maxlength="10" placeholder="Ingresé el monto">
+            <input type="text" name="PreMonto" maxlength="10" placeholder="Ingresé el monto" required pattern="[0-9]{6,10}" title="Debe ingresar un monto adecuado" >
             <label>Intereses: </label>
             <input type="text" name="PreInteres" maxlength="2" placeholder="Ingresé los intereses">
             <label>Cuenta: </label>
