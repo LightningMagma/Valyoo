@@ -25,7 +25,7 @@
                     <tr>
                         <th>
                             Documento
-                            <input type="text" name="perDocumento">
+                            <input type="text" name="perDocumento" id="myInput" onkeyup="myFunction()">
                             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
                             <input type="hidden" name="opcion" value="3">  
                         </th>
@@ -47,7 +47,7 @@
                     </a>
                 </div>
             </div>
-            <table class="table table-data2">
+            <table class="table table-data2" id="myTable">
                 <thead>
                     <tr>
                         <th>Documento</th>

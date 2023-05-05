@@ -41,6 +41,6 @@
         %>
         <a href="indexCuenta.jsp">
             <button class="btn btn-primary">Volver</button>
-        </a>        
+        </a>      
     </body>
 </html>
