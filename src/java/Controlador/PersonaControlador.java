@@ -101,22 +101,23 @@ public class PersonaControlador extends HttpServlet {
                     miSesion.setAttribute("datosPersona", perVO);
                     String personaDocumento = perVO.getPerDocumento();
 
-                    if ((cuVO=cuDAO.listarCuPer(personaDocumento) ) != null) {                        
+                    if ((cuVO = cuDAO.listarCuPer(personaDocumento)) != null) {
                         miSesion.setAttribute("datosCuenta", cuVO);
                         String numeroCuenta = cuVO.getCuNumero();
-                        presVO = presDAO.listarPresPer(numeroCuenta);
-                        miSesion.setAttribute("datosPrestamo", presVO);
-                        String numeroPrestamo = presVO.getPreId();
-                        pagVO = pagDAO.listarPagoPer(numeroPrestamo);
-                        miSesion.setAttribute("datosPago", pagVO);                        
-                    }                   
+                        if ((presVO = presDAO.listarPresPer(numeroCuenta)) != null) {
+                            miSesion.setAttribute("datosPrestamo", presVO);
+                            String numeroPrestamo = presVO.getPreId();
+                            pagVO = pagDAO.listarPagoPer(numeroPrestamo);
+                            miSesion.setAttribute("datosPago", pagVO);
+                        }
+                    }
 
                     //request.getRequestDispatcher("menu.jsp").forward(request, response);
                     ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(perDocumento);
 
                     for (int i = 0; i < listaPerRoles.size(); i++) {
                         prVO = listaPerRoles.get(i);
-                        if (listaPerRoles.size() > 1) {
+                        if (prVO.getPRRol().equals("1")) {
                             request.getRequestDispatcher("menuAdministrador.jsp").forward(request, response);
                         }
                         if (prVO.getPRRol().equals("2")) {

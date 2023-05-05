@@ -4,6 +4,10 @@
     Author     : xJuanDa
 --%>
 
+<%@page import="ModeloDAO.PerRolDAO"%>
+<%@page import="ModeloVO.PerRolVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="ModeloVO.PagoVO"%>
 <%@page import="ModeloVO.PrestamosVO"%>
 <%@page import="ModeloVO.PersonaVO"%>
@@ -13,7 +17,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Valyoo</title>
         <link href="Estilos/estilonavland.css" rel="stylesheet" type="text/css"/>
         <link href="Estilos/css/font-face.css" rel="stylesheet" media="all">
         <link href="Estilos/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -42,6 +46,8 @@
     %>
 
     <%
+        PerRolDAO prDAO = new PerRolDAO();
+        PerRolVO prVO = new PerRolVO();
         String persona = "";
         String documento = "";
         String apellido = "";
@@ -60,26 +66,30 @@
             persona = perVO.getPerNombre();
             apellido = perVO.getPerApellido();
             documento = perVO.getPerDocumento();
-
             if (buscarSesion.getAttribute("datosCuenta") != null) {
                 CuentaVO cuVO = (CuentaVO) buscarSesion.getAttribute("datosCuenta");
                 nuCuenta = cuVO.getCuNumero();
                 fechaInicio = cuVO.getCuFechaRegistro();
-                PrestamosVO presVO = (PrestamosVO) buscarSesion.getAttribute("datosPrestamo");
-                nuPrestamo = presVO.getPreId();
-                cuotasPrestamo = presVO.getPreCuotas();
-                montoPrestamo = presVO.getPreMonto();
-                interesPrestamo = presVO.getPreInteres();
-                PagoVO pagVO = (PagoVO) buscarSesion.getAttribute("datosPago");
-                descripcionPago = pagVO.getPagDesc();
-                valorPago = pagVO.getPagValor();
-                fechaPago = pagVO.getPagFecha();
+                if (buscarSesion.getAttribute("datosPrestamo") != null) {
+                    PrestamosVO presVO = (PrestamosVO) buscarSesion.getAttribute("datosPrestamo");
+                    nuPrestamo = presVO.getPreId();
+                    cuotasPrestamo = presVO.getPreCuotas();
+                    montoPrestamo = presVO.getPreMonto();
+                    interesPrestamo = presVO.getPreInteres();
+                    if (buscarSesion.getAttribute("datosPago") != null) {
+                        PagoVO pagVO = (PagoVO) buscarSesion.getAttribute("datosPago");
+                        descripcionPago = pagVO.getPagDesc();
+                        valorPago = pagVO.getPagValor();
+                        fechaPago = pagVO.getPagFecha();
+                    }
 //if unificar. poner genericos. yo me entiendo. dejelo ahi, ya vuelvo. sigan viendo
+                }
             }
         } else {
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
 
+        ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(documento);
     %>
     <body>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -87,7 +97,9 @@
         <nav class="navbar navbar-expand-lg bg-body-teriary">
             <h3><img src="Estilos/tituloValyoo.png" alt="Título Valyoo" width="175px"></h3>
             <ul>
-                <%if (buscarSesion.getAttribute("datosPrestamo") == null) {%>
+                <%for (int i = 0; i < listaPerRoles.size(); i++) {
+                        prVO = listaPerRoles.get(i);
+                        if (prVO.getPRRol().equals("1")) {%>
                 <li><a href="indexCuenta.jsp">Cuenta</a></li>
                 <li><a href="indexSede.jsp">Sede</a></li>
                 <li><a href="indexPersona.jsp">Persona</a></li>              
@@ -97,10 +109,13 @@
                 <li><a href="indexPrestamos.jsp">Prestamo</a></li>
                 <li><a href="indexRol.jsp">Rol</a></li>
                 <li><a href="indexSolicitud.jsp">Solicitud</a></li>
-                    <%} else {%>
+                    <%}
+                        if (prVO.getPRRol().equals("4")) {%>
                 <li><a href="menuDeudor.jsp">Perfil</a></li>
                 <li><a href="solicitudDeudor.jsp">Solicitud</a></li>
-                <%}%>
+                    <%}
+                        }
+                    %>
 
             </ul>
 

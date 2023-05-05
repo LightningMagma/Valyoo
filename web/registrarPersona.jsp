@@ -32,7 +32,7 @@
                         <form action="Persona" method="post">
                             <img src="Estilos/tituloValyooConSlogan.png" alt="" width="70%"/>
                             <div class="input">
-                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}$" title="Debe ingresar un número de documento" required placeholder="Número de documento">
+                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}" maxlength="10" minlength="3" title="Debe ingresar un número de documento" required placeholder="Número de documento" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="input">
                                 <select name="perTipoDocumento">
@@ -43,22 +43,22 @@
                                 </select>
                             </div>
                             <div class="input">
-                                <input type="text" name="perNombre" pattern="^[A-Za-z]{3,30}$" title="Debe ingresar un nombre" required placeholder="Nombre">
+                                <input type="text" name="perNombre" pattern="[A-Za-z \s]+{3,30}" maxlength="30" title="Debe ingresar un nombre" required placeholder="Nombre" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="input">
-                                <input type="text" name="perApellido" pattern="^[A-Za-z]{3,30}$" title="Debe ingresar un apellido" required placeholder="Apellido">
+                                <input type="text" name="perApellido" pattern="[a-zA-Z \s]+{3,30}" maxlength="30" title="Debe ingresar un apellido" required placeholder="Apellido" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="input">
-                                <input type="email" name="perCorreo" pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" title="Debe ingresar un correo electrónico" required placeholder="Correo electrónico">
+                                <input type="email" name="perCorreo" pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{12,40})$" maxlength="40" title="Debe ingresar un correo electrónico" required placeholder="Correo electrónico" oninput="this.value = this.value.replace(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="input">
-                                <input type="text" name="perTelefono" pattern="^[0-9]{7,15}$" title="Debe ingresar un número telefónico" required placeholder="Teléfono">
+                                <input type="text" name="perTelefono" pattern="^[0-9]{7,15}$" title="Debe ingresar un número telefónico" required placeholder="Teléfono" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="input">
                                 <input type="text" name="perDirección" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required placeholder="Dirección">
                             </div>
                             <div class="input">
-                                <input type="password" name="perClave" pattern="^[0-9]{2,10}$" required placeholder="Ingrese la contraseña">
+                                <input type="password" name="perClave" pattern="^[A-Za-z0-9]{2,10}$" required placeholder="Ingrese la contraseña" >
                             </div>
                             <div class="input">
                                 <input type="submit" value="Registrar">
