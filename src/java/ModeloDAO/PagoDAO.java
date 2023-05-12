@@ -27,9 +27,9 @@ public class PagoDAO extends ConexionDB implements crud {
     private boolean operacion = false;
     private String sql;
     private String PagId, PagDesc, PagValor, PagFecha, PagPres;
-    
+
     public PagoDAO() {
-        
+
     }
 
     public PagoDAO(PagoVO pagoVO) {
@@ -140,7 +140,14 @@ public class PagoDAO extends ConexionDB implements crud {
         ArrayList<PagoVO> pagoLista = new ArrayList<>();
         try {
             puerta = this.obtenerConexion();
-            sql = "Select * from tblpago";
+            sql = "select PagoID, PagDescripcion, PagValor, concat(PerNombre, ' ', PerApellido) 'Deudor', PagFecha\n"
+                    + "from((tblpago pag \n"
+                    + "inner join tblprestamo pres\n"
+                    + "on pag.PagPrestamo = pres.PreID)\n"
+                    + "inner join tblcuentacredito cu\n"
+                    + "on pres.PreCuenta = cu.CuNumero)\n"
+                    + "inner join tblpersona per\n"
+                    + "on cu.CuPersona = per.PerDocumento;";
             puente = puerta.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
@@ -158,16 +165,16 @@ public class PagoDAO extends ConexionDB implements crud {
         }
         return pagoLista;
     }
-    
+
     public PagoVO listarPagoPer(String pagPrestamo) {
         PagoVO pagVO = null;
         try {
             puerta = this.obtenerConexion();
-            sql="select * from tblpago where PagPrestamo = ?";
+            sql = "select * from tblpago where PagPrestamo = ?";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, pagPrestamo);
             mensajero = puente.executeQuery();
-            while(mensajero.next()){ 
+            while (mensajero.next()) {
                 pagVO = new PagoVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), mensajero.getString(5));
             }
         } catch (Exception e) {

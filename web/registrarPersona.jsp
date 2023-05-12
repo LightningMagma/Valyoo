@@ -49,7 +49,7 @@
                                 <input type="text" name="perApellido" pattern="[a-zA-Z \s]+{3,30}" maxlength="30" title="Debe ingresar un apellido" required placeholder="Apellido" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="input">
-                                <input type="email" name="perCorreo" pattern="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{12,40})$" maxlength="40" title="Debe ingresar un correo electrónico" required placeholder="Correo electrónico" oninput="this.value = this.value.replace(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]/g, '').replace(/(\..*)\./g, '$1');">
+                                <input type="email" name="perCorreo" maxlength="40" title="Debe ingresar un correo electrónico" required placeholder="Correo electrónico" oninput="this.value = this.value.replace(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="input">
                                 <input type="text" name="perTelefono" pattern="^[0-9]{7,15}$" title="Debe ingresar un número telefónico" required placeholder="Teléfono" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">

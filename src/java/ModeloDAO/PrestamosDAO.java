@@ -151,7 +151,12 @@ public class PrestamosDAO extends ConexionDB implements crud {
         ArrayList<PrestamosVO> prestamoLista = new ArrayList<>();
         try {
             puerta = this.obtenerConexion();
-            sql = "Select * from tblprestamo";
+            sql = "select PreID, PreFechaInicio,PreFechaFin, PreCuotas, PreMonto, PreInteres, concat(PerNombre, ' ', PerApellido) 'Deudor', PreEstado\n"
+                    + "from(tblprestamo pres\n"
+                    + "inner join tblcuentacredito cu\n"
+                    + "on pres.PreCuenta = cu.CuNumero)\n"
+                    + "inner join tblpersona per\n"
+                    + "on cu.CuPersona = per.PerDocumento;";
             puente = puerta.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
@@ -170,17 +175,17 @@ public class PrestamosDAO extends ConexionDB implements crud {
         }
         return prestamoLista;
     }
-    
+
     public PrestamosVO listarPresPer(String preCuenta) {
         PrestamosVO presVO = null;
         try {
             puerta = this.obtenerConexion();
-            sql="select * from tblprestamo where PreCuenta = ?";
+            sql = "select * from tblprestamo where PreCuenta = ?";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, preCuenta);
             mensajero = puente.executeQuery();
-            while(mensajero.next()){ 
-                presVO = new PrestamosVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), 
+            while (mensajero.next()) {
+                presVO = new PrestamosVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4),
                         mensajero.getString(5), mensajero.getString(6), mensajero.getString(7), mensajero.getString(8));
             }
         } catch (Exception e) {

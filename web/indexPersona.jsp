@@ -84,7 +84,7 @@
                             <form method="post" action="Persona">
                                 <input type="hidden" name="perDocumento" value="<%=perVO.getPerDocumento()%>">
                                 <button class="btn btn-warning" name="opcion" value="3" >Editar</button>
-                                <button class="btn btn-danger" name="opcion" value="5" onclick="return confirmar()">Eliminar</button>
+                                <button class="btn btn-danger" name="opcion" value="5" onclick="return confirmar()">Cambiar Estado</button>
                             </form>
                         </td>
                     </tr>

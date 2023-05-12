@@ -20,18 +20,19 @@ import util.crud;
  * @author APRENDIZ
  */
 public class CuentaDAO extends ConexionDB implements crud {
+
     private Connection puerta;
     private PreparedStatement puente;
     private ResultSet mensajero;
     private boolean operacion = false;
     private String sql;
     private String CuNumero, CuFechaRegistro, CuEstado, CuPersona;
-    
+
     public CuentaDAO() {
-        
+
     }
-    
-    public CuentaDAO(CuentaVO cuVO){
+
+    public CuentaDAO(CuentaVO cuVO) {
         super();
         try {
             puerta = this.obtenerConexion();
@@ -50,7 +51,7 @@ public class CuentaDAO extends ConexionDB implements crud {
             sql = "insert into tblcuentacredito(CuFechaRegistro, CuPersona) values (?,?);";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, CuFechaRegistro);
-            puente.setString(2, CuPersona);           
+            puente.setString(2, CuPersona);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
@@ -71,7 +72,7 @@ public class CuentaDAO extends ConexionDB implements crud {
             sql = "update tblcuentacredito set CuFechaRegistro=?, CuPersona=? where CuNumero =?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, CuFechaRegistro);
-            puente.setString(2, CuPersona); 
+            puente.setString(2, CuPersona);
             puente.setString(3, CuNumero);
             puente.executeUpdate();
             operacion = true;
@@ -90,24 +91,23 @@ public class CuentaDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql="update tblcuentacredito set CuEstado='Inactivo' where CuNumero=?;";
+            sql = "update tblcuentacredito set CuEstado='Inactivo' where CuNumero=?;";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, CuNumero);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
-            Logger.getLogger(CuentaDAO.class.getName()).log(Level.SEVERE,null,e);
-        }
-        finally {
+            Logger.getLogger(CuentaDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
             try {
                 this.cerrarConexion();
             } catch (Exception e) {
-                Logger.getLogger(CuentaDAO.class.getName()).log(Level.SEVERE,null,e);
+                Logger.getLogger(CuentaDAO.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         return operacion;
     }
-    
+
     public CuentaVO consultarPago() {
         CuentaVO cuVO = null;
 
@@ -137,7 +137,10 @@ public class CuentaDAO extends ConexionDB implements crud {
         ArrayList<CuentaVO> cuentaLista = new ArrayList<>();
         try {
             puerta = this.obtenerConexion();
-            sql = "select * from tblcuentacredito;";
+            sql = "select CuNumero, CuFechaRegistro, CuEstado, concat(PerNombre, ' ', PerApellido) 'Titular'\n"
+                    + "from tblcuentacredito cu \n"
+                    + "inner join tblpersona per\n"
+                    + "on cu.CuPersona = per.PerDocumento;";
             puente = puerta.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
@@ -155,16 +158,16 @@ public class CuentaDAO extends ConexionDB implements crud {
         }
         return cuentaLista;
     }
-    
+
     public CuentaVO listarCuPer(String cuPersona) {
         CuentaVO cuVO = null;
         try {
             puerta = this.obtenerConexion();
-            sql="select * from tblcuentacredito where CuPersona = ?";
+            sql = "select * from tblcuentacredito where CuPersona = ?";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, cuPersona);
             mensajero = puente.executeQuery();
-            while(mensajero.next()){ 
+            while (mensajero.next()) {
                 cuVO = new CuentaVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4));
             }
         } catch (Exception e) {

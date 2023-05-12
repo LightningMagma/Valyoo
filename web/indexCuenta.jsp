@@ -51,7 +51,7 @@
                     <th>Codigo</th>
                     <th>Fecha registro</th>
                     <th>Estado</th>
-                    <th>Persona</th>
+                    <th>Titular</th>
                     <th>Acciones</th>
                     <tr class="spacer"></tr>
                 </tr>
@@ -71,7 +71,7 @@
                         <form method="post" action="Cuenta">
                             <input type="hidden" name="CuNumero" value="<%=cuVO.getCuNumero()%>">
                             <button class="btn btn-warning" name="opcion" value="4" >Editar</button>
-                            <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmar()">Eliminar</button>
+                            <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmar()">Cambiar Estado</button>
                         </form>
                     </td>
                 </tr>

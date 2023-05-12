@@ -44,7 +44,7 @@
                     <th>Codigo</th>
                     <th>Descripcion</th>
                     <th>Valor</th>
-                    <th>Prestamo abonado</th>
+                    <th>Deudor</th>
                     <th>Fecha</th>
                     <th>Acciones</th>
                 </tr>
@@ -59,8 +59,8 @@
                     <td><%=pagVO.getPagId()%></td>
                     <td><%=pagVO.getPagDesc()%></td>
                     <td><%=pagVO.getPagValor()%></td>
-                    <td><%=pagVO.getPagFecha()%></td>
                     <td><%=pagVO.getPagPres()%></td>
+                    <td><%=pagVO.getPagFecha()%></td>
                     <td>
                         <form method="post" action="Pago">
                             <input type="hidden" name="PagId" value="<%=pagVO.getPagId()%>">

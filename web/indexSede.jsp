@@ -71,7 +71,7 @@
                     <form method="post" action="Sede">
                         <input type="hidden" name="sedeId" value="<%=sedeVO.getSedeId()%>">
                         <button class="btn btn-warning" name="opcion" value="3" >Editar</button>
-                        <button class="btn btn-danger" name="opcion" value="4" onclick="return confirmar()">Eliminar</button>
+                        <button class="btn btn-danger" name="opcion" value="4" onclick="return confirmar()">Cambiar Estado</button>
                     </form>
                 </td>
             </tr>
