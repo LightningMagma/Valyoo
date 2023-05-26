@@ -31,7 +31,7 @@
             <input type="text" name="docUrl" required maxlength=100 value="<%=docVO.getDocUrl()%>">
             <label for="docPer">Persona:</label>
             <input type="text" name="docPer" required maxlength=15 value="<%=docVO.getDocPer()%>">
-            <input type="submit" value="Actualizar">
+            <input class="actualizar" type="submit" value="Actualizar">
             <input type="reset" value="Limpiar">
             <input type="hidden" name="opcion" value="2">
         </form>

@@ -15,9 +15,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Sede</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <link href="Estilos/formularioConsulta.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>  
-        <div class="col-md-12">
+        <div class="formularioConsulta">
         <h3 class="title-5 m-b-35">Sedes</h3>
         <form method="post" action="Sede">
             <table class="table">

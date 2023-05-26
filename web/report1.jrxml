@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c170bb1b-1207-4605-b4a2-05da1fbc08ae">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     tblpersona.`PerDocumento` AS tblpersona_PerDocumento,
+     tblpersona.`PerNombre` AS tblpersona_PerNombre,
+     tblpersona.`PerApellido` AS tblpersona_PerApellido,
+     tblpersona.`perCorreo` AS tblpersona_perCorreo,
+     tblpersona.`PerTelefono` AS tblpersona_PerTelefono,
+     tblcuentacredito.`CuNumero` AS tblcuentacredito_CuNumero,
+     tblprestamo.`PreID` AS tblprestamo_PreID,
+     tblprestamo.`PreMonto` AS tblprestamo_PreMonto,
+     tblprestamo.`PreInteres` AS tblprestamo_PreInteres,
+     tblpago.`PagoID` AS tblpago_PagoID,
+     tblpago.`PagDescripcion` AS tblpago_PagDescripcion,
+     tblpago.`PagValor` AS tblpago_PagValor,
+     tblpago.`PagPrestamo` AS tblpago_PagPrestamo,
+     tblpago.`PagFecha` AS tblpago_PagFecha
+FROM
+     `tblpersona` tblpersona INNER JOIN `tblcuentacredito` tblcuentacredito ON tblpersona.`PerDocumento` = tblcuentacredito.`CuPersona`
+     INNER JOIN `tblprestamo` tblprestamo ON tblcuentacredito.`CuNumero` = tblprestamo.`PreCuenta`
+     INNER JOIN `tblpago` tblpago ON tblprestamo.`PreID` = tblpago.`PagPrestamo`]]>
+	</queryString>
+	<field name="tblpersona_PerDocumento" class="java.lang.Integer"/>
+	<field name="tblpersona_PerNombre" class="java.lang.String"/>
+	<field name="tblpersona_PerApellido" class="java.lang.String"/>
+	<field name="tblpersona_perCorreo" class="java.lang.String"/>
+	<field name="tblpersona_PerTelefono" class="java.lang.String"/>
+	<field name="tblcuentacredito_CuNumero" class="java.lang.Integer"/>
+	<field name="tblprestamo_PreID" class="java.lang.Integer"/>
+	<field name="tblprestamo_PreMonto" class="java.lang.Double"/>
+	<field name="tblprestamo_PreInteres" class="java.lang.Double"/>
+	<field name="tblpago_PagoID" class="java.lang.Integer"/>
+	<field name="tblpago_PagDescripcion" class="java.lang.String"/>
+	<field name="tblpago_PagValor" class="java.lang.Double"/>
+	<field name="tblpago_PagPrestamo" class="java.lang.Integer"/>
+	<field name="tblpago_PagFecha" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement x="725" y="0" width="77" height="102" uuid="0c18655b-7b74-4e21-b409-e5ee5e34e5e1"/>
+				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="57747e1f-515d-4e1e-814f-c37c72583fa7"/>
+				<staticText>
+					<reportElement style="Title" x="2" y="0" width="370" height="66" uuid="752b5b9c-08ea-4fd1-a7dd-6970109560a3"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry Title]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="b71873ae-49a7-422c-9152-f30166fa8abe"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry SubTitle]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="58a2debe-3d70-4aa0-b15e-54e7b3bc251f"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="294b34ea-3487-40d7-8d47-70249df380c3"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="56" height="18" forecolor="#000000" uuid="5049b155-4035-4e1a-86c5-15405b63746d"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblpersona_PerDocumento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="56" y="0" width="56" height="18" forecolor="#000000" uuid="6796fba9-4960-4352-9294-3338e167f001"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblpersona_PerNombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="112" y="0" width="56" height="18" forecolor="#000000" uuid="f5023f8f-a95d-4931-9bb6-c6eefc760166"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblpersona_PerApellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="168" y="0" width="56" height="18" forecolor="#000000" uuid="81bf6d91-7c00-4180-9149-6ab73868f24b"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblpersona_perCorreo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="224" y="0" width="56" height="18" forecolor="#000000" uuid="e57d175d-8b7d-4d5a-b3f2-16e7ab30dd77"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblpersona_PerTelefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="280" y="0" width="56" height="18" forecolor="#000000" uuid="4cbd6016-fce5-4cfc-a316-e81c1844b8aa"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblcuentacredito_CuNumero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="336" y="0" width="56" height="18" forecolor="#000000" uuid="ef3724e5-c77f-4b31-82b1-9b6c6e839fb4"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblprestamo_PreID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="392" y="0" width="56" height="18" forecolor="#000000" uuid="1cd6798d-b466-4d79-902d-fb6971a1bd54"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblprestamo_PreMonto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="448" y="0" width="56" height="18" forecolor="#000000" uuid="5891305e-82a5-4fee-8c04-6b206b85be0a"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblprestamo_PreInteres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="504" y="0" width="56" height="18" forecolor="#000000" uuid="323c6fa2-2887-4017-9287-f363b166b83e"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblpago_PagoID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="560" y="0" width="56" height="18" forecolor="#000000" uuid="1782ce24-23f7-4752-bf8b-87c3fd39d6ec"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblpago_PagDescripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="616" y="0" width="56" height="18" forecolor="#000000" uuid="6d7ab1e4-086a-4962-b6f7-1264b450ee85"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblpago_PagValor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="672" y="0" width="56" height="18" forecolor="#000000" uuid="9698d65f-64fb-4577-9c83-dc350dd62423"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblpago_PagPrestamo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="728" y="0" width="56" height="18" forecolor="#000000" uuid="703fcce5-decd-48ad-bf6f-0f05f14d99b3"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[tblpago_PagFecha]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="e97028d5-9f52-4e24-bbda-99d899860f92"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="56" height="18" uuid="61a1a6ee-d1de-4529-b8e9-2a4316c69787"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblpersona_PerDocumento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="56" y="0" width="56" height="18" uuid="4daca00b-5fd0-4a9e-899a-79e433d06952"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblpersona_PerNombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="112" y="0" width="56" height="18" uuid="0700ee5b-1456-423a-bcf1-26713f729a26"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblpersona_PerApellido}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="168" y="0" width="56" height="18" uuid="93d5ea03-1713-4a3c-8b67-39e443f56cb2"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblpersona_perCorreo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="224" y="0" width="56" height="18" uuid="2afe7f15-92b7-4587-844d-30c826d833bd"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblpersona_PerTelefono}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="280" y="0" width="56" height="18" uuid="38aa61a8-d95f-4178-874d-52f933c9df9c"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblcuentacredito_CuNumero}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="336" y="0" width="56" height="18" uuid="47196958-62b1-41ff-a6fb-9bf1027790eb"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblprestamo_PreID}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="392" y="0" width="56" height="18" uuid="436848b2-5e27-42be-828e-3544d9ac406b"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblprestamo_PreMonto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="448" y="0" width="56" height="18" uuid="01e5b4a8-c0f8-4d21-977d-bfd069eb6d38"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblprestamo_PreInteres}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="504" y="0" width="56" height="18" uuid="0e7f4714-d0e2-4213-b6db-cc065b8fdad5"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblpago_PagoID}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="560" y="0" width="56" height="18" uuid="c523ceb1-08b9-43c0-8d8a-e28e5763cca7"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblpago_PagDescripcion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="616" y="0" width="56" height="18" uuid="a47dde5e-b29c-44a0-8b3c-fd8d7d3b1d9f"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblpago_PagValor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="672" y="0" width="56" height="18" uuid="45a631f9-98e5-4924-994a-e974b9338049"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblpago_PagPrestamo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="728" y="0" width="56" height="18" uuid="a06e9f0d-eaa7-4cb8-aa35-9035ebf684ff"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tblpago_PagFecha}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="ae7e0fcb-d7d0-41d0-a64b-5e9fb488d697"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="a9654cd0-9451-4605-8ae8-ffeec998e77b"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="71b2ee92-22b8-4666-83a8-a08f6142c2e8"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="b5baff4c-562d-4573-bc82-08251797ee27"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="a6b79c48-bb9a-4050-b340-66fcd71c4c1c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

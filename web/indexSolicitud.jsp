@@ -15,8 +15,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar solicitud</title>        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="Estilos/formularioConsulta.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <div class="formularioConsulta">
         <h3 class="title-5 m-b-35">Solicitud</h3>
         <form method="post" action="Solicitud">
             <label for="solId">Id de la solicitud</label>
@@ -76,5 +78,6 @@
                 }
             %>
         </table>
+        </div>
     </body>
 </html>

@@ -38,6 +38,8 @@
 
         <!-- Main CSS-->
         <link href="Estilos/css/theme.css" rel="stylesheet" media="all">
+        
+        <link href="Estilos/formularioConsulta.css" rel="stylesheet" type="text/css"/>
     </head>
     <%
         response.setHeader("Pragma", "No-cache");
@@ -119,23 +121,13 @@
 
             </ul>
 
-            <li class="dropdown">
-                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Bienvenido <%=persona%></a>
-                <ul class="dropdown-menu">
-                    <a> <%=documento%> </a>
-                    <li><a class="dropdown-item">
-                            <form method="post" action="Sesiones">
-                                <input type="submit" value="Cerra Sesion">
-                            </form>
-                        </a></li>
-                </ul>
-            </li>
 
 
         </nav>
-        <form method="post" action="Sesiones">
-            <input class="btn btn-danger cerrarSesion" type="submit" value="Cerrar Sesión" style="margin-left: 88%; margin-top: 0.7%;">
-        </form>
+                    <section class="botonCerrar">
+        <form method="post" action="Sesiones" class="botonCerrar">
+            <input class="btn btn-danger cerrarSesion" type="submit" value="Cerrar Sesión" style="margin-left: 86%; margin-top: 2%;">
+        </form></section>
         <script>
             function confirmar() {
                 var respuesta = confirm("¿Desea eliminar el registro");
