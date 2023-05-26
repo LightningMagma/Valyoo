@@ -126,7 +126,7 @@
         </nav>
                     <section class="botonCerrar">
         <form method="post" action="Sesiones" class="botonCerrar">
-            <input class="btn btn-danger cerrarSesion" type="submit" value="Cerrar Sesión" style="margin-left: 86%; margin-top: 2%;">
+            <input class="btn btn-danger cerrarSesion" type="submit" value="Cerrar Sesión" style="margin-left: 73%; margin-top: 2%;">
         </form></section>
         <script>
             function confirmar() {
