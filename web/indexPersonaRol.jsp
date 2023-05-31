@@ -6,9 +6,9 @@
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="ModeloDAO.PerRolDAO"%>
-<%@page import="ModeloVO.PerRolVO"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="Sesiones.jsp" %>
+<%@include file="Sesiones.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,8 +47,7 @@
                     <th>Rol</th>  
                     <th>Acciones</th>
                 </tr>
-                <%
-                    PerRolVO prVO = new PerRolVO();
+                <%   
                     PerRolDAO prDAO = new PerRolDAO();
                     ArrayList<PerRolVO> listaPersonaRol = prDAO.listar();
                     for (int i = 0; i < listaPersonaRol.size(); i++) {

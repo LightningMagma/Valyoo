@@ -18,12 +18,12 @@
     </head>
     <body>
         <%
-            File reporte = new File(application.getRealPath("report1.jasper"));
+            File reporte = new File(application.getRealPath("factura.jasper"));
             Map<String,Object> parametros = new HashMap<String,Object>();
             ConexionDB conexion =new ConexionDB();
             Connection conexionDB = conexion.obtenerConexion();
             
-            byte[] bytes = JasperRunManager.runReportToPdf(reporte.getPath(),parametros,conexionDB);
+            byte[] bytes = JasperRunManager.runReportToPdf(reporte.getPath(), parametros,conexionDB);
             response.setContentType("application/pdf");
             response.setContentLength(bytes.length);
             response.setHeader("Content-Disposition","attachment; filename=\"reporte.pdf\";");
