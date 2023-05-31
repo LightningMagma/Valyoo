@@ -138,7 +138,13 @@ public class DocumentosDAO extends ConexionDB implements crud {
         ArrayList<DocumentosVO> docuLista = new ArrayList<>();
         try {
             conexion = this.obtenerConexion();
-            sql = "select * from tbldocumento;";
+            sql = "SELECT\n"
+                    + "     tbldocumento.`DocID` AS tbldocumento_DocID,\n"
+                    + "     tbldocumento.`DocNombre` AS tbldocumento_DocNombre,\n"
+                    + "     tbldocumento.`DocURL` AS tbldocumento_DocURL,\n"
+                    + "     concat(PerNombre,' ',PerApellido) AS tblpersona_PerNombre\n"
+                    + "FROM\n"
+                    + "     `tblpersona` tblpersona INNER JOIN `tbldocumento` tbldocumento ON tblpersona.`PerDocumento` = tbldocumento.`DocPersona`";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
 

@@ -91,7 +91,7 @@ public class PerRolDAO extends ConexionDB implements crud {
     public boolean eliminarRegistro() {
         try {
             sql = "delete from personarol where PRID=?;";
-            puente = conexion.prepareStatement(sql);            
+            puente = conexion.prepareStatement(sql);
             puente.setString(1, PRID);
             puente.executeUpdate();
             operacion = true;
@@ -106,6 +106,7 @@ public class PerRolDAO extends ConexionDB implements crud {
         }
         return operacion;
     }
+
     public PerRolVO consultarPorID(String documento) {
         PerRolVO prVO = null;
 
@@ -135,7 +136,13 @@ public class PerRolDAO extends ConexionDB implements crud {
         ArrayList<PerRolVO> personarolLista = new ArrayList<>();
         try {
             conexion = this.obtenerConexion();
-            sql = "select * from personarol;";
+            sql = "SELECT\n"
+                    + "     personarol.`PRID` AS personarol_PRID,\n"
+                    + "     concat(PerNombre,' ',PerApellido) AS nombreUsuario,\n"
+                    + "     tblrol.`rolNombre` AS nombreRol\n"
+                    + "FROM\n"
+                    + "     `tblpersona` tblpersona INNER JOIN `personarol` personarol ON tblpersona.`PerDocumento` = personarol.`PRPersona`\n"
+                    + "     INNER JOIN `tblrol` tblrol ON personarol.`PRRol` = tblrol.`rolID`";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
 
@@ -157,22 +164,22 @@ public class PerRolDAO extends ConexionDB implements crud {
         }
         return personarolLista;
     }
-    public ArrayList<PerRolVO> listarPerRol(String idPersona){
+
+    public ArrayList<PerRolVO> listarPerRol(String idPersona) {
         ArrayList<PerRolVO> listaPerRol = new ArrayList<>();
         try {
-            conexion=this.obtenerConexion();
-            sql="select * from personarol where PRPersona=?;";
-            puente= conexion.prepareStatement(sql);                     
-            puente.setString(1,idPersona);
-            mensajero=puente.executeQuery();            
-            while (mensajero.next()) {                
-                PerRolVO prVO = new PerRolVO(mensajero.getString(1),mensajero.getString(2),mensajero.getString(3));
+            conexion = this.obtenerConexion();
+            sql = "select * from personarol where PRPersona=?;";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, idPersona);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                PerRolVO prVO = new PerRolVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3));
                 listaPerRol.add(prVO);
-            }            
+            }
         } catch (Exception e) {
             Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-        finally {
+        } finally {
             try {
                 this.cerrarConexion();
             } catch (SQLException ex) {
@@ -180,7 +187,7 @@ public class PerRolDAO extends ConexionDB implements crud {
             }
         }
         return listaPerRol;
-        
+
     }
 
 }

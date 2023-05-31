@@ -47,19 +47,20 @@
                     <th>Rol</th>  
                     <th>Acciones</th>
                 </tr>
-                <%   
-                    PerRolDAO prDAO = new PerRolDAO();
-                    ArrayList<PerRolVO> listaPersonaRol = prDAO.listar();
-                    for (int i = 0; i < listaPersonaRol.size(); i++) {
-                        prVO = listaPersonaRol.get(i);
+                <%  
+                    PerRolVO perRolVO = new PerRolVO();
+                    PerRolDAO perRolDAO = new PerRolDAO();
+                    ArrayList<PerRolVO> listarPersonaRol = perRolDAO.listar();
+                    for (int i = 0; i < listarPersonaRol.size(); i++) {
+                        perRolVO = listarPersonaRol.get(i);
                 %>
                 <tr class="tr-shadow">
-                    <td><%=prVO.getPRID()%></td>
-                    <td><%=prVO.getPRPersona()%></td>
-                    <td><%=prVO.getPRRol()%></td>  
+                    <td><%=perRolVO.getPRID()%></td>
+                    <td><%=perRolVO.getPRPersona()%></td>
+                    <td><%=perRolVO.getPRRol()%></td>  
                     <td>
                         <form method="post" action="PersonaRol">
-                            <input type="hidden" name="PRID" value="<%=prVO.getPRID()%>">
+                            <input type="hidden" name="PRID" value="<%=perRolVO.getPRID()%>">
                             <button class="btn btn-warning" name="opcion" value="3" >Editar</button>
                             <button class="btn btn-danger" name="opcion" value="4" onclick="return confirmar()">Eliminar</button>
                         </form>
