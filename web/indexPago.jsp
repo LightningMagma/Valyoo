@@ -31,8 +31,11 @@
                     <a href="registrarPago.jsp">
                         <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                             <i class="zmdi zmdi-plus"></i>Agregar pago</button>
-                    </a>
+                    </a>                    
                 </div>
+                <form method="post" action="Generador_Reporte.jsp" target="_blank">
+                    <input type="submit"  class="btn btn-primary btn-lg" value="Generar reporte de pagos">
+                </form>
             </div>         
             <%            if (request.getAttribute("MensajeError") != null) { %>
             ${MensajeError}
@@ -71,7 +74,7 @@
                     </td>
                 </tr>
                 <% }%>
-            </table>
+            </table>            
         </div>
     </body>
 </html>
