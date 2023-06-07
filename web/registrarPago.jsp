@@ -19,7 +19,7 @@
         <h2>Registrar Pago</h2>
         <form method="post" action="Pago">
             <label>Descripción: </label>
-            <input type="text" name="PagDesc" maxlength="30" placeholder="Ingresé la descripción del pago" pattern="^[A-Za-z ]{10,30}$" title="Debe la descipcion del pago" required>
+            <input type="text" name="PagDesc" maxlength="30" placeholder="Ingresé la descripción del pago" pattern="^[A-Za-z1-9]{10,30}$" title="Debe la descipcion del pago" required>
             <label>Valor: </label>
             <input type="text" name="PagValor" maxlength="10" placeholder="Ingresé la cantidad a pagar" pattern="^[0-9]{5,10}$" title="Debe ingresar un monto adecuado" required>
             <label>Préstamo: </label>
@@ -36,7 +36,7 @@
             <input type="hidden" name="opcion" value="1">            
         </form>
         <%
-                if (request.getAttribute("MensajeError") != null) { %>
+            if (request.getAttribute("MensajeError") != null) { %>
         ${MensajeError}
         <%  } else { %>
         ${MensajeExito}

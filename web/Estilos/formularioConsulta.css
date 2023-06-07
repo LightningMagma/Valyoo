@@ -9,13 +9,14 @@ and open the template in the editor.
 */
 
 .formularioConsulta {
-    padding: 0% 8%;
+    padding: 0% 10%;
 }
 .botonCerrar {
     background: none;
     box-shadow: none;
-    margin-left: 25%; 
-    margin-top: 2%;
+    margin-left: 21%; 
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 .btn btn-danger cerrarSesion {
     background-color: red;
@@ -27,4 +28,28 @@ and open the template in the editor.
     font-size: 16px;	  
 }
 
+.buscador-consulta {
+    justify-content: center;
+}
+
+.cuadro-busqueda {
+    margin: 20px 0px 20px;
+    height: 40px;
+}
+
+.nav-a{
+    color: white;
+}
+
+.nav-a:hover {
+    color: white;
+}
+
+.nav-ul {
+    margin: 13px 0px 13px;
+}
+
+.nav-h3{
+    padding: 0% 0% 0% 10%;
+}
 

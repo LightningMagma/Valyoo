@@ -1,4 +1,4 @@
-<%-- 
+    <%-- 
     Document   : consultarCuenta
     Created on : 21/03/2023, 09:57:26 PM
     Author     : jpgar
@@ -23,9 +23,9 @@
             <form method="post" action="Cuenta">
                 <table class="table">
                     <tr>
-                        <th>
+                        <th class="buscador-consulta">
                             <label>Codigo: </label>
-                            <input type="text" name="CuNumero">
+                            <input class="cuadro-busqueda" type="text" name="CuNumero">
                             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
                             <input type="hidden" name="opcion" value="4">
                         </th>

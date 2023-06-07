@@ -55,6 +55,12 @@ public class PagoDAO extends ConexionDB implements crud {
             puente.setString(2, PagValor);
             puente.setString(3, PagPres);
             puente.executeUpdate();
+            
+            sql = "update tblprestamo set PreMonto = PreMonto - ? where PreID =?;";
+            puente = puerta.prepareStatement(sql);
+            puente.setString(1, PagValor);
+            puente.setString(2, PagPres);
+            puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {
             Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, e);
