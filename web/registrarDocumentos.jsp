@@ -17,9 +17,11 @@
         <h2>Registro de documento</h2>
         <form method="post" action="Documentos">
             <label for="docNombre">Nombre:</label>
-            <input type="text" name="docNombre" required maxlength=30 placeholder="Ingrese el nombre del documento" pattern="^[A-Za-z]{10,30}$" title="Debe la descipcion del documento" required >
+            <input type="text" name="docNombre" required maxlength=30 placeholder="Ingrese el nombre del documento" pattern="^[A-Za-z]{6,30}$" title="Debe la descipcion del documento" required >
             <label for="docUrl">URL:</label>
-            <input type="text" name="docUrl" required maxlength=100 placeholder="Ingrese la URL del documento" pattern="^[A-Za-z0-9]{10,100}$" title="Debe la descipcion del pago" required>
+            <!--<input type="file" name="docUrl" id="docUrl" required style="display: none;">
+            <button> <label for="docUrl">Selecciona un archivo</label> </button>-->
+            <input type="text" name="docUrl" required placeholder="Ingrese la URL del documento" title="Debe la descipcion del pago">
             <label for="docPer">Persona:</label>
             <input type="text" name="docPer" required maxlength=15 placeholder="Ingrese la persona">
             <input type="submit" value="Registrar">

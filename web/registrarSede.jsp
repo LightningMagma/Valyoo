@@ -17,7 +17,7 @@
         <h2>Registro de sede</h2>
         <form method="post" action="Sede">
             <label for="sedeNombre">Nombre:</label>
-            <input type="text" name="sedeNombre" required maxlength=30 placeholder="Ingrese el nombre" pattern="[a-z]{7,30}$" title="Debe un nombre valido" required>
+            <input type="text" name="sedeNombre" required maxlength=30 placeholder="Ingrese el nombre" pattern="[a-zA-Z ]{7,30}$" title="Debe un nombre valido" required>
             <label for="sedeDireccion">Dirección:</label>
             <input type="text" name="sedeDireccion" maxlength=50 placeholder="Ingrese la dirección" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required>
             <label for="sedeTelefono">Telefono:</label>

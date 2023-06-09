@@ -53,7 +53,6 @@
                     <th>URL</th>
                     <th>Persona</th>
                     <th>Acciones</th>
-                    <tr class="spacer"></tr>
                 </tr>
                 <%
                     DocumentosVO docVO = new DocumentosVO();
