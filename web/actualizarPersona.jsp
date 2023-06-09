@@ -35,12 +35,13 @@
                 <div class="contenedor">
                     <div class="formulario">
 
-                        <h2>Registro de persona</h2>
                         <form action="Persona" method="post">
-                            <img src="Estilos/tituloValyooConSlogan.png" alt="" width="70%"/>
+                            <img src="Estilos/tituloValyooConSlogan.png" alt="" width="70%" style="padding-bottom:7%"/>
+                            <label for="perDocumento">Numero de documento:</label>
                             <div class="input">
-                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}*$" title="Debe ingresar un número de documento" required placeholder="<%=perVO.getPerDocumento()%>">
+                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}*$" title="Debe ingresar un número de documento" required placeholder="<%=perVO.getPerDocumento()%>" disabled>
                             </div>
+                            <label for="perTipoDocumento">Tipo de documento:</label>
                             <div class="input">
                                 <select name="perTipoDocumento">
                                     <option>Tipo de documento...</option>
@@ -49,29 +50,35 @@
                                     <option value="Pasaporte">Pasaporte</option>
                                 </select>
                             </div>
+                            <label for="perNombre">Nombres:</label>
                             <div class="input">
-                                <input type="text" name="perNombre" pattern="^[A-Za-z]{3,30}*$" title="Debe ingresar un nombre" required placeholder="<%=perVO.getPerNombre()%>">
+                                <input type="text" name="perNombre" pattern="^[A-Za-z]{3,30}*$" title="Debe ingresar un nombre" required value="<%=perVO.getPerNombre()%>">
+                            </div>
+                            <label for="perApellido">Apellidos:</label>
+                            <div class="input">
+                                <input type="text" name="perApellido" pattern="^[A-Za-z]{3,30}*$" title="Debe ingresar un apellido" required value="<%=perVO.getPerApellido()%>">
+                            </div>
+                            <label for="perTelefono">Télefono:</label>
+                            <div class="input">
+                                <input type="text" name="perTelefono" pattern="^[0-9]{7,15}*$" title="Debe ingresar un número telefónico" required value="<%=perVO.getPerTelefono()%>">
+                            </div>
+                            <label for="perDireccion">Dirección:</label>                            
+                            <div class="input">
+                                <input type="text" name="perDirección" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required value="<%=perVO.getPerDireccion()%>">
+                            </div>
+                            <label for="perClave">Clave:</label>
+                            <div class="input">
+                                <input type="password" name="perClave" pattern="^[0-9]{2,10}*$" required value="<%=perVO.getPerDocumento()%>">
                             </div>
                             <div class="input">
-                                <input type="text" name="perApellido" pattern="^[A-Za-z]{3,30}*$" title="Debe ingresar un apellido" required placeholder="<%=perVO.getPerApellido()%>">
-                            </div>
-                            <div class="input">
-                                <input type="text" name="perTelefono" pattern="^[0-9]{7,15}*$" title="Debe ingresar un número telefónico" required placeholder="<%=perVO.getPerTelefono()%>">
-                            </div>
-                            <div class="input">
-                                <input type="text" name="perDirección" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required placeholder="<%=perVO.getPerDireccion()%>">
-                            </div>
-                            <div class="input">
-                                <input type="password" name="perClave" pattern="^[0-9]{2,10}*$" required placeholder="<%=perVO.getPerDocumento()%>">
-                            </div>
-                            <div class="input">
-                                <input type="submit" value="Actualizar">
+                                <input type="submit"  class="btn btn-success" value="Actualizar">
+                                <a href="indexPersona.jsp">
+                                    <button class="btn btn-primary" type="button">Volver</button>
+                                </a>
                                 <input name="opcion" type="hidden" value="2">
                             </div>
                         </form>
-                        <a href="indexPersona.jsp">
-                            <button class="btn btn-primary">Volver</button>
-                        </a>
+
                     </div>
                 </div>
             </div>

@@ -24,7 +24,7 @@
                     <tr>
                         <th>
                             Documento
-                            <input type="text" name="perDocumento" id="myInput" onkeyup="myFunction()">
+                            <input type="text" name="perDocumento" id="myInput" onkeyup="myFunction()" placeholder="Ingrese número de documento">
                             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
                             <input type="hidden" name="opcion" value="3">  
                         </th>
@@ -32,12 +32,16 @@
                 </table>
 
             </form>
-            <%            if (request.getAttribute("mensajeError") != null) {%>
-            <h1 class="title-5 m-b-35">${mensajeError}</h1>
-            <% } else {%>
-            <h1 class="title-5 m-b-35">${mensajeExito}</h1>
-            <% }
-            %>
+            <%            if (request.getAttribute("MensajeError") != null) { %>
+            <div class="alert alert-danger" role="alert">
+                ${MensajeError}
+            </div>            
+            <%  } else { %>
+            <div class="alert alert-success" role="alert">
+                ${MensajeExito}
+            </div>            
+            <%  }
+            %> 
             <div class="table-data__tool">
                 <div class="table-data__tool-right">
                     <a href="registrarPersona.jsp">
@@ -46,10 +50,9 @@
                     </a>
                 </div>
             </div>
-            <table class="table table-data2" id="myTable">
-                <thead>
-                    <tr>
-                        <th>Documento</th>
+            <table class="table table-data2" id="myTable"><br>              
+                    <tr >
+                        <th >Documento</th>
                         <th>Tipo de documento</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
@@ -58,9 +61,10 @@
                         <th>Dirección</th>
                         <th>Sede</th>
                         <th>Estado</th>
-                    </tr>
+                        <th></th>
                     <tr class="spacer"></tr>
-                </thead>
+                    </tr>                    
+               
                 <%
                     PersonaVO perVO = new PersonaVO();
                     PersonaDAO perDAO = new PersonaDAO();
@@ -68,8 +72,8 @@
                     for (int i = 0; i < personaLista.size(); i++) {
                         perVO = personaLista.get(i);
                 %>
-                <tbody>
-                    <tr class="tr-shadow">
+                
+                    <tr class="tr-shadow" >
                         <td> <%=perVO.getPerDocumento()%> </td>
                         <td> <%=perVO.getPerTipoDocumento()%> </td>
                         <td> <%=perVO.getPerNombre()%> </td>
@@ -86,9 +90,8 @@
                                 <button class="btn btn-danger" name="opcion" value="5" onclick="return confirmar()">Cambiar Estado</button>
                             </form>
                         </td>
-                    </tr>
-                    <tr class="spacer"></tr>                    
-                </tbody>
+                    </tr>                                 
+               
                 <% }%>
             </table>
 

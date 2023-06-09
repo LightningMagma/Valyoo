@@ -22,8 +22,8 @@
             <h3 class="title-5 m-b-35">Persona rol</h3>
             <form method="post" action="PersonaRol">
                 <label>Codigo: </label>
-                <input type="text" name="PRID">
-                <input type="submit" value="Consultar" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <input type="text" name="PRID" placeholder="Ingrese el ID de registro" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                <input type="submit" value="Consultar" class="au-btn au-btn-icon au-btn--green au-btn--small" >
                 <input type="hidden" name="opcion" value="3">
             </form>
             <div class="table-data__tool">
@@ -35,9 +35,13 @@
                 </div>
             </div>            
             <%            if (request.getAttribute("MensajeError") != null) { %>
-            ${MensajeError}
+            <div class="alert alert-danger" role="alert">
+                ${MensajeError}
+            </div>            
             <%  } else { %>
-            ${MensajeExito}
+            <div class="alert alert-success" role="alert">
+                ${MensajeExito}
+            </div>            
             <%  }
             %>        
             <table class="table table-data2"><br>
@@ -45,7 +49,7 @@
                     <th>Codigo</th>
                     <th>Persona</th>
                     <th>Rol</th>  
-                    <th>Acciones</th>
+                    <th></th>
                 </tr>
                 <%  
                     PerRolVO perRolVO = new PerRolVO();

@@ -19,9 +19,9 @@
         <h2>Registrar Pago</h2>
         <form method="post" action="Pago">
             <label>Descripción: </label>
-            <input type="text" name="PagDesc" maxlength="30" placeholder="Ingresé la descripción del pago" pattern="^[A-Za-z1-9]{10,30}$" title="Debe la descipcion del pago" required>
+            <input type="text" name="PagDesc" maxlength="30" placeholder="Ingresé la descripción del pago" pattern="^[A-Za-z1-9 ]{10,30}$" title="Debe la descipcion del pago" required oninput="this.value = this.value.replace(/^([a-zA-Z0-9 ])@([\da-z\.-]+)\.([a-z\.]/g, '').replace(/(\..*)\./g, '$1')"> 
             <label>Valor: </label>
-            <input type="text" name="PagValor" maxlength="10" placeholder="Ingresé la cantidad a pagar" pattern="^[0-9]{5,10}$" title="Debe ingresar un monto adecuado" required>
+            <input type="text" name="PagValor" maxlength="10" placeholder="Ingresé la cantidad a pagar" pattern="^[0-9]{5,10}$" title="Debe ingresar un monto adecuado" required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Préstamo: </label>
             <select name="PagPrestamo">
                 <option>Seleccione...</option>
@@ -31,8 +31,11 @@
                 <option value="<%=presVO.getPreId()%>"><%=presVO.getPreId()%></option>
                 <% } %>
             </select>
-            <input type="submit" value="Registrar pago">
-            <input type="reset" value="Borrar">
+            <input type="submit" class="btn btn-success" value="Registrar pago">
+            <input type="reset" class="btn btn-danger" value="Borrar">
+            <a href="indexPago.jsp">
+                <button class="btn btn-primary" type="button">Volver</button>
+            </a>
             <input type="hidden" name="opcion" value="1">            
         </form>
         <%
@@ -42,8 +45,6 @@
         ${MensajeExito}
         <%  }
         %>
-        <a href="indexPago.jsp">
-            <button class="btn btn-primary">Volver</button>
-        </a>
+
     </body>
 </html>

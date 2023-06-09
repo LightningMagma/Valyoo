@@ -23,8 +23,7 @@
             <label>Persona:</label>
             <select name="prPersona">
                 <option>Seleccione...</option>
-                <%
-                    PersonaDAO perDAO = new PersonaDAO();
+                <%                    PersonaDAO perDAO = new PersonaDAO();
                     for (PersonaVO perVO : perDAO.listar()) {
                 %>
                 <option value="<%=perVO.getPerDocumento()%>"><%=perVO.getPerDocumento()%></option>
@@ -40,19 +39,21 @@
                 <option value="<%=rolVO.getRolId()%>"><%=rolVO.getRolNombre()%></option>
                 <% } %>
             </select>
-            <input type="submit" value="Asignar rol">
-            <input type="reset" value="Borrar">
+            <input type="submit" class="btn btn-success" value="Asignar rol">
+            <input type="reset" class="btn btn-danger" value="Borrar">
+            <a href="indexPersonaRol.jsp">
+                <button class="btn btn-primary" type="button">Volver</button>
+            </a>
+
             <input type="hidden" name="opcion" value="1">            
         </form>
-            <%
+        <%
                 if (request.getAttribute("MensajeError") != null) { %>
-            ${MensajeError}
-            <%  } else { %>
-            ${MensajeExito}
-            <%  }
-            %>
-            <a href="indexPersonaRol.jsp">
-                <button class="btn btn-primary">Volver</button>
-            </a>
+        ${MensajeError}
+        <%  } else { %>
+        ${MensajeExito}
+        <%  }
+        %>
+
     </body>
 </html>

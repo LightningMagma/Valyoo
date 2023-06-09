@@ -33,7 +33,7 @@
                             <img src="Estilos/tituloValyooConSlogan.png" alt="" width="70%"/>
                             <div class="input">
                                 <input type="text" name="perDocumento" pattern="^[0-9]{7,10}" maxlength="10" minlength="3" title="Debe ingresar un número de documento" required placeholder="Número de documento" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
-                            </div>
+                            </div>                            
                             <div class="input">
                                 <select name="perTipoDocumento">
                                     <option>Tipo de documento...</option>
@@ -41,7 +41,7 @@
                                     <option value="Cedula de Extranjeria">C.E</option>
                                     <option value="Pasaporte">Pasaporte</option>
                                 </select>
-                            </div>
+                            </div>                            
                             <div class="input">
                                 <input type="text" name="perNombre" pattern="[A-Za-z \s]+{3,30}" maxlength="30" title="Debe ingresar un nombre" required placeholder="Nombre" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
@@ -55,7 +55,7 @@
                                 <input type="text" name="perTelefono" pattern="^[0-9]{7,15}$" title="Debe ingresar un número telefónico" required placeholder="Teléfono" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="input">
-                                <input type="text" name="perDirección" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required placeholder="Dirección">
+                                <input type="text" name="perDirección" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required placeholder="Dirección" oninput="this.value = this.value.replace(/^([a-z0-9-]+)@([\da-z\.-]+)\.([a-z\.]/g, '').replace(/(\..*)\./g, '$1')">
                             </div>
                             <div class="input">
                                 <input type="password" name="perClave" pattern="^[A-Za-z0-9]{2,10}$" required placeholder="Ingrese la contraseña" >

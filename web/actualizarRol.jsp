@@ -27,7 +27,10 @@
             <input type="text" name="rolNombre" required maxlength=20 placeholder="Ingrese el nombre del rol" value="<%=rolVO.getRolNombre()%>">  
             <label for="rolEstado">Estado del rol</label>
             <input type="text" name="rolEstado" required maxlength=20 placeholder="Ingrese el nombre del rol" value="<%=rolVO.getRolEstado()%>">   
-            <input type="submit" value="Actualizar">           
+            <input type="submit" class="btn btn-success" value="Actualizar">    
+            <a href="indexRol.jsp">
+                <button class="btn btn-primary" type="button">Volver</button>
+            </a>
             <input type="hidden" name="opcion" value="2">
         </form>
             
@@ -40,8 +43,6 @@
             ${MensajeExito}
             <%}
             %>
-            <a href="indexRol.jsp">
-                <button class="btn btn-primary">Volver</button>
-            </a>
+            
     </body>
 </html>

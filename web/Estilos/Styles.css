@@ -72,16 +72,3 @@ input[type="date"] {
     background-color: #45a049;
 }
 
-input[type="reset"] {
-    background-color: #ff3333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 12px 20px;
-    font-size: 16px;
-}
-
-input[type="reset"]:hover {
-    background-color: #ff1111;
-}

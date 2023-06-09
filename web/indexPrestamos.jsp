@@ -22,7 +22,7 @@
         <h3 class="title-5 m-b-35">Prestamos</h3>
         <form method="post" action="Prestamo">
             <label>Codigo: </label>
-            <input type="text" name="PreId">
+            <input type="text" name="PreId" placeholder="Ingrese ID del prestamo" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
             <input type="hidden" name="opcion" value="4">
         </form>
@@ -35,11 +35,15 @@
             </div>
         </div>
         <%            if (request.getAttribute("MensajeError") != null) { %>
-        ${MensajeError}
-        <%  } else { %>
-        ${MensajeExito}
-        <%  }
-        %>
+            <div class="alert alert-danger" role="alert">
+                ${MensajeError}
+            </div>            
+            <%  } else { %>
+            <div class="alert alert-success" role="alert">
+                ${MensajeExito}
+            </div>            
+            <%  }
+            %> 
         <table class="table table-data2"><br>
             <tr>
                 <th>Codigo</th>
@@ -49,7 +53,7 @@
                 <th>Monto</th>
                 <th>Estado</th>
                 <th>Deudor</th>
-                <th>Acciones</th>
+                <th></th>
             </tr>
             <%
                 PrestamosVO presVO = new PrestamosVO();

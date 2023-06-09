@@ -15,22 +15,23 @@
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>Actualizar Pago</h1>
-        <%
-            PagoVO pagVO = (PagoVO) request.getAttribute("pagoEncontrado");
+        <h2>Actualizar Pago</h2>
+        <%            PagoVO pagVO = (PagoVO) request.getAttribute("pagoEncontrado");
             if (pagVO != null) {
         %>
         <form method="post" action="Pago">
-            <table>
-                <label>Descripcion: </label><br>
-                <input type="text" name="PagId" value="<%=pagVO.getPagId()%>">
-                <label>Descripcion: </label><br>
-                <input type="text" name="PagDesc" value="<%=pagVO.getPagDesc()%>">
-                <label>Valor: </label><br>
-                <input type="text" name="PagValor" value="<%=pagVO.getPagValor()%>">
-                <label>Prestamo abonado: </label><br>
-                <input type="text" name="PagPrestamo" value="<%=pagVO.getPagPres()%>">
-                <input type="submit" value="Actualizar">
+            <table>                
+                <input type="hidden" name="PagId" value="<%=pagVO.getPagId()%>">
+                <label>Descripcion: </label>
+                <input type="text" name="PagDesc" value="<%=pagVO.getPagDesc()%>" oninput="this.value = this.value.replace(/[^A-Za-z0-9 ]/g, '').replace(/(\..*)\./g, '$1')">
+                <label>Valor: </label>
+                <input type="text" name="PagValor" value="<%=pagVO.getPagValor()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                <label>Prestamo abonado: </label>
+                <input type="text" name="PagPrestamo" value="<%=pagVO.getPagPres()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                <input type="submit" class="btn btn-success" value="Actualizar">
+                <a href="indexPago.jsp">
+                    <button class="btn btn-primary" type="button">Volver</button>
+                </a>
                 <input type="hidden" name="opcion" value="2">
             </table>
         </form>
@@ -42,8 +43,6 @@
         ${MensajeExito}
         <%  }
         %>
-        <a href="indexPago.jsp">
-            <button class="btn btn-primary">Volver</button>
-        </a>
+
     </body>
 </html>

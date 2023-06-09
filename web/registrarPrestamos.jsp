@@ -23,23 +23,25 @@
             <label>Fecha fin: </label>
             <input type="date" name="PreFechaFin" maxlength="10" placeholder="0000-00-00">
             <label>Cuotas: </label>
-            <input type="text" name="PreCuotas" maxlength="2" placeholder="Ingrese las cuotas del pestamo" required pattern="[0-9]{1,2}" title="Debe ingresar una cantidad valida" >
+            <input type="text" name="PreCuotas" maxlength="2" placeholder="Ingrese las cuotas del pestamo" required pattern="[0-9]{1,2}" title="Debe ingresar una cantidad valida" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Monto: </label>
-            <input type="text" name="PreMonto" maxlength="10" placeholder="Ingresé el monto" required pattern="[0-9]{6,10}" title="Debe ingresar un monto adecuado" >
+            <input type="text" name="PreMonto" maxlength="10" placeholder="Ingresé el monto" required pattern="[0-9]{6,10}" title="Debe ingresar un monto adecuado"  oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Intereses: </label>
-            <input type="text" name="PreInteres" maxlength="2" placeholder="Ingresé los intereses">
+            <input type="text" name="PreInteres" maxlength="2" placeholder="Ingresé los intereses" required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Cuenta: </label>
             <select name="PreCuenta">
                 <option>Seleccione...</option>
-                <%
-                    CuentaDAO cuDAO = new CuentaDAO();
+                <%                    CuentaDAO cuDAO = new CuentaDAO();
                     for (CuentaVO cuVO : cuDAO.listarCuenta()) {
                 %>
                 <option value="<%=cuVO.getCuNumero()%>"><%=cuVO.getCuNumero()%></option>
                 <% } %>
             </select>
-            <input type="submit" value="Registrar prestamo">
-            <input type="reset" value="Borrar">
+            <input type="submit" class="btn btn-success" value="Registrar prestamo">
+            <input type="reset" class="btn btn-danger" value="Borrar">
+            <a href="indexPrestamos.jsp">
+                <button class="btn btn-primary" type="button">Volver</button>
+            </a>
             <input type="hidden" name="opcion" value="1">
             <%
                 if (request.getAttribute("MensajeError") != null) { %>
@@ -49,8 +51,6 @@
             <%  }
             %>
         </form>
-        <a href="indexPrestamos.jsp">
-            <button class="btn btn-primary">Volver</button>
-        </a>
+
     </body>
 </html>

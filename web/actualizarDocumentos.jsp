@@ -17,25 +17,26 @@
     </head>
     <body>
         <h2>Actualizar documentos</h2>
-        <%
-            DocumentosVO docVO = (DocumentosVO) request.getAttribute("documentoEncontrado");
+        <%            DocumentosVO docVO = (DocumentosVO) request.getAttribute("documentoEncontrado");
 
             if (docVO != null) {
         %>
         <form method="post" action="Documentos">
-            <label for="docId">ID:</label>
-            <input type="text" name="docId" required maxlength=30 value="<%=docVO.getDocId()%>">
+
+            <input type="hidden" name="docId" required maxlength=30 value="<%=docVO.getDocId()%>">
             <label for="docNombre">Nombre:</label>
-            <input type="text" name="docNombre" required maxlength=30 value="<%=docVO.getDocNombre()%>">
+            <input type="text" name="docNombre" required maxlength=30 value="<%=docVO.getDocNombre()%>" oninput="this.value = this.value.replace(/[^0-9A-Za-Z ]/g, '').replace(/(\..*)\./g, '$1')">
             <label for="docUrl">URL:</label>
             <input type="text" name="docUrl" required maxlength=100 value="<%=docVO.getDocUrl()%>">
             <label for="docPer">Persona:</label>
-            <input type="text" name="docPer" required maxlength=15 value="<%=docVO.getDocPer()%>">
-            <input class="actualizar" type="submit" value="Actualizar">
-            <input type="reset" value="Limpiar">
+            <input type="text" name="docPer" required maxlength=15 value="<%=docVO.getDocPer()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+            <input class="btn btn-success" type="submit" value="Actualizar">            
+            <a href="indexDocumentos.jsp">
+                <button class="btn btn-primary" type="button">Volver</button>
+            </a>
             <input type="hidden" name="opcion" value="2">
         </form>
-        
+
         <%}%>
         <%
             if (request.getAttribute("MensajeError") != null) {%>
@@ -44,8 +45,5 @@
         ${MensajeExito}
         <% }
         %>
-        <a href="indexDocumentos.jsp">
-            <button class="btn btn-primary">Volver</button>
-        </a>
     </body>
 </html>

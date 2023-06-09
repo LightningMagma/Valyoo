@@ -76,7 +76,7 @@ public class DocumentosDAO extends ConexionDB implements crud {
         try {
             sql = "update tbldocumento set DOCNOMBRE=?,DOCURL=?,DOCPERSONA=? WHERE DOCID=?";
             puente = conexion.prepareStatement(sql);
-            input = new FileInputStream(new File(docUrl));
+            //input = new FileInputStream(new File(docUrl));
             puente.setString(1, docNombre);
             //puente.setBinaryStream(2, input);
             puente.setString(2, docUrl);

@@ -1,7 +1,7 @@
-    <%-- 
-    Document   : consultarCuenta
-    Created on : 21/03/2023, 09:57:26 PM
-    Author     : jpgar
+<%-- 
+Document   : consultarCuenta
+Created on : 21/03/2023, 09:57:26 PM
+Author     : jpgar
 --%>
 
 <%@page import="java.util.ArrayList"%>
@@ -25,7 +25,7 @@
                     <tr>
                         <th class="buscador-consulta">
                             <label>Codigo: </label>
-                            <input class="cuadro-busqueda" type="text" name="CuNumero">
+                            <input class="cuadro-busqueda" type="text" name="CuNumero" placeholder="Ingrese numero de cuenta que desea" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
                             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
                             <input type="hidden" name="opcion" value="4">
                         </th>
@@ -42,9 +42,13 @@
             </div>            
 
             <%            if (request.getAttribute("MensajeError") != null) { %>
-            ${MensajeError}
+            <div class="alert alert-danger" role="alert">
+                ${MensajeError}
+            </div>            
             <%  } else { %>
-            ${MensajeExito}
+            <div class="alert alert-success" role="alert">
+                ${MensajeExito}
+            </div>            
             <%  }
             %>       
             <table class="table table-data2"><br>
@@ -53,8 +57,8 @@
                     <th>Fecha registro</th>
                     <th>Estado</th>
                     <th>Titular</th>
-                    <th>Acciones</th>
-                    <tr class="spacer"></tr>
+                    <th></th>
+                <tr class="spacer"></tr>
                 </tr>
                 <%
                     CuentaVO cuVO = new CuentaVO();
