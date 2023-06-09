@@ -18,8 +18,11 @@
         <form method="post" action="Rol">
             <label for="rolNombre">Nombre del rol:</label>
             <input type="text" name="rolNombre" maxlength=20 placeholder="Ingrese el nombre del rol" pattern="^[A-Za-z]{3,30}$" title="Debe ingresar un apellido" required>            
-            <input type="submit" value="Registrar">
-            <input type="reset" value="Limpiar">
+            <input type="submit" class="btn btn-success" value="Registrar">
+            <input type="reset" class="btn btn-danger" value="Limpiar">
+            <a href="indexRol.jsp">
+                <button class="btn btn-primary" type="button">Volver</button>
+            </a>
             <input type="hidden" name="opcion" value="1">
         </form>
         <%            if (request.getAttribute("mensajeError") != null) {%>
@@ -27,9 +30,6 @@
         <%} else {%>
         <h2>${mensajeExito}</h2>    
         <%}
-        %>
-        <a href="indexSede.jsp">
-            <button class="btn btn-primary">Volver</button>
-        </a>
+        %>        
     </body>
 </html>

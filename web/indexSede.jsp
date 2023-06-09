@@ -19,20 +19,20 @@
     </head>
     <body>  
         <div class="formularioConsulta">
-        <h3 class="title-5 m-b-35">Sedes</h3>
-        <form method="post" action="Sede">
-            <table class="table">
-                <tr>
-                    <th>
-                        ID
-                        <input type="text" name="sedeId" >
-                        <input type="submit" value="Consultar" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                    </th>
-                </tr>
-            </table>
-            <input type="hidden" name="opcion" value="3">            
-        </form>       
-        <div class="table-data__tool">
+            <h3 class="title-5 m-b-35">Sedes</h3>
+            <form method="post" action="Sede">
+                <table class="table">
+                    <tr>
+                        <th>
+                            ID
+                            <input type="text" name="sedeId" placeholder="Ingrese ID de sede" oninput="this.value = this.value.replace(/^([0-9]+)@([\da-z\.-]+)\.([a-z\.]/g, '').replace(/(\..*)\./g, '$1')" >
+                            <input type="submit" value="Consultar" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        </th>
+                    </tr>
+                </table>
+                <input type="hidden" name="opcion" value="3">            
+            </form>       
+            <div class="table-data__tool">
                 <div class="table-data__tool-right">
                     <a href="registrarSede.jsp">
                         <button class="au-btn au-btn-icon au-btn--green au-btn--small">
@@ -40,44 +40,47 @@
                     </a>
                 </div>
             </div>
-        <%            if (request.getAttribute("mensajeError") != null) {%>
-        ${mensajeError}
-        <% } else {%>
-        ${mensajeExito}
-        <% }
-        %>
-        <table class="table table-data2">
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Dirección</th>
-                <th>Teléfono</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </tr>
-            <%
-                SedeVO sedeVO = new SedeVO();
-                SedeDAO sedeDAO = new SedeDAO();
-                ArrayList<SedeVO> sedeLista = sedeDAO.listar();
-                for (int i = 0; i < sedeLista.size(); i++) {
-                    sedeVO = sedeLista.get(i);
-            %>
-            <tr class="tr-shadow">
-                <td> <%=sedeVO.getSedeId()%> </td>
-                <td> <%=sedeVO.getSedeNombre()%> </td>
-                <td> <%=sedeVO.getSedeDireccion()%> </td>
-                <td> <%=sedeVO.getSedeTelefono()%> </td>
-                <td> <%=sedeVO.getSedeEstado()%> </td>
-                <td>
-                    <form method="post" action="Sede">
-                        <input type="hidden" name="sedeId" value="<%=sedeVO.getSedeId()%>">
-                        <button class="btn btn-warning" name="opcion" value="3" >Editar</button>
-                        <button class="btn btn-danger" name="opcion" value="4" onclick="return confirmar()">Cambiar Estado</button>
-                    </form>
-                </td>
-            </tr>
-            <%}%>
-        </table>
+            <%if (request.getAttribute("MensajeError") != null) { %>
+            <div class="alert alert-danger" role="alert">
+                ${MensajeError}
+            </div>            
+            <%  } else { %>
+            <div class="alert alert-success" role="alert">
+                ${MensajeExito}
+            </div>            
+            <%}%> 
+            <table class="table table-data2">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+                <%
+                    SedeVO sedeVO = new SedeVO();
+                    SedeDAO sedeDAO = new SedeDAO();
+                    ArrayList<SedeVO> sedeLista = sedeDAO.listar();
+                    for (int i = 0; i < sedeLista.size(); i++) {
+                        sedeVO = sedeLista.get(i);
+                %>
+                <tr class="tr-shadow">
+                    <td> <%=sedeVO.getSedeId()%> </td>
+                    <td> <%=sedeVO.getSedeNombre()%> </td>
+                    <td> <%=sedeVO.getSedeDireccion()%> </td>
+                    <td> <%=sedeVO.getSedeTelefono()%> </td>
+                    <td> <%=sedeVO.getSedeEstado()%> </td>
+                    <td>
+                        <form method="post" action="Sede">
+                            <input type="hidden" name="sedeId" value="<%=sedeVO.getSedeId()%>">
+                            <button class="btn btn-warning" name="opcion" value="3" >Editar</button>
+                            <button class="btn btn-danger" name="opcion" value="4" onclick="return confirmar()">Cambiar Estado</button>
+                        </form>
+                    </td>
+                </tr>
+                <%}%>
+            </table>
 
         </div>
     </body>

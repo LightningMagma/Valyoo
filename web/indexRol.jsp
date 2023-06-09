@@ -19,14 +19,14 @@
     </head>
     <body>
         <div class="formularioConsulta">
-        <h3 class="title-5 m-b-35">Roles</h3>
-        <form method="post" action="Rol">
-            <label for="RolId">Rol</label>
-            <input type="text" name="rolId" placeholder="Ingrese ID rol">
-            <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">               
-            <input type="hidden" name="opcion" value="4">
-        </form>       
-        <div class="table-data__tool">
+            <h3 class="title-5 m-b-35">Roles</h3>
+            <form method="post" action="Rol">
+                <label for="RolId">Rol</label>
+                <input type="text" name="rolId" placeholder="Ingrese ID rol" oninput="this.value = this.value.replace(/^([0-9]+)@([\da-z\.-]+)\.([a-z\.]/g, '').replace(/(\..*)\./g, '$1')">
+                <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">               
+                <input type="hidden" name="opcion" value="4">
+            </form>       
+            <div class="table-data__tool">
                 <div class="table-data__tool-right">
                     <a href="registrarRol.jsp">
                         <button class="au-btn au-btn-icon au-btn--green au-btn--small">
@@ -34,43 +34,46 @@
                     </a>
                 </div>
             </div>
-        <%            if (request.getAttribute("mensajeError") != null) {%>
-        ${mensajeError}
+            <%if (request.getAttribute("MensajeError") != null) { %>
+            <div class="alert alert-danger" role="alert">
+                ${MensajeError}
+            </div>            
+            <%  } else { %>
+            <div class="alert alert-success" role="alert">
+                ${MensajeExito}
+            </div>            
+            <%}%> 
+            <table class="table table-data2">
+                <tr>
+                    <th>ID Rol</th>
+                    <th>Nombre de rol</th>
+                    <th>Estado del rol</th>     
+                    <th></th>
+                </tr>
+                <%
+                    RolVO rolVO = new RolVO();
+                    RolDAO rolDAO = new RolDAO();
+                    ArrayList<RolVO> listaRol = rolDAO.listarRol();
+                    for (int i = 0; i < listaRol.size(); i++) {
+                        rolVO = listaRol.get(i);
 
-        <%} else {%>
-        ${mensajeExito}
-        <%}%>
-        <table class="table table-data2">
-            <tr>
-                <th>ID Rol</th>
-                <th>Nombre de rol</th>
-                <th>Estado del rol</th>     
-                <th>Acciones</th>
-            </tr>
-            <%
-                RolVO rolVO = new RolVO();
-                RolDAO rolDAO = new RolDAO();
-                ArrayList<RolVO> listaRol = rolDAO.listarRol();
-                for (int i = 0; i < listaRol.size(); i++) {
-                    rolVO = listaRol.get(i);
-
-            %>
-            <tr class="tr-shadow">
-                <td><%=rolVO.getRolId()%> </td>
-                <td><%=rolVO.getRolNombre()%> </td>
-                <td><%=rolVO.getRolEstado()%> </td>   
-                <td>
-                    <form method="post" action="Rol">
-                        <input type="hidden" name="rolId" value="<%=rolVO.getRolId()%>">
-                        <button class="btn btn-warning" name="opcion" value="4" >Editar</button>
-                        <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmar()">Cambiar Estado</button>
-                    </form>
-                </td>
-            </tr>
-            <%
-                }
-            %>
-        </table>
+                %>
+                <tr class="tr-shadow">
+                    <td><%=rolVO.getRolId()%> </td>
+                    <td><%=rolVO.getRolNombre()%> </td>
+                    <td><%=rolVO.getRolEstado()%> </td>   
+                    <td>
+                        <form method="post" action="Rol">
+                            <input type="hidden" name="rolId" value="<%=rolVO.getRolId()%>">
+                            <button class="btn btn-warning" name="opcion" value="4" >Editar</button>
+                            <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmar()">Cambiar Estado</button>
+                        </form>
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
+            </table>
         </div>
     </body>
 </html>

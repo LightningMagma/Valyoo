@@ -20,13 +20,12 @@
            RolVO rolVO = (RolVO)request.getAttribute("rolEncontrado");
            if(rolVO!=null){
         %>
-        <form method="post" action="Rol">
-            <label for="rolNombre">ID rol</label>
-            <input type="text" name="rolId" required maxlength=20 placeholder="Ingrese el nombre del rol" value="<%=rolVO.getRolId()%>">           
-            <label for="rolNombre">Nombre del rol:</label>
+        <form method="post" action="Rol">            
+            <input type="hidden" name="rolId" required maxlength=20 placeholder="Ingrese id del rol" value="<%=rolVO.getRolId()%>">           
+            <label for="rolNombre">Nombre del rol</label>
             <input type="text" name="rolNombre" required maxlength=20 placeholder="Ingrese el nombre del rol" value="<%=rolVO.getRolNombre()%>">  
             <label for="rolEstado">Estado del rol</label>
-            <input type="text" name="rolEstado" required maxlength=20 placeholder="Ingrese el nombre del rol" value="<%=rolVO.getRolEstado()%>">   
+            <input type="text" name="rolEstado" required maxlength=20 placeholder="Ingrese estado del rol" value="<%=rolVO.getRolEstado()%>">   
             <input type="submit" class="btn btn-success" value="Actualizar">    
             <a href="indexRol.jsp">
                 <button class="btn btn-primary" type="button">Volver</button>

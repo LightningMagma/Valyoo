@@ -16,14 +16,12 @@
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-         <h2>Actualizar solicitud</h2>
-        <% 
-           SolicitudVO solVO = (SolicitudVO)request.getAttribute("solicitudEncontrada");
-           if(solVO!=null){
+        <h2>Actualizar solicitud</h2>
+        <%            SolicitudVO solVO = (SolicitudVO) request.getAttribute("solicitudEncontrada");
+            if (solVO != null) {
         %>
-        <form method="post" action="Solicitud">
-            <label for="solID">ID solicitud:</label>
-            <input type="text" name="solId" required maxlength=20 value="<%=solVO.getSolId()%>">           
+        <form method="post" action="Solicitud">            
+            <input type="hidden" name="solId" required maxlength=20 value="<%=solVO.getSolId()%>">           
             <label for="solMonto">Monto:</label>
             <input type="text" name="solMonto" required value="<%=solVO.getSolMonto()%>">  
             <label for="solCuotas">Cuotas:</label>
@@ -32,24 +30,22 @@
             <input type="text" name="solPersona" required value="<%=solVO.getSolPersona()%>"> 
             <label for="solEstado">Estado solicitud:</label>
             <input type="text" name="solEstado" required value="<%=solVO.getSolEstado()%>"> 
-            
-            <input type="submit" value="Actualizar">           
+
+            <input type="submit" class="btn btn-success" value="Actualizar"> 
+            <a href="indexSolicitud.jsp">
+                <button class="btn btn-primary" type="button">Volver</button>
+            </a>
             <input type="hidden" name="opcion" value="2">
         </form>
-            
-             <%
-                }%>
-            
-           
-            <%
-             if (request.getAttribute("mensajeError") != null) {%>
+
+        <%}%>
+        <%
+                if (request.getAttribute("mensajeError") != null) {%>
         <h2>${mensajeError}</h2>
         <%} else {%>
         <h2>${mensajeExito}</h2>    
         <%}
         %>
-        <a href="indexSolicitud.jsp">
-            <button class="btn btn-primary">Volver</button>
-        </a>
+        
     </body>
 </html>
