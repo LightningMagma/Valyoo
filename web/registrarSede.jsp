@@ -19,7 +19,7 @@
             <label for="sedeNombre">Nombre:</label>
             <input type="text" name="sedeNombre" required maxlength=30 placeholder="Ingrese el nombre" pattern="[a-zA-Z ]{7,30}$" title="Debe un nombre valido" required placeholder="Ingrese nombre de documento" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/(\..*)\./g, '$1')">
             <label for="sedeDireccion">Dirección:</label>
-            <input type="text" name="sedeDireccion" maxlength=50 placeholder="Ingrese la dirección" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required oninput="this.value = this.value.replace(/[^A-Za-z0-9 ]/g, '').replace(/(\..*)\./g, '$1')">
+            <input type="text" name="sedeDireccion" maxlength=50 placeholder="Ingrese la dirección" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required oninput="this.value = this.value.replace(/[^A-Za-z0-9 #-]/g, '').replace(/(\..*)\./g, '$1')">
             <label for="sedeTelefono">Telefono:</label>
             <input type="text" name="sedeTelefono"  maxlength=100 placeholder="Ingrese el teléfono de la sede" pattern="^[0-9]{7,15}$" title="Debe ingresar un número telefónico" required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <input type="submit" class="btn btn-success" value="Registrar">

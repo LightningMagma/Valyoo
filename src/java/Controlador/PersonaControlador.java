@@ -90,7 +90,7 @@ public class PersonaControlador extends HttpServlet {
                     request.setAttribute("personaEncontrada", perVO);
                     request.getRequestDispatcher("actualizarPersona.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError", "¡La persona no existe!");
+                    request.setAttribute("MensajeError", "¡La persona no existe!");
                     request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
                 }
                 break;

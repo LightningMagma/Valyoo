@@ -67,7 +67,7 @@ public class SedeControlador extends HttpServlet {
                     request.setAttribute("sedeEncontrada", sedeVO);
                     request.getRequestDispatcher("actualizarSede.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError", "¡La sede no existe!");
+                    request.setAttribute("MensajeError", "¡La sede no existe!");
                     request.getRequestDispatcher("indexSede.jsp").forward(request, response);
                 }
                 break;

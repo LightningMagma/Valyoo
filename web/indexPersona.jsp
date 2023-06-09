@@ -24,7 +24,7 @@
                     <tr>
                         <th>
                             Documento
-                            <input type="text" name="perDocumento" id="myInput" onkeyup="myFunction()" placeholder="Ingrese número de documento">
+                            <input type="text" name="perDocumento" id="myInput" onkeyup="myFunction()" placeholder="Ingrese número de documento" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" >
                             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
                             <input type="hidden" name="opcion" value="3">  
                         </th>

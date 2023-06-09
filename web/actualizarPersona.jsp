@@ -39,7 +39,7 @@
                             <img src="Estilos/tituloValyooConSlogan.png" alt="" width="70%" style="padding-bottom:7%"/>
                             <label for="perDocumento">Numero de documento:</label>
                             <div class="input">
-                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}*$" title="Debe ingresar un número de documento" required placeholder="<%=perVO.getPerDocumento()%>" disabled>
+                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}*$" title="Debe ingresar un número de documento" required value="<%=perVO.getPerDocumento()%>">
                             </div>
                             <label for="perTipoDocumento">Tipo de documento:</label>
                             <div class="input">
@@ -57,6 +57,10 @@
                             <label for="perApellido">Apellidos:</label>
                             <div class="input">
                                 <input type="text" name="perApellido" pattern="^[A-Za-z]{3,30}*$" title="Debe ingresar un apellido" required value="<%=perVO.getPerApellido()%>">
+                            </div>
+                            <label for="perCorreo">Correo:</label>
+                            <div class="input">
+                                <input type="text" name="perCorreo" title="Debe ingresar un apellido" required value="<%=perVO.getPerCorreo()%>">
                             </div>
                             <label for="perTelefono">Télefono:</label>
                             <div class="input">

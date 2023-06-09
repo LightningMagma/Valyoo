@@ -108,7 +108,7 @@ public class CuentaDAO extends ConexionDB implements crud {
         return operacion;
     }
 
-    public CuentaVO consultarPago() {
+    public CuentaVO consultarCuenta() {
         CuentaVO cuVO = null;
 
         try {

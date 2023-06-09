@@ -71,12 +71,12 @@ public class CuentaControlador extends HttpServlet {
                 request.getRequestDispatcher("indexCuenta.jsp").forward(request, response);
                 break;
             case 4: // Consultar Prestamos
-                cuVO = cuDAO.consultarPago();
+                cuVO = cuDAO.consultarCuenta();
                 if (cuVO != null) {
                     request.setAttribute("cuentaEncontrada", cuVO);
                     request.getRequestDispatcher("actualizarCuenta.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("MensajeError", "¡El pago NO existe!");
+                    request.setAttribute("MensajeError", "¡La cuenta NO existe!");
                     request.getRequestDispatcher("indexCuenta.jsp").forward(request, response);
                 }
                 break;

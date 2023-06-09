@@ -20,9 +20,8 @@
         <%            CuentaVO cueVO = (CuentaVO) request.getAttribute("cuentaEncontrada");
             if (cueVO != null) {
         %>
-        <form method="post" action="Cuenta">
-            <label>Numero de cuenta: </label>
-            <input type="text" name="CuNumero" maxlength="11" value="<%=cueVO.getCuNumero()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+        <form method="post" action="Cuenta">            
+            <input type="hidden" name="CuNumero" maxlength="11" value="<%=cueVO.getCuNumero()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Fecha registro de cuenta:</label>
             <input type="text" name="CuFechaRegistro" maxlength="10" value="<%=cueVO.getCuFechaRegistro()%>">
             <label>Deudor: </label>
