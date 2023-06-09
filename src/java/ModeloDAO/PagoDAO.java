@@ -146,14 +146,7 @@ public class PagoDAO extends ConexionDB implements crud {
         ArrayList<PagoVO> pagoLista = new ArrayList<>();
         try {
             puerta = this.obtenerConexion();
-            sql = "select PagoID, PagDescripcion, PagValor, concat(PerNombre, ' ', PerApellido) 'Deudor', PagFecha\n"
-                    + "from((tblpago pag \n"
-                    + "inner join tblprestamo pres\n"
-                    + "on pag.PagPrestamo = pres.PreID)\n"
-                    + "inner join tblcuentacredito cu\n"
-                    + "on pres.PreCuenta = cu.CuNumero)\n"
-                    + "inner join tblpersona per\n"
-                    + "on cu.CuPersona = per.PerDocumento;";
+            sql = "select * from listarPagosView;";
             puente = puerta.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {

@@ -136,13 +136,7 @@ public class PerRolDAO extends ConexionDB implements crud {
         ArrayList<PerRolVO> personarolLista = new ArrayList<>();
         try {
             conexion = this.obtenerConexion();
-            sql = "SELECT\n"
-                    + "     personarol.`PRID` AS personarol_PRID,\n"
-                    + "     concat(PerNombre,' ',PerApellido) AS nombreUsuario,\n"
-                    + "     tblrol.`rolNombre` AS nombreRol\n"
-                    + "FROM\n"
-                    + "     `tblpersona` tblpersona INNER JOIN `personarol` personarol ON tblpersona.`PerDocumento` = personarol.`PRPersona`\n"
-                    + "     INNER JOIN `tblrol` tblrol ON personarol.`PRRol` = tblrol.`rolID`";
+            sql = "select * from listarPersonaRolView;";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
 

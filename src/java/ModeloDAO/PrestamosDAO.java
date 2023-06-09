@@ -151,12 +151,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
         ArrayList<PrestamosVO> prestamoLista = new ArrayList<>();
         try {
             puerta = this.obtenerConexion();
-            sql = "select PreID, PreFechaInicio,PreFechaFin, PreCuotas, PreMonto, PreInteres, concat(PerNombre, ' ', PerApellido) 'Deudor', PreEstado\n"
-                    + "from(tblprestamo pres\n"
-                    + "inner join tblcuentacredito cu\n"
-                    + "on pres.PreCuenta = cu.CuNumero)\n"
-                    + "inner join tblpersona per\n"
-                    + "on cu.CuPersona = per.PerDocumento;";
+            sql = "select * from listarPrestamosView;";
             puente = puerta.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {

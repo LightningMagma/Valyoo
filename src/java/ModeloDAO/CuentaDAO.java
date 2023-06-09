@@ -137,10 +137,7 @@ public class CuentaDAO extends ConexionDB implements crud {
         ArrayList<CuentaVO> cuentaLista = new ArrayList<>();
         try {
             puerta = this.obtenerConexion();
-            sql = "select CuNumero, CuFechaRegistro, CuEstado, concat(PerNombre, ' ', PerApellido) 'Titular'\n"
-                    + "from tblcuentacredito cu \n"
-                    + "inner join tblpersona per\n"
-                    + "on cu.CuPersona = per.PerDocumento;";
+            sql = "select * from listarCuentasView;";
             puente = puerta.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {

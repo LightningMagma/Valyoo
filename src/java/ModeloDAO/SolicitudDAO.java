@@ -150,14 +150,7 @@ public class SolicitudDAO extends ConexionDB implements crud {
         ArrayList<SolicitudVO> listaSolicitud = new ArrayList<>();
         try {
             conexion = this.obtenerConexion();
-            sql = "SELECT\n"
-                    + "     tblsolicitud.`SolID` AS tblsolicitud_SolID,\n"
-                    + "     tblsolicitud.`SolMonto` AS tblsolicitud_SolMonto,\n"
-                    + "     tblsolicitud.`SolCuotas` AS tblsolicitud_SolCuotas,\n"
-                    + "     tblsolicitud.`SolEstado` AS tblsolicitud_SolEstado,\n"
-                    + "     concat(PerNombre,' ',PerApellido) AS nombreUsuario\n"
-                    + "FROM\n"
-                    + "     `tblpersona` tblpersona INNER JOIN `tblsolicitud` tblsolicitud ON tblpersona.`PerDocumento` = tblsolicitud.`SolPersona`";
+            sql = "select * from listarSolicitudesView;";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
