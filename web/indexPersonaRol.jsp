@@ -22,7 +22,7 @@
             <h3 class="title-5 m-b-35">Persona rol</h3>
             <form method="post" action="PersonaRol">
                 <label>Codigo: </label>
-                <input type="text" name="PRID" placeholder="Ingrese el ID de registro" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                <input type="text" name="PRID" placeholder="Ingrese el ID de registro" id="myInput" onkeyup="myFunction()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
                 <input type="submit" value="Consultar" class="au-btn au-btn-icon au-btn--green au-btn--small" >
                 <input type="hidden" name="opcion" value="3">
             </form>
@@ -44,7 +44,7 @@
             </div>            
             <%  }
             %>        
-            <table class="table table-data2"><br>
+            <table class="table table-data2" id="myTable"><br>
                 <tr>
                     <th>Codigo</th>
                     <th>Persona</th>

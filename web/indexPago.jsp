@@ -22,7 +22,7 @@
             <h3 class="title-5 m-b-35">Pago</h3>
             <form method="post" action="Pago">
                 <label>Codigo: </label>
-                <input type="text" name="PagId" placeholder="Ingrese el ID del pago" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                <input type="text" name="PagId" placeholder="Ingrese el ID del pago" id="myInput" onkeyup="myFunction()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
                 <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small"  value="Consultar">
                 <input type="hidden" name="opcion" value="4">
             </form>
@@ -47,7 +47,7 @@
             </div>            
             <%  }
             %> 
-            <table class="table table-data2">
+            <table class="table table-data2" id="myTable">
                 <tr>
                     <th>Codigo</th>
                     <th>Descripcion</th>

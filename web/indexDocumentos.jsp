@@ -25,7 +25,7 @@
                     <tr>
                         <th>
                             ID
-                            <input type="text" name="docId" placeholder="Ingrese nombre de documento" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                            <input type="text" id="myInput" onkeyup="myFunction()" name="docId" placeholder="Ingrese nombre de documento" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
                             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
                         </th>
                     </tr>
@@ -50,7 +50,7 @@
             </div>            
             <%  }
             %> 
-            <table class="table table-data2">
+            <table class="table table-data2" id="myTable">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>

@@ -22,7 +22,7 @@
             <h3 class="title-5 m-b-35">Solicitud</h3>
             <form method="post" action="Solicitud">
                 <label for="solId">Id de la solicitud</label>
-                <input type="text" name="solId" placeholder="Ingrese ID de la solicitud" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/(\..*)\./g, '$1')">
+                <input type="text" name="solId" placeholder="Ingrese ID de la solicitud" id="myInput" onkeyup="myFunction()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
                 <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">               
                 <input type="hidden" name="opcion" value="4">
             </form>
@@ -44,7 +44,7 @@
                 ${MensajeExito}
             </div>            
             <%}%>
-            <table class="table table-data2">
+            <table class="table table-data2" id="myTable">
                 <tr>
                     <th>Id Solicitud</th>
                     <th>Monto</th>

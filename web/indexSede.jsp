@@ -25,7 +25,7 @@
                     <tr>
                         <th>
                             ID
-                            <input type="text" name="sedeId" placeholder="Ingrese ID de sede" maxlength="20" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" >
+                            <input type="text" id="myInput" onkeyup="myFunction()" name="sedeId" placeholder="Ingrese ID de sede" maxlength="20" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" >
                             <input type="submit" value="Consultar" class="au-btn au-btn-icon au-btn--green au-btn--small">
                         </th>
                     </tr>
@@ -49,7 +49,7 @@
                 ${MensajeExito}
             </div>            
             <%}%> 
-            <table class="table table-data2">
+            <table class="table table-data2" id="myTable">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>

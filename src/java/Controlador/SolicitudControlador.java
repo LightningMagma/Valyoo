@@ -48,27 +48,27 @@ public class SolicitudControlador extends HttpServlet {
             case 1://Agrega registro
                 if(solDAO.agregarRegistro()){
                     //Enviar atravez de un Atributo                    
-                   request.setAttribute("mensajeExito","La solicitud se registro correctamente!");
+                   request.setAttribute("MensajeExito","La solicitud se registro correctamente!");
                 }else{
-                   request.setAttribute("mensajeError","La solicitud no se registro correctamente!"); 
+                   request.setAttribute("MensajeError","La solicitud no se registro correctamente!"); 
                 }
                 request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);                
                 break;
             case 2:
                 if(solDAO.actualizarRegistro()){
                     //Enviar atravez de un Atributo
-                   request.setAttribute("mensajeExito","La solicitud se actualizó correctamente!");
+                   request.setAttribute("MensajeExito","La solicitud se actualizó correctamente!");
                 }else{
-                   request.setAttribute("mensajeError","La solicitud no se actualizó correctamente!"); 
+                   request.setAttribute("MensajeError","La solicitud no se actualizó correctamente!"); 
                 }
                 request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
                 break;
             case 3:
                 if(solDAO.eliminarRegistro()){
                     //Enviar atravez de un Atributo
-                   request.setAttribute("mensajeExito","La solicitud se eliminó correctamente!");
+                   request.setAttribute("MensajeExito","La solicitud se eliminó correctamente!");
                 }else{
-                   request.setAttribute("mensajeError","La solicitud no se eliminó correctamente!"); 
+                   request.setAttribute("MensajeError","La solicitud no se eliminó correctamente!"); 
                 }
                 request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
                 break;
@@ -78,7 +78,7 @@ public class SolicitudControlador extends HttpServlet {
                     request.setAttribute("solicitudEncontrada", solVO);
                     request.getRequestDispatcher("actualizarSolicitud.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError", "Solicitud no encontrado");
+                    request.setAttribute("MensajeError", "Solicitud no encontrado");
                     request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
                 }
         }

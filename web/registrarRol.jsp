@@ -17,7 +17,7 @@
         <h2>Registro de rol</h2>
         <form method="post" action="Rol">
             <label for="rolNombre">Nombre del rol:</label>
-            <input type="text" name="rolNombre" maxlength=20 placeholder="Ingrese el nombre del rol" pattern="^[A-Za-z]{3,30}$" title="Debe ingresar un apellido" required>            
+            <input type="text" name="rolNombre" maxlength=20 placeholder="Ingrese el nombre del rol" pattern="^[A-Za-z]{3,30}$" title="Debe ingresar un apellido" required oninput="this.value = this.value.replace(/[^A-Za-z]/g, '').replace(/(\..*)\./g, '$1')">            
             <input type="submit" class="btn btn-success" value="Registrar">
             <input type="reset" class="btn btn-danger" value="Limpiar">
             <a href="indexRol.jsp">

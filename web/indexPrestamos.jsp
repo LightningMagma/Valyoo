@@ -22,7 +22,7 @@
         <h3 class="title-5 m-b-35">Prestamos</h3>
         <form method="post" action="Prestamo">
             <label>Codigo: </label>
-            <input type="text" name="PreId" placeholder="Ingrese ID del prestamo" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+            <input type="text" name="PreId" id="myInput" onkeyup="myFunction()" placeholder="Ingrese ID del prestamo" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
             <input type="hidden" name="opcion" value="4">
         </form>
@@ -44,7 +44,7 @@
             </div>            
             <%  }
             %> 
-        <table class="table table-data2"><br>
+        <table class="table table-data2" id="myTable"><br>
             <tr>
                 <th>Codigo</th>
                 <th>Fecha inicio</th>

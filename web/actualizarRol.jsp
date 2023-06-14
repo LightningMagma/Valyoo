@@ -23,7 +23,7 @@
         <form method="post" action="Rol">            
             <input type="hidden" name="rolId" required maxlength=20 placeholder="Ingrese id del rol" value="<%=rolVO.getRolId()%>">           
             <label for="rolNombre">Nombre del rol</label>
-            <input type="text" name="rolNombre" required maxlength=20 placeholder="Ingrese el nombre del rol" value="<%=rolVO.getRolNombre()%>">  
+            <input type="text" name="rolNombre" required maxlength=20 placeholder="Ingrese el nombre del rol" value="<%=rolVO.getRolNombre()%>" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '').replace(/(\..*)\./g, '$1')">  
             <label for="rolEstado">Estado del rol</label>
             <input type="text" name="rolEstado" required maxlength=20 placeholder="Ingrese estado del rol" value="<%=rolVO.getRolEstado()%>">   
             <input type="submit" class="btn btn-success" value="Actualizar">    

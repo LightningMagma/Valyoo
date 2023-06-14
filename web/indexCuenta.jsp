@@ -25,7 +25,7 @@ Author     : jpgar
                     <tr>
                         <th class="buscador-consulta">
                             <label>Codigo: </label>
-                            <input class="cuadro-busqueda" type="text" name="CuNumero" placeholder="Ingrese numero de cuenta que desea" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                            <input class="cuadro-busqueda" type="text" name="CuNumero" placeholder="Ingrese numero de cuenta que desea" id="myInput" onkeyup="myFunction()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
                             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
                             <input type="hidden" name="opcion" value="4">
                         </th>
@@ -51,7 +51,7 @@ Author     : jpgar
             </div>            
             <%  }
             %>       
-            <table class="table table-data2"><br>
+            <table class="table table-data2" id="myTable"><br>
                 <tr>
                     <th>Codigo</th>
                     <th>Fecha registro</th>
