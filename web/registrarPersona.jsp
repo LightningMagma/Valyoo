@@ -55,7 +55,7 @@
                                 <input type="text" name="perTelefono" pattern="^[0-9]{7,15}$" title="Debe ingresar un número telefónico" required placeholder="Teléfono" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="input">
-                                <input type="text" name="perDirección" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required placeholder="Dirección" oninput="this.value = this.value.replace(/^([a-z0-9-]+)@([\da-z\.-]+)\.([a-z\.]/g, '').replace(/(\..*)\./g, '$1')">
+                                <input type="text" name="perDireccion" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required placeholder="Dirección" oninput="this.value = this.value.replace(/[^A-Za-z0-9 #-]/g, '').replace(/(\..*)\./g, '$1')">
                             </div>
                             <div class="input">
                                 <input type="password" name="perClave" pattern="^[A-Za-z0-9]{2,10}$" required placeholder="Ingrese la contraseña" >

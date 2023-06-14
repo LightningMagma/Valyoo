@@ -32,7 +32,7 @@
                         <form action="Persona" method="post">
                             <img src="Estilos/tituloValyooConSlogan.png" alt="" width="70%"/>
                             <div class="input">
-                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}*$" title="Debe ingresar un número de documento" required placeholder="Número de documento">
+                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}*$" title="Debe ingresar un número de documento" required placeholder="Número de documento" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
                             </div>
                             <div class="input">
                                 <input type="password" name="perClave" pattern="^[a-z0-9_-]{3,18}$" required placeholder="Ingrese la contraseña">

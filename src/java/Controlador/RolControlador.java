@@ -46,27 +46,27 @@ public class RolControlador extends HttpServlet {
             case 1://Agrega registro
                 if(rolDAO.agregarRegistro()){
                     //Enviar atravez de un Atributo                    
-                   request.setAttribute("mensajeExito","El rol se registro correctamente!");
+                   request.setAttribute("MensajeExito","El rol se registro correctamente!");
                 }else{
-                   request.setAttribute("mensajeError","El rol no se registro correctamente!"); 
+                   request.setAttribute("MensajeError","El rol no se registro correctamente!"); 
                 }
                 request.getRequestDispatcher("indexRol.jsp").forward(request, response);                
                 break;
             case 2:
                 if(rolDAO.actualizarRegistro()){
                     //Enviar atravez de un Atributo
-                   request.setAttribute("mensajeExito","El rol se actualizó correctamente!");
+                   request.setAttribute("MensajeExito","El rol se actualizó correctamente!");
                 }else{
-                   request.setAttribute("mensajeError","El rol no se actualizó correctamente!"); 
+                   request.setAttribute("MensajeError","El rol no se actualizó correctamente!"); 
                 }
                 request.getRequestDispatcher("indexRol.jsp").forward(request, response);
                 break;
             case 3:
                 if(rolDAO.eliminarRegistro()){
                     //Enviar atravez de un Atributo
-                   request.setAttribute("mensajeExito","El rol se eliminó correctamente!");
+                   request.setAttribute("MensajeExito","El rol se eliminó correctamente!");
                 }else{
-                   request.setAttribute("mensajeError","El rol no se eliminó correctamente!"); 
+                   request.setAttribute("MensajeError","El rol no se eliminó correctamente!"); 
                 }
                 request.getRequestDispatcher("indexRol.jsp").forward(request, response);
                 break;
@@ -76,7 +76,7 @@ public class RolControlador extends HttpServlet {
                     request.setAttribute("rolEncontrado", rolVO);
                     request.getRequestDispatcher("actualizarRol.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError","Rol no existe"); 
+                    request.setAttribute("MensajeError","El Rol NO existe"); 
                     request.getRequestDispatcher("indexRol.jsp").forward(request, response); 
                 }
             

@@ -82,7 +82,7 @@ public class PrestamoControlador extends HttpServlet {
                     request.setAttribute("prestamoEncontrado", presVO);
                     request.getRequestDispatcher("actualizarPrestamos.jsp").forward(request,response);
                 } else {
-                    request.setAttribute("MensajeError", "¡El pago NO existe!");
+                    request.setAttribute("MensajeError", "¡El prestamo NO existe!");
                     request.getRequestDispatcher("indexPrestamos.jsp").forward(request,response);
                 }
                 break;

@@ -6,6 +6,8 @@
 
 <%@page import="ModeloVO.RolVO"%>
 <%@page import="ModeloDAO.RolDAO"%>
+<%@page import="ModeloVO.PersonaVO"%>
+<%@page import="ModeloDAO.PersonaDAO"%>
 <%@page import="ModeloVO.PerRolVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="Sesiones.jsp" %>
@@ -18,12 +20,17 @@
     </head>
     <body>
         <h2>Actualizar Persona Rol</h2>
-        <%            if (prVO != null) {
+        <%  
+            prVO = (PerRolVO)request.getAttribute("personarolEncontrada");
+            if (prVO != null) {
+             PersonaDAO perDAO = new PersonaDAO();
+             PersonaVO perVO = perDAO.consultarPorDocumento(prVO.getPRPersona());
         %>
-        <form method="post" action="PersonaRol">
+        <form method="post" action="PersonaRol">            
             <input type="hidden" name="PRID" required maxlength=20 value="<%=prVO.getPRID()%>">   
             <label for="prPersona">Documento de persona:</label>
-            <input type="text" name="prPersona" required maxlength=30 value="<%=prVO.getPRPersona()%>">
+            <input type="text" name="prPersona" required maxlength=30 value="<%=prVO.getPRPersona()+" "+perVO.getPerNombre()+" "+perVO.getPerApellido()%>" disabled="">
+            <label for="prRol">Seleccione rol:</label>
             <select name="prRol">
                 <option>Seleccione...</option>
                 <%

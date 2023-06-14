@@ -61,10 +61,10 @@ public class PerRolControlador extends HttpServlet {
             case 3: // Listar por documento
                 prVO=prDAO.consultarPorID(PRID);
                 if (prVO!=null) {
-                    request.setAttribute("personaEncontrada",prVO);
+                    request.setAttribute("personarolEncontrada",prVO);
                     request.getRequestDispatcher("actualizarPersonaRol.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError", "¡La persona no existe!");
+                    request.setAttribute("MensajeError", "¡Rol NO ha sido asignado !");
                     request.getRequestDispatcher("indexPersonaRol.jsp").forward(request, response);
                 }
                 break;

@@ -66,7 +66,7 @@ public class DocumentosControlador extends HttpServlet {
                     request.setAttribute("documentoEncontrado", docVO);
                     request.getRequestDispatcher("actualizarDocumentos.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError", "¡El documento no existe!");
+                    request.setAttribute("MensajeError", "¡El documento NO existe!");
                     request.getRequestDispatcher("indexDocumentos.jsp").forward(request, response);
                 }
                 break;

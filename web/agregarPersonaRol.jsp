@@ -18,15 +18,16 @@
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h2>Asignasion persona y rol</h2>
+        <h2>Asignación persona y rol</h2>
         <form method="post" action="PersonaRol">
             <label>Persona:</label>
             <select name="prPersona">
                 <option>Seleccione...</option>
-                <%                    PersonaDAO perDAO = new PersonaDAO();
+                <%                    
+                    PersonaDAO perDAO = new PersonaDAO();
                     for (PersonaVO perVO : perDAO.listar()) {
                 %>
-                <option value="<%=perVO.getPerDocumento()%>"><%=perVO.getPerDocumento()%></option>
+                <option value="<%=perVO.getPerDocumento()%>"><%=perVO.getPerDocumento()+" Nombres: "+perVO.getPerNombre()+" "+perVO.getPerApellido()%></option>
                 <% } %>
             </select>
             <label>Rol: </label>
