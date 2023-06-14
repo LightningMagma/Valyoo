@@ -18,8 +18,7 @@
     </head>
     <body>
         <h2>Actualizar Prestamo</h2>
-        <%
-            PrestamosVO presVO = (PrestamosVO) request.getAttribute("prestamoEncontrado");
+        <%            PrestamosVO presVO = (PrestamosVO) request.getAttribute("prestamoEncontrado");
             if (presVO != null) {
         %>
         <form method="post" action="Prestamo">
@@ -36,7 +35,7 @@
             <label>Intereses: </label>
             <input type="text" name="PreInteres" maxlength="2" value="<%=presVO.getPreInteres()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Cuenta: </label>
-            <input type="text" name="PreCuenta" maxlength="2" value="<%=presVO.getPreCuenta()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+            <input type="text" name="PreCuenta" maxlength="2" value="<%=presVO.getPreCuenta()%>" oninput="this.value = this.value.replace(/[^0-9]/g,'').replace(/(\..*)\./g, '$1')">
             <input type="submit" class="btn btn-success" value="Actualizar">
             <a href="indexPrestamos.jsp">
                 <button class="btn btn-primary" type="button">Volver</button></a>
@@ -50,6 +49,6 @@
         ${MensajeExito}
         <%  }
         %>
-       
+
     </body>
 </html>

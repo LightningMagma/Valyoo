@@ -26,7 +26,7 @@
                 <%                    PersonaDAO perDAO = new PersonaDAO();
                     for (PersonaVO perVO : perDAO.listar()) {
                 %>
-                <option value="<%=perVO.getPerDocumento()%>" name="CuPersona"><%=perVO.getPerNombre()+" " + perVO.getPerApellido()%></option>
+                <option value="<%=perVO.getPerDocumento()%>" name="CuPersona"><%=perVO.getPerNombre()+" "+perVO.getPerApellido()%></option>
                 <% } %>
             </select>
             <input type="submit" class="btn btn-success" value="Registrar Cuenta">

@@ -26,9 +26,9 @@
             <select name="PagPrestamo">
                 <option>Seleccione...</option>
                 <%                    PrestamosDAO presDAO = new PrestamosDAO();
-                    for (PrestamosVO presVO : presDAO.listarPrestamos()) {
+                    for (PrestamosVO presVO : presDAO.listarPrestamosActivos()) {
                 %>
-                <option value="<%=presVO.getPreId()%>"><%=presVO.getPreId()%></option>
+                <option value="<%=presVO.getPreId()%>"><%="Numero de prestamo: "+presVO.getPreId()+" Deudor: "+presVO.getPreCuenta()%></option>
                 <% } %>
             </select>
             <input type="submit" class="btn btn-success" value="Registrar pago">

@@ -32,9 +32,9 @@
             <select name="PreCuenta">
                 <option>Seleccione...</option>
                 <%                    CuentaDAO cuDAO = new CuentaDAO();
-                    for (CuentaVO cuVO : cuDAO.listarCuenta()) {
+                    for (CuentaVO cuVO : cuDAO.listarCuentasActivas()) {
                 %>
-                <option value="<%=cuVO.getCuNumero()%>"><%=cuVO.getCuNumero()%></option>
+                <option value="<%=cuVO.getCuNumero()%>"><%="Numero de cuenta: "+cuVO.getCuNumero()+" Titular: "+cuVO.getCuPersona()%></option>
                 <% } %>
             </select>
             <input type="submit" class="btn btn-success" value="Registrar prestamo">

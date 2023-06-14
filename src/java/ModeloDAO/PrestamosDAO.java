@@ -194,4 +194,28 @@ public class PrestamosDAO extends ConexionDB implements crud {
         }
         return presVO;
     }
+    
+    public ArrayList<PrestamosVO> listarPrestamosActivos() {
+        ArrayList<PrestamosVO> prestamoLista = new ArrayList<>();
+        try {
+            puerta = this.obtenerConexion();
+            sql = "select * from prestamosactivosview;";
+            puente = puerta.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                PrestamosVO presVO = new PrestamosVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3),
+                        mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7), mensajero.getString(8));
+                prestamoLista.add(presVO);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return prestamoLista;
+    }
 }
