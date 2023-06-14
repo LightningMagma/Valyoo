@@ -194,7 +194,7 @@ public class PrestamosDAO extends ConexionDB implements crud {
         }
         return presVO;
     }
-    
+
     public ArrayList<PrestamosVO> listarPrestamosActivos() {
         ArrayList<PrestamosVO> prestamoLista = new ArrayList<>();
         try {

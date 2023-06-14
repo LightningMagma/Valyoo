@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import util.ConexionDB;
 import util.crud;
 import ModeloVO.PagoVO;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -49,19 +50,29 @@ public class PagoDAO extends ConexionDB implements crud {
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tblpago(PagDescripcion, PagValor, PagPrestamo, PagFecha) values (?,?,?,current_timestamp());";
-            puente = puerta.prepareStatement(sql);
-            puente.setString(1, PagDesc);
-            puente.setString(2, PagValor);
-            puente.setString(3, PagPres);
-            puente.executeUpdate();
-            
-            sql = "update tblprestamo set PreMonto = PreMonto - ? where PreID =?;";
-            puente = puerta.prepareStatement(sql);
-            puente.setString(1, PagValor);
-            puente.setString(2, PagPres);
-            puente.executeUpdate();
-            operacion = true;
+            String validacion = "select * from tblprestamo where PreMonto <= 0 and PreID = ?;";
+            puente = puerta.prepareStatement(validacion);
+            puente.setString(1, PagPres);
+            mensajero = puente.executeQuery();
+            if (mensajero.next()) {
+                operacion = false;
+            } else if (validarMonto(PagPres, PagValor) == true) {
+                operacion = false;
+            } else {
+                sql = "insert into tblpago(PagDescripcion, PagValor, PagPrestamo, PagFecha) values (?,?,?,current_timestamp());";
+                puente = puerta.prepareStatement(sql);
+                puente.setString(1, PagDesc);
+                puente.setString(2, PagValor);
+                puente.setString(3, PagPres);
+                puente.executeUpdate();
+
+                sql = "update tblprestamo set PreMonto = PreMonto - ? where PreID =?;";
+                puente = puerta.prepareStatement(sql);
+                puente.setString(1, PagValor);
+                puente.setString(2, PagPres);
+                puente.executeUpdate();
+                operacion = true;
+            }            
         } catch (Exception e) {
             Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
@@ -186,5 +197,22 @@ public class PagoDAO extends ConexionDB implements crud {
             }
         }
         return pagVO;
+    }
+
+    public boolean validarMonto(String PreID, String PagValor) {
+        double pagoValor = Double.parseDouble(PagValor);
+        try {
+            sql = "select * from tblprestamo where PreID = ?;";
+            puente = puerta.prepareStatement(sql);
+            puente.setString(1, PreID);
+            mensajero = puente.executeQuery();
+            if (mensajero.next()) {
+                double montoPrestamo = mensajero.getDouble("PreMonto");
+                return montoPrestamo < pagoValor;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PagoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }
