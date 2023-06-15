@@ -116,6 +116,25 @@
             <i class="fa fa-bars"></i>
         </a>       
         <%}
+            if (prVO.getPRRol().equals("2")) {%>  
+        <a href="indexPersona.jsp">Persona</a>        
+        <a href="indexSolicitud.jsp">Solicitud</a>
+        <a href="indexCuenta.jsp">Cuenta</a>
+        <a href="indexPrestamos.jsp">Prestamo</a>       
+        <a href="indexPago.jsp">Pago</a>
+        <a href="indexDocumentos.jsp">Documentos</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
+            <i class="fa fa-bars"></i>
+        </a>       
+        <%}
+            if (prVO.getPRRol().equals("3")) {%>          
+        <a href="indexPrestamos.jsp">Prestamo</a>        
+        <a href="indexPago.jsp">Pago</a> 
+        <a href="indexDocumentos.jsp">Documentos</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
+            <i class="fa fa-bars"></i>
+        </a>       
+        <%}
             if (prVO.getPRRol().equals("4")) {%>        
         <a href="menuDeudor.jsp">Perfil</a>
         <a href="solicitudDeudor.jsp">Solicitud</a>
@@ -126,9 +145,10 @@
             }
         %>
     </div>
+    <h4 class="nombreSesion"> Bienvenido <%= persona + " " + apellido + " Rol: " + prVO.getPRRol()%> </h4>
     <section class="botonCerrar">
-        <form method="post" action="Sesiones" class="botonCerrar">
-            <input class="btn btn-danger cerrarSesion" type="submit" value="Cerrar Sesión" style="margin-left: 73%; margin-top: 2%;">
+        <form method="post" action="Sesiones" class="botonCerrar" style="margin-left:10%;">
+            <input class="btn btn-danger cerrarSesion" type="submit" value="Cerrar Sesión" style="margin-top: 2%;">
         </form>
     </section>
     <script>

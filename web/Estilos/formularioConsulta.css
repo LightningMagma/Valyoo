@@ -9,13 +9,13 @@ and open the template in the editor.
 */
 
 .formularioConsulta {
-    padding: 0% 10%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 .botonCerrar {
     background: none;
-    box-shadow: none;
-    margin-left: 21%; 
-    margin-top: 1%;
+    box-shadow: none;        
+    margin-top: -1%;
     margin-bottom: 1%;
 }
 .btn btn-danger cerrarSesion {
@@ -109,4 +109,10 @@ and open the template in the editor.
     display: block;
     text-align: left;
   }
+}
+.nombreSesion{
+    //padding-right: 10%;    
+    justify-content: flex-end;
+    padding-top: 1%;
+    margin-left:10%
 }
