@@ -1,6 +1,6 @@
 <%-- 
-    Document   : newjsp
-    Created on : 9/06/2023, 10:43:43 AM
+    Document   : resultado
+    Created on : 19/04/2023, 08:58:06 AM
     Author     : APRENDIZ
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1><%=request.getAttribute("EstadoMensaje") %></h1>
     </body>
 </html>
