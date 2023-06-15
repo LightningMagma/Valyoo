@@ -103,15 +103,15 @@
             <%for (int i = 0; i < listaPerRoles.size(); i++) {
                     prVO = listaPerRoles.get(i);
                     if (prVO.getPRRol().equals("1")) {%>  
-        <a href="indexCuenta.jsp">Cuenta</a>
-        <a href="indexSede.jsp">Sede</a>
         <a href="indexPersona.jsp">Persona</a>
-        <a href="indexSolicitud.jsp">Solicitud</a>
-        <a href="indexDocumentos.jsp">Documentos</a>
-        <a href="indexPago.jsp">Pago</a>
-        <a href="indexPersonaRol.jsp">Asignacion rol</a>
-        <a href="indexPrestamos.jsp">Prestamo</a>
         <a href="indexRol.jsp">Rol</a>
+        <a href="indexSolicitud.jsp">Solicitud</a>
+        <a href="indexCuenta.jsp">Cuenta</a>
+        <a href="indexPrestamos.jsp">Prestamo</a>
+        <a href="indexSede.jsp">Sede</a>
+        <a href="indexPago.jsp">Pago</a>         
+        <a href="indexPersonaRol.jsp">Asignacion rol</a>
+        <a href="indexDocumentos.jsp">Documentos</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
             <i class="fa fa-bars"></i>
         </a>       

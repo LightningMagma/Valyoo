@@ -46,7 +46,7 @@ public class DocumentosControlador extends HttpServlet {
         String nom = request.getParameter("Nombre");
         Part arc = request.getPart("docUrl");
         InputStream is = arc.getInputStream();
-        File f = new File("D:\\Documentos\\NetBeansProjects\\Valyoo\\build\\web\\RegistroDocs/" + nom);
+        File f = new File("C:\\Users\\APRENDIZ\\Documents\\JUAN DUCUARA JAVA\\Valyoo\\Valyoo\\web\\Documentos/" + nom);
         FileOutputStream ous = new FileOutputStream(f);
         int dato = is.read();
         while (dato != -1) {
