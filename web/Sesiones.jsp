@@ -40,119 +40,134 @@
         <link href="Estilos/css/theme.css" rel="stylesheet" media="all">
 
         <link href="Estilos/formularioConsulta.css" rel="stylesheet" type="text/css"/>
-    </head>
-    <%
-        response.setHeader("Pragma", "No-cache");
-        response.setHeader("Cache-control", "no-cache,no-store,must-revalidate");
-        response.setDateHeader("Expires", 0);
-    %>
 
-    <%
-        PerRolDAO prDAO = new PerRolDAO();
-        PerRolVO prVO = new PerRolVO();
-        String persona = "";
-        String documento = "";
-        String apellido = "";
-        String nuCuenta = "";
-        String fechaInicio = "";
-        String nuPrestamo = "";
-        String cuotasPrestamo = "";
-        String montoPrestamo = "";
-        String interesPrestamo = "";
-        String descripcionPago = "";
-        String valorPago = "";
-        String fechaPago = "";
-        HttpSession buscarSesion = (HttpSession) request.getSession();
-        if (buscarSesion.getAttribute("datosPersona") != null) {
-            PersonaVO perVO = (PersonaVO) buscarSesion.getAttribute("datosPersona");
-            persona = perVO.getPerNombre();
-            apellido = perVO.getPerApellido();
-            documento = perVO.getPerDocumento();
-            if (buscarSesion.getAttribute("datosCuenta") != null) {
-                CuentaVO cuVO = (CuentaVO) buscarSesion.getAttribute("datosCuenta");
-                nuCuenta = cuVO.getCuNumero();
-                fechaInicio = cuVO.getCuFechaRegistro();
-                if (buscarSesion.getAttribute("datosPrestamo") != null) {
-                    PrestamosVO presVO = (PrestamosVO) buscarSesion.getAttribute("datosPrestamo");
-                    nuPrestamo = presVO.getPreId();
-                    cuotasPrestamo = presVO.getPreCuotas();
-                    montoPrestamo = presVO.getPreMonto();
-                    interesPrestamo = presVO.getPreInteres();
-                    if (buscarSesion.getAttribute("datosPago") != null) {
-                        PagoVO pagVO = (PagoVO) buscarSesion.getAttribute("datosPago");
-                        descripcionPago = pagVO.getPagDesc();
-                        valorPago = pagVO.getPagValor();
-                        fechaPago = pagVO.getPagFecha();
-                    }
+    </style>
+</head>
+<%
+    response.setHeader("Pragma", "No-cache");
+    response.setHeader("Cache-control", "no-cache,no-store,must-revalidate");
+    response.setDateHeader("Expires", 0);
+%>
+
+<%
+    PerRolDAO prDAO = new PerRolDAO();
+    PerRolVO prVO = new PerRolVO();
+    String persona = "";
+    String documento = "";
+    String apellido = "";
+    String nuCuenta = "";
+    String fechaInicio = "";
+    String nuPrestamo = "";
+    String cuotasPrestamo = "";
+    String montoPrestamo = "";
+    String interesPrestamo = "";
+    String descripcionPago = "";
+    String valorPago = "";
+    String fechaPago = "";
+    HttpSession buscarSesion = (HttpSession) request.getSession();
+    if (buscarSesion.getAttribute("datosPersona") != null) {
+        PersonaVO perVO = (PersonaVO) buscarSesion.getAttribute("datosPersona");
+        persona = perVO.getPerNombre();
+        apellido = perVO.getPerApellido();
+        documento = perVO.getPerDocumento();
+        if (buscarSesion.getAttribute("datosCuenta") != null) {
+            CuentaVO cuVO = (CuentaVO) buscarSesion.getAttribute("datosCuenta");
+            nuCuenta = cuVO.getCuNumero();
+            fechaInicio = cuVO.getCuFechaRegistro();
+            if (buscarSesion.getAttribute("datosPrestamo") != null) {
+                PrestamosVO presVO = (PrestamosVO) buscarSesion.getAttribute("datosPrestamo");
+                nuPrestamo = presVO.getPreId();
+                cuotasPrestamo = presVO.getPreCuotas();
+                montoPrestamo = presVO.getPreMonto();
+                interesPrestamo = presVO.getPreInteres();
+                if (buscarSesion.getAttribute("datosPago") != null) {
+                    PagoVO pagVO = (PagoVO) buscarSesion.getAttribute("datosPago");
+                    descripcionPago = pagVO.getPagDesc();
+                    valorPago = pagVO.getPagValor();
+                    fechaPago = pagVO.getPagFecha();
+                }
 //if unificar. poner genericos. yo me entiendo. dejelo ahi, ya vuelvo. sigan viendo
-                }
             }
-        } else {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
+    } else {
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
 
-        ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(documento);
-    %>
-    <body>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(documento);
+%>
+<body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-        <nav class="navbar navbar-expand-lg bg-body-teriary">
-            <h3 class="nav-h3"><img src="Estilos/tituloValyoo.png" alt="Título Valyoo" width="175px"></h3>
-            <ul class="nav-ul">
-                <%for (int i = 0; i < listaPerRoles.size(); i++) {
-                        prVO = listaPerRoles.get(i);
-                        if (prVO.getPRRol().equals("1")) {%>
-                <li class="nav-li"><a class="nav-a" href="indexCuenta.jsp">Cuenta</a></li>
-                <li class="nav-li"><a class="nav-a" href="indexSede.jsp">Sede</a></li>
-                <li class="nav-li"><a class="nav-a" href="indexPersona.jsp">Persona</a></li>              
-                <li class="nav-li"><a class="nav-a" href="indexDocumentos.jsp">Documentos</a></li>               
-                <li class="nav-li"><a class="nav-a" href="indexPago.jsp">Pago</a></li>
-                <li class="nav-li"><a class="nav-a" href="indexPersonaRol.jsp">Asignacion rol</a></li>              
-                <li class="nav-li"><a class="nav-a" href="indexPrestamos.jsp">Prestamo</a></li>
-                <li class="nav-li"><a class="nav-a" href="indexRol.jsp">Rol</a></li>
-                <li class="nav-li"><a class="nav-a" href="indexSolicitud.jsp">Solicitud</a></li>
-                    <%}
-                            if (prVO.getPRRol().equals("4")) {%>
-                <li class="nav-li"><a class="nav-a" href="menuDeudor.jsp">Perfil</a></li>
-                <li class="nav-li"><a class="nav-a" href="solicitudDeudor.jsp">Solicitud</a></li>
-                    <%}
-                        }
-                    %>
-            </ul>
-        </nav>
-        <section class="botonCerrar">
-            <form method="post" action="Sesiones" class="botonCerrar">
-                <input class="btn btn-danger cerrarSesion" type="submit" value="Cerrar Sesión" style="margin-left: 73%; margin-top: 2%;">
-            </form></section>
-        <script>
-            function confirmar() {
-                var respuesta = confirm("¿Desea eliminar el registro");
-                if (respuesta == true) {
-                    return true;
-                } else {
-                    return false;
-                }
+    <div class="topnav" id="myTopnav">
+        <a class="imagenNav"><img src="Estilos/tituloValyoo.png"  alt="Título Valyoo" width="175px"></a>
+            <%for (int i = 0; i < listaPerRoles.size(); i++) {
+                    prVO = listaPerRoles.get(i);
+                    if (prVO.getPRRol().equals("1")) {%>  
+        <a href="indexCuenta.jsp">Cuenta</a>
+        <a href="indexSede.jsp">Sede</a>
+        <a href="indexPersona.jsp">Persona</a>
+        <a href="indexSolicitud.jsp">Solicitud</a>
+        <a href="indexDocumentos.jsp">Documentos</a>
+        <a href="indexPago.jsp">Pago</a>
+        <a href="indexPersonaRol.jsp">Asignacion rol</a>
+        <a href="indexPrestamos.jsp">Prestamo</a>
+        <a href="indexRol.jsp">Rol</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
+            <i class="fa fa-bars"></i>
+        </a>       
+        <%}
+            if (prVO.getPRRol().equals("4")) {%>        
+        <a href="menuDeudor.jsp">Perfil</a>
+        <a href="solicitudDeudor.jsp">Solicitud</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <%}
             }
-        </script>
-        <script>
-            function myFunction() {
-                var input, filter, table, tr, td, i, txtValue;
-                input = document.getElementById("myInput");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("myTable");
-                tr = table.getElementsByTagName("tr");
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[0];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
+        %>
+    </div>
+    <section class="botonCerrar">
+        <form method="post" action="Sesiones" class="botonCerrar">
+            <input class="btn btn-danger cerrarSesion" type="submit" value="Cerrar Sesión" style="margin-left: 73%; margin-top: 2%;">
+        </form>
+    </section>
+    <script>
+        function confirmar() {
+            var respuesta = confirm("¿Desea eliminar el registro");
+            if (respuesta == true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
                     }
                 }
             }
-        </script>
-    </body>
+        }
+        function myFunctione() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+</body>
 </html>

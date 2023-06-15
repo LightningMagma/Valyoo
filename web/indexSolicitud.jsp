@@ -21,10 +21,17 @@
         <div class="formularioConsulta">
             <h3 class="title-5 m-b-35">Solicitud</h3>
             <form method="post" action="Solicitud">
-                <label for="solId">Id de la solicitud</label>
-                <input type="text" name="solId" placeholder="Ingrese ID de la solicitud" id="myInput" onkeyup="myFunction()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
-                <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">               
-                <input type="hidden" name="opcion" value="4">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Id de la solicitud:
+                            <input type="text" name="solId" placeholder="Ingrese ID de la solicitud" id="myInput" onkeyup="myFunction()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                            <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">               
+                            <input type="hidden" name="opcion" value="4">  
+                        </th>
+                    </tr>
+                </table>               
+
             </form>
 
             <div class="table-data__tool">

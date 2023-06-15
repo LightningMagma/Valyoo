@@ -20,11 +20,17 @@
     <body>
         <div class="formularioConsulta">
             <h3 class="title-5 m-b-35">Roles</h3>
-            <form method="post" action="Rol">
-                <label for="RolId">Rol</label>
-                <input type="text" name="rolId" placeholder="Ingrese ID rol" id="myInput" onkeyup="myFunction()" oninput="this.value = this.value.replace(/^([0-9]+)@([\da-z\.-]+)\.([a-z\.]/g, '').replace(/(\..*)\./g, '$1')">
-                <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">               
-                <input type="hidden" name="opcion" value="4">
+            <form method="post" action="Rol">               
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            Nombre rol:
+                            <input type="text" name="rolId" placeholder="Ingrese nombre del rol" id="myInput" onkeyup="myFunction()" oninput="this.value = this.value.replace(/^([0-9]+)@([\da-z\.-]+)\.([a-z\.]/g, '').replace(/(\..*)\./g, '$1')">
+                            <input type="hidden" name="opcion" value="4">
+                        </th>
+                    </tr>
+                </table> 
             </form>       
             <div class="table-data__tool">
                 <div class="table-data__tool-right">
@@ -44,8 +50,7 @@
             </div>            
             <%}%> 
             <table class="table table-data2" id="myTable">
-                <tr>
-                    <th>ID Rol</th>
+                <tr>                    
                     <th>Nombre de rol</th>
                     <th>Estado del rol</th>     
                     <th></th>
@@ -58,8 +63,7 @@
                         rolVO = listaRol.get(i);
 
                 %>
-                <tr class="tr-shadow">
-                    <td><%=rolVO.getRolId()%> </td>
+                <tr class="tr-shadow">                   
                     <td><%=rolVO.getRolNombre()%> </td>
                     <td><%=rolVO.getRolEstado()%> </td>   
                     <td>

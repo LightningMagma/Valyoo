@@ -19,13 +19,13 @@
     </head>
     <body>    
         <div class="formularioConsulta">
-            <h3 class="title-5 m-b-35">Documentos </h3>
+            <h3 class="title-5 m-b-35">Documentos</h3>
             <form method="post" action="Documentos">
                 <table class="table">
                     <tr>
                         <th>
-                            ID
-                            <input type="text" id="myInput" onkeyup="myFunction()" name="docId" placeholder="Ingrese nombre de documento" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+                            Nombre persona:
+                            <input type="text" id="myInput" onkeyup="myFunction()" name="docId" placeholder="Ingrese nombre de documento" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/(\..*)\./g, '$1')">
                             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
                         </th>
                     </tr>
@@ -52,10 +52,9 @@
             %> 
             <table class="table table-data2" id="myTable">
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>URL</th>
                     <th>Persona</th>
+                    <th>Nombre</th>
+                    <th>URL</th>                    
                     <th></th>
                 </tr>
                 <%
@@ -66,10 +65,9 @@
                         docVO = docuLista.get(i);
                 %>
                 <tr class="tr-shadow">
-                    <td> <%=docVO.getDocId()%> </td>
+                    <td> <%=docVO.getDocPer()%> </td>                    
                     <td> <%=docVO.getDocNombre()%> </td>
-                    <td> <%=docVO.getDocUrl()%> </td>
-                    <td> <%=docVO.getDocPer()%> </td>
+                    <td> <%=docVO.getDocUrl()%> </td>                    
                     <td>
                         <form method="post" action="Documentos">
                             <input type="hidden" name="docId" value="<%=docVO.getDocId()%>">
