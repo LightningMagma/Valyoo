@@ -103,13 +103,23 @@ public class SolicitudDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-
-            sql = "update tblsolicitud set solEstado='Inactivo' where SolID=?;";
-            puente = conexion.prepareStatement(sql);
+            String validacion = "select * from tblsolicitud where solEstado='Inactivo' and SolID=?;";
+            puente = conexion.prepareStatement(validacion);
             puente.setString(1, solId);
-            puente.executeUpdate();
-            operacion = true;
-
+            mensajero = puente.executeQuery();
+            if (mensajero.next()) {
+                sql = "update tblsolicitud set solEstado='Activo' where SolID=?;";
+                puente = conexion.prepareStatement(sql);
+                puente.setString(1, solId);
+                puente.executeUpdate();
+                operacion = true;
+            } else {
+                sql = "update tblsolicitud set solEstado='Inactivo' where SolID=?;";
+                puente = conexion.prepareStatement(sql);
+                puente.setString(1, solId);
+                puente.executeUpdate();
+                operacion = true;
+            }
         } catch (Exception e) {
             Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
@@ -119,7 +129,6 @@ public class SolicitudDAO extends ConexionDB implements crud {
                 Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
         return operacion;
     }
 

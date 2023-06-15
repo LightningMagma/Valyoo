@@ -64,9 +64,9 @@ public class RolControlador extends HttpServlet {
             case 3:
                 if(rolDAO.eliminarRegistro()){
                     //Enviar atravez de un Atributo
-                   request.setAttribute("MensajeExito","El rol se eliminó correctamente!");
+                   request.setAttribute("MensajeExito","¡El estado del rol se cambió correctamente!");
                 }else{
-                   request.setAttribute("MensajeError","El rol no se eliminó correctamente!"); 
+                   request.setAttribute("MensajeError","¡El estado del rol NO se cambió correctamente!"); 
                 }
                 request.getRequestDispatcher("indexRol.jsp").forward(request, response);
                 break;

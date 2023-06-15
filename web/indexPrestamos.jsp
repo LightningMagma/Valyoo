@@ -74,7 +74,7 @@
                     <form method="post" action="Prestamo">
                         <input type="hidden" name="PreId" value="<%=presVO.getPreId()%>">
                         <button class="btn btn-warning" name="opcion" value="4" >Editar</button>
-                        <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmar()">Cambiar Estado</button>
+                        <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmarCambioEstado()">Cambiar Estado</button>
                     </form>
                 </td>
             </tr>

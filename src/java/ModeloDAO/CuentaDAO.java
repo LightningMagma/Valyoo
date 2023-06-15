@@ -91,11 +91,23 @@ public class CuentaDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql = "update tblcuentacredito set CuEstado='Inactivo' where CuNumero=?;";
-            puente = puerta.prepareStatement(sql);
+            String validacion = "select * from tblcuentacredito where CuEstado='Inactivo' and CuNumero=?;";
+            puente = puerta.prepareStatement(validacion);
             puente.setString(1, CuNumero);
-            puente.executeUpdate();
-            operacion = true;
+            mensajero = puente.executeQuery();
+            if (mensajero.next()) {
+                sql = "update tblcuentacredito set CuEstado='Activo' where CuNumero=?;";
+                puente = puerta.prepareStatement(sql);
+                puente.setString(1, CuNumero);
+                puente.executeUpdate();
+                operacion = true;
+            } else {
+                sql = "update tblcuentacredito set CuEstado='Inactivo' where CuNumero=?;";
+                puente = puerta.prepareStatement(sql);
+                puente.setString(1, CuNumero);
+                puente.executeUpdate();
+                operacion = true;
+            }
         } catch (Exception e) {
             Logger.getLogger(CuentaDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {

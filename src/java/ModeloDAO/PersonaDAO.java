@@ -108,11 +108,23 @@ public class PersonaDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql = "update tblpersona set PERESTADO='Inactivo' where PERDOCUMENTO=?;";
-            puente = conexion.prepareStatement(sql);
+            String validacion = "select * from tblpersona where PERESTADO='Inactivo' and PERDOCUMENTO=?;";
+            puente = conexion.prepareStatement(validacion);
             puente.setString(1, perDocumento);
-            puente.executeUpdate();
-            operacion = true;
+            mensajero = puente.executeQuery();
+            if (mensajero.next()) {
+                sql = "update tblpersona set PERESTADO='Activo' where PERDOCUMENTO=?;";
+                puente = conexion.prepareStatement(sql);
+                puente.setString(1, perDocumento);
+                puente.executeUpdate();
+                operacion = true;
+            } else {
+                sql = "update tblpersona set PERESTADO='Inactivo' where PERDOCUMENTO=?;";
+                puente = conexion.prepareStatement(sql);
+                puente.setString(1, perDocumento);
+                puente.executeUpdate();
+                operacion = true;
+            }
         } catch (Exception e) {
             Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {

@@ -93,11 +93,23 @@ public class SedeDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql = "update tblsede set SEDEESTADO='Inactivo' WHERE SEDEID=?";
-            puente = conexion.prepareStatement(sql);
+            String validacion = "select * from tblsede where SEDEESTADO='Inactivo' and SEDEID=?;";
+            puente = conexion.prepareStatement(validacion);
             puente.setString(1, sedeId);
-            puente.executeUpdate();
-            operacion = true;
+            mensajero = puente.executeQuery();
+            if (mensajero.next()) {
+                sql = "update tblsede set SEDEESTADO='Activo' where SEDEID=?;";
+                puente = conexion.prepareStatement(sql);
+                puente.setString(1, sedeId);
+                puente.executeUpdate();
+                operacion = true;
+            } else {
+                sql = "update tblsede set SEDEESTADO='Inactivo' where SEDEID=?;";
+                puente = conexion.prepareStatement(sql);
+                puente.setString(1, sedeId);
+                puente.executeUpdate();
+                operacion = true;
+            }
         } catch (Exception e) {
             Logger.getLogger(SedeDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {

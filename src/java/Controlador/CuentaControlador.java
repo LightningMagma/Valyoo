@@ -62,11 +62,11 @@ public class CuentaControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("indexCuenta.jsp").forward(request, response);
                 break;
-            case 3: // Eliminar Registro
+            case 3: // Cambiar Estado
                 if (cuDAO.eliminarRegistro()) {
-                    request.setAttribute("MensajeExito", "¡La cuenta se actualizó correctamente!");
+                    request.setAttribute("MensajeExito", "¡El estado de la cuenta se cambió correctamente!");
                 } else {
-                    request.setAttribute("MensajeError", "¡La cuenta NO se actualizó correctamente!");
+                    request.setAttribute("MensajeError", "¡El estado de la cuenta NO se cambió correctamente!");
                 }
                 request.getRequestDispatcher("indexCuenta.jsp").forward(request, response);
                 break;

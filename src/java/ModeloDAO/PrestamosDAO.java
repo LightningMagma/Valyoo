@@ -104,11 +104,23 @@ public class PrestamosDAO extends ConexionDB implements crud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            sql = "update tblprestamo set preestado='Inactivo' where PreID =?;";
-            puente = puerta.prepareStatement(sql);
+            String validacion = "select * from tblprestamo where preestado='Inactivo' and PreID=?;";
+            puente = puerta.prepareStatement(validacion);
             puente.setString(1, PreId);
-            puente.executeUpdate();
-            operacion = true;
+            mensajero = puente.executeQuery();
+            if (mensajero.next()) {
+                sql = "update tblprestamo set preestado='Activo' where PreID=?;";
+                puente = puerta.prepareStatement(sql);
+                puente.setString(1, PreId);
+                puente.executeUpdate();
+                operacion = true;
+            } else {
+                sql = "update tblprestamo set preestado='Inactivo' where PreID=?;";
+                puente = puerta.prepareStatement(sql);
+                puente.setString(1, PreId);
+                puente.executeUpdate();
+                operacion = true;
+            }
         } catch (Exception e) {
             Logger.getLogger(PrestamosDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {

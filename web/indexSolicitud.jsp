@@ -77,7 +77,7 @@
                     <td>
                         <form method="post" action="Solicitud">
                             <input type="hidden" name="solId" value="<%=solVO.getSolId()%>">                            
-                            <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmar()">Cambiar Estado</button>
+                            <button class="btn btn-danger" name="opcion" value="3" onclick="return confirmarCambioEstado()">Cambiar Estado</button>
                         </form>
                     </td>
                 </tr>

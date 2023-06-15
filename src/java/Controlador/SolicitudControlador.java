@@ -66,9 +66,9 @@ public class SolicitudControlador extends HttpServlet {
             case 3:
                 if(solDAO.eliminarRegistro()){
                     //Enviar atravez de un Atributo
-                   request.setAttribute("MensajeExito","La solicitud se eliminó correctamente!");
+                   request.setAttribute("MensajeExito","¡El estado de la solicitud se cambió correctamente!");
                 }else{
-                   request.setAttribute("MensajeError","La solicitud no se eliminó correctamente!"); 
+                   request.setAttribute("MensajeError","¡El estado de la solicitud NO se cambió correctamente!"); 
                 }
                 request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
                 break;

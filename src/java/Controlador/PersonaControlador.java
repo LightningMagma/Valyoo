@@ -137,9 +137,9 @@ public class PersonaControlador extends HttpServlet {
                 break;
             case 5: // Eliminar Registro
                 if (perDAO.eliminarRegistro()) {
-                    request.setAttribute("MensajeExito", "¡La persona se eliminó correctamente!");
+                    request.setAttribute("MensajeExito", "¡El estado de la persona se cambió correctamente!");
                 } else {
-                    request.setAttribute("MensajeError", "¡La persona NO se eliminó correctamente!");
+                    request.setAttribute("MensajeError", "¡El estado de la persona NO se cambió correctamente!");
                 }
                 request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
                 break;

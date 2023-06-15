@@ -132,8 +132,16 @@
         </form>
     </section>
     <script>
+        function confirmarCambioEstado() {
+            var respuesta = confirm("¿Desea cambiar el estado del registro?");
+            if (respuesta == true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         function confirmar() {
-            var respuesta = confirm("¿Desea eliminar el registro");
+            var respuesta = confirm("¿Está seguro de eliminar el registro?");
             if (respuesta == true) {
                 return true;
             } else {
@@ -160,15 +168,15 @@
                 }
             }
         }
-        function cargarArchivo(elemento){
-                var file=elemento.files[0];
-                var objhidden=document.formulario.Nombre;
-                objhidden.value=file.name;
-                //document.formulario.target="null";
-                document.formulario.action="Documentos";
-                //document.formulario.submit();
-                //alert("Proceso Terminado");
-            }
+        function cargarArchivo(elemento) {
+            var file = elemento.files[0];
+            var objhidden = document.formulario.Nombre;
+            objhidden.value = file.name;
+            //document.formulario.target="null";
+            document.formulario.action = "Documentos";
+            //document.formulario.submit();
+            //alert("Proceso Terminado");
+        }
         function myFunctione() {
             var x = document.getElementById("myTopnav");
             if (x.className === "topnav") {
