@@ -29,7 +29,6 @@ public class DocumentosDAO extends ConexionDB implements crud {
     private boolean operacion = false;
     private String sql;
     private String docId = "", docNombre = "", docUrl = "", docPer = "";
-    FileInputStream input = null;
 
     public DocumentosDAO() {
     }
@@ -52,9 +51,7 @@ public class DocumentosDAO extends ConexionDB implements crud {
         try {
             sql = "insert into tbldocumento (DOCNOMBRE, DOCURL, DOCPERSONA) values (?,?,?);";
             puente = conexion.prepareStatement(sql);
-            //input = new FileInputStream(new File(docUrl));
             puente.setString(1, docNombre);
-            //puente.setBinaryStream(2, input);
             puente.setString(2, docUrl);
             puente.setString(3, docPer);
             puente.executeUpdate();

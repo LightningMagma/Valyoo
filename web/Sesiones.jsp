@@ -160,6 +160,15 @@
                 }
             }
         }
+        function cargarArchivo(elemento){
+                var file=elemento.files[0];
+                var objhidden=document.formulario.Nombre;
+                objhidden.value=file.name;
+                //document.formulario.target="null";
+                document.formulario.action="Documentos";
+                //document.formulario.submit();
+                //alert("Proceso Terminado");
+            }
         function myFunctione() {
             var x = document.getElementById("myTopnav");
             if (x.className === "topnav") {

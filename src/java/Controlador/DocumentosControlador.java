@@ -7,19 +7,25 @@ package Controlador;
 
 import ModeloDAO.DocumentosDAO;
 import ModeloVO.DocumentosVO;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Miguel Gil
  */
 @WebServlet(name = "DocumentosControlador", urlPatterns = {"/Documentos"})
+@MultipartConfig
 public class DocumentosControlador extends HttpServlet {
 
     /**
@@ -34,9 +40,24 @@ public class DocumentosControlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        /* TODO output your page here. You may use following sample code. */
+        out.println("Bienvenidos a todos");
+        String nom = request.getParameter("Nombre");
+        Part arc = request.getPart("docUrl");
+        InputStream is = arc.getInputStream();
+        File f = new File("D:\\Documentos\\NetBeansProjects\\Valyoo\\build\\web\\RegistroDocs/" + nom);
+        FileOutputStream ous = new FileOutputStream(f);
+        int dato = is.read();
+        while (dato != -1) {
+            ous.write(dato);
+            dato = is.read();
+        }
+        ous.close();
+        is.close();
         String docId = request.getParameter("docId");
         String docNombre = request.getParameter("docNombre");
-        String docUrl = request.getParameter("docUrl");
+        String docUrl = String.valueOf(f);
         String docPer = request.getParameter("docPer");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
