@@ -40,7 +40,7 @@ public class PersonaDAO extends ConexionDB implements crud {
             perTipoDocumento = perVO.getPerTipoDocumento();
             perNombre = perVO.getPerNombre();
             perApellido = perVO.getPerApellido();
-            perCorreo=perVO.getPerCorreo();
+            perCorreo = perVO.getPerCorreo();
             perTelefono = perVO.getPerTelefono();
             perDireccion = perVO.getPerDireccion();
             perClave = perVO.getPerClave();
@@ -49,7 +49,7 @@ public class PersonaDAO extends ConexionDB implements crud {
         } catch (Exception e) {
             Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-    }
+    }    
 
     @Override
     public boolean agregarRegistro() {
@@ -207,6 +207,26 @@ public class PersonaDAO extends ConexionDB implements crud {
                 // this.cerrarConexion();
             } catch (Exception ex) {
                 Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return operacion;
+    }
+
+    public boolean actualizarContra() {
+        try {
+            sql = "update tblpersona set PERCLAVE=? where PERCORREO=?;";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, perClave);
+            puente.setString(2, perCorreo);
+            puente.executeUpdate();
+            operacion = true;
+        } catch (Exception e) {
+            Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (Exception e) {
+                Logger.getLogger(PersonaDAO.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         return operacion;

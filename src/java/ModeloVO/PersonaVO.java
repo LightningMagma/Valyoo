@@ -29,6 +29,11 @@ public class PersonaVO {
         this.perEstado = perEstado;
     }
 
+    public PersonaVO(String perCorreo, String perClave) {
+        this.perCorreo = perCorreo;
+        this.perClave = perClave;
+    }
+
     public String getPerDocumento() {
         return perDocumento;
     }

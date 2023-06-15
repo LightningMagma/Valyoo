@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import ModeloDAO.PersonaDAO;
+import ModeloVO.PersonaVO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletContext;
@@ -23,7 +25,7 @@ import util.PropiedadesCorreo;
 public class EnvioCorreoControlador extends HttpServlet {
 
     private String servidor, puerto, usuario, clave;
-
+   
     public void init() {
 
         ServletContext context = getServletContext();
@@ -32,14 +34,35 @@ public class EnvioCorreoControlador extends HttpServlet {
         usuario = context.getInitParameter("usuario");
         clave = context.getInitParameter("clave");
     }
-
+    public String generarContra(){
+        char[] mayusculas = {'A','B','C','D','E','F','G'};
+        char[] minusculas = {'a','b','c','d','e','f','g'};
+        char[] numeros = {'1','3','4','4','5','6','7','8','9','0'};
+        
+        StringBuilder caracteres = new StringBuilder();
+        caracteres.append(mayusculas);
+        caracteres.append(minusculas);
+        caracteres.append(numeros);
+        
+        StringBuilder contra = new StringBuilder();
+        
+        for (int i = 0; i < 15; i++) {
+            int cantidadCaracteres = caracteres.length();
+            int numeroRandom = (int)(Math.random()*cantidadCaracteres);
+            contra.append((caracteres.toString()).charAt(numeroRandom));
+        }
+        
+        return contra.toString();
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String destino = request.getParameter("destino");
-        String asunto = request.getParameter("asunto");
-        String mensaje = request.getParameter("mensaje");
-
+        String asunto = "Recuperación de contraseña";
+        String mensaje = "Su nueva contraseña es : "+ generarContra();
+         PersonaVO perVO = new PersonaVO(destino,clave);
+         PersonaDAO perDAO = new PersonaDAO(perVO);
+         perDAO.actualizarContra();
         String resultadoMensaje = "";
 
         try {

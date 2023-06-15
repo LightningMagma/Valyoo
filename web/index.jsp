@@ -60,15 +60,7 @@
                 <tr>
                     <td>Destino</td>
                     <td><input type="email" name="destino"></td>
-                </tr>
-                <tr>
-                    <td>Asunto</td>
-                    <td><input type="text" name="asunto"></td>
-                </tr>
-                <tr>
-                    <td>Mensaje</td>
-                    <td><textarea rows="10" name="mensaje"></textarea></td>
-                </tr>
+                </tr>                
                 <tr>
                     <td><input type="submit" value="Enviar"> </td>
                 </tr>
