@@ -42,11 +42,10 @@ public class DocumentosControlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         /* TODO output your page here. You may use following sample code. */
-        out.println("Bienvenidos a todos");
         String nom = request.getParameter("Nombre");
         Part arc = request.getPart("docUrl");
         InputStream is = arc.getInputStream();
-        File f = new File("C:\\Users\\APRENDIZ\\Documents\\JUAN DUCUARA JAVA\\Valyoo\\Valyoo\\web\\Documentos/" + nom);
+        File f = new File("D:\\Documentos\\NetBeansProjects\\Valyoo\\web\\Documentos/" + nom);
         FileOutputStream ous = new FileOutputStream(f);
         int dato = is.read();
         while (dato != -1) {
