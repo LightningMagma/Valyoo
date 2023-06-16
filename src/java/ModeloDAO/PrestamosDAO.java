@@ -53,14 +53,16 @@ public class PrestamosDAO extends ConexionDB implements crud {
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into tblprestamo(PreFechaInicio, PreFechaFin, PreCuotas, PreMonto, PreInteres, PreCuenta) values (?,?,?,?,?,?);";
+            sql = "insert into tblprestamo(PreFechaInicio, PreFechaFin, PreCuotas, PreMonto, PreInteres, PreCuenta) values (?,?,?,?+(?*(?/100)),?,?);";
             puente = puerta.prepareStatement(sql);
             puente.setString(1, PreFechaInicio);
             puente.setString(2, PreFechaFin);
             puente.setString(3, PreCuotas);
             puente.setString(4, PreMonto);
-            puente.setString(5, PreInteres);
-            puente.setString(6, PreCuenta);
+            puente.setString(5, PreMonto);
+            puente.setString(6, PreInteres);
+            puente.setString(7, PreInteres);
+            puente.setString(8, PreCuenta);
             puente.executeUpdate();
             operacion = true;
         } catch (Exception e) {

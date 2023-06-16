@@ -27,7 +27,7 @@
             <label>Monto: </label>
             <input type="text" name="PreMonto" maxlength="10" placeholder="Ingresé el monto" required pattern="[0-9]{6,10}" title="Debe ingresar un monto adecuado"  oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Intereses: </label>
-            <input type="text" name="PreInteres" maxlength="2" placeholder="Ingresé los intereses" required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+            <input type="text" name="PreInteres" maxlength="4" placeholder="Ingresé los intereses" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/,/g, '.')">
             <label>Cuenta: </label>
             <select name="PreCuenta">
                 <option>Seleccione...</option>
