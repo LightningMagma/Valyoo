@@ -23,11 +23,11 @@
         %>
         <form method="post" action="Prestamo">
             <label>Codigo prestamo: </label>
-            <input type="text" name="PreId" maxlength="6" value="<%=presVO.getPreId()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+            <input disabled="" type="text" name="PreId" maxlength="6" value="<%=presVO.getPreId()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Fecha inicio: </label>
-            <input type="text" name="PreFechaInicio" maxlength="10" value="<%=presVO.getPreFechaInicio()%>">
+            <input type="date" name="PreFechaInicio" maxlength="10" value="<%=presVO.getPreFechaInicio()%>">
             <label>Fecha fin: </label>
-            <input type="text" name="PreFechaFin" maxlength="10" value="<%=presVO.getPreFechaFin()%>">
+            <input type="date" name="PreFechaFin" maxlength="10" value="<%=presVO.getPreFechaFin()%>">
             <label>Cuotas: </label>
             <input type="text" name="PreCuotas" maxlength="2" value="<%=presVO.getPreCuotas()%>"oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')" >
             <label>Monto: </label>
@@ -35,7 +35,7 @@
             <label>Intereses: </label>
             <input type="text" name="PreInteres" maxlength="2" value="<%=presVO.getPreInteres()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Cuenta: </label>
-            <input type="text" name="PreCuenta" maxlength="2" value="<%=presVO.getPreCuenta()%>" oninput="this.value = this.value.replace(/[^0-9]/g,'').replace(/(\..*)\./g, '$1')">
+            <input disabled="" type="text" name="PreCuenta" maxlength="2" value="<%=presVO.getPreCuenta()%>" oninput="this.value = this.value.replace(/[^0-9]/g,'').replace(/(\..*)\./g, '$1')">
             <input type="submit" class="btn btn-success" value="Actualizar">
             <a href="indexPrestamos.jsp">
                 <button class="btn btn-primary" type="button">Volver</button></a>
