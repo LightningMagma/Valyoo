@@ -16,7 +16,7 @@
     <body>
         <h2>Registro solicitud</h2>
         <form method="post" action="Solicitud">
-            <label for="usuMonto">Monto del prestamo:</label>
+            <label for="usuMonto">Monto del préstamo:</label>
             <input type="text" name="solMonto" placeholder="Digite el monto del prestamo" pattern="^[0-9]{6,10}$" title="Debe ingresar un monto adecuado"  oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label for="usuCuotas">Cuotas:</label>
             <input type="number" name="solCuotas" required placeholder="Ingrese la cantidad de cuotas" pattern="^[0-9]{1,2}$" title="Debe ingresar una cantidad valida" required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')"> 

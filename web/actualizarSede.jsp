@@ -27,7 +27,7 @@
             <input type="text" name="sedeNombre" required maxlength=30 value="<%=sedeVO.getSedeNombre()%>" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '').replace(/(\..*)\./g, '$1')">
             <label for="sedeDireccion">Dirección:</label>
             <input type="text" name="sedeDireccion" required maxlength=30 value="<%=sedeVO.getSedeDireccion()%>" oninput="this.value = this.value.replace(/[^A-Za-z0-9 ]/g, '').replace(/(\..*)\./g, '$1')">
-            <label for="sedeTelefono">Telefono:</label>
+            <label for="sedeTelefono">Teléfono:</label>
             <input type="text" name="sedeTelefono" required maxlength=100 value="<%=sedeVO.getSedeTelefono()%>"oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <input type="submit" class="btn btn-success" value="Actualizar">            
             <a href="indexSede.jsp">

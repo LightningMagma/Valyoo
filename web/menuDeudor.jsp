@@ -44,11 +44,11 @@
                 </div>
                 <div class="col-md-8 -mt-1">
                     <div class="card mb-3 content">
-                        <h1 class="m-3 pt-3">Credito</h1>
+                        <h1 class="m-3 pt-3">Crédito</h1>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h5>No. Credito</h5>
+                                    <h5>No. Crédito</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
                                     <%=nuPrestamo%>
@@ -84,11 +84,11 @@
                         </div>
                     </div>
                     <div class="card mb-3 content">
-                        <h1 class="m-3">Ultimo Pago</h1>
+                        <h1 class="m-3">Último Pago</h1>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h5>Descripcion</h5>
+                                    <h5>Descripción</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
                                     <%=descripcionPago%>

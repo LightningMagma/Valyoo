@@ -22,11 +22,11 @@
         <form method="post" action="Pago">
             <table>                
                 <input type="hidden" name="PagId" value="<%=pagVO.getPagId()%>">
-                <label>Descripcion: </label>
+                <label>Descripción: </label>
                 <input type="text" name="PagDesc" value="<%=pagVO.getPagDesc()%>" oninput="this.value = this.value.replace(/[^A-Za-z0-9 ]/g, '').replace(/(\..*)\./g, '$1')">
                 <label>Valor: </label>
                 <input type="text" name="PagValor" value="<%=pagVO.getPagValor()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
-                <label>Prestamo abonado: </label>
+                <label>Préstamo abonado: </label>
                 <input type="text" name="PagPrestamo" value="<%=pagVO.getPagPres()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
                 <input type="submit" class="btn btn-success" value="Actualizar">
                 <a href="indexPago.jsp">

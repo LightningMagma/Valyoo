@@ -13,16 +13,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Actualizar Prestamo</title>
+        <title>Actualizar Préstamo</title>
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h2>Actualizar Prestamo</h2>
+        <h2>Actualizar Préstamo</h2>
         <%            PrestamosVO presVO = (PrestamosVO) request.getAttribute("prestamoEncontrado");
             if (presVO != null) {
         %>
         <form method="post" action="Prestamo">
-            <label>Codigo prestamo: </label>
+            <label>Codigo préstamo: </label>
             <input disabled="" type="text" name="PreId" maxlength="6" value="<%=presVO.getPreId()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Fecha inicio: </label>
             <input type="date" name="PreFechaInicio" maxlength="10" value="<%=presVO.getPreFechaInicio()%>">

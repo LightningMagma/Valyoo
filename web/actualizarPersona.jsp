@@ -37,7 +37,7 @@
 
                         <form action="Persona" method="post">
                             <img src="Estilos/tituloValyooConSlogan.png" alt="" width="70%" style="padding-bottom:7%"/>
-                            <label for="perDocumento">Numero de documento:</label>
+                            <label for="perDocumento">Número de documento:</label>
                             <div class="input">
                                 <input type="text" name="perDocumento" pattern="^[0-9]{7,10}*$" title="Debe ingresar un número de documento" required value="<%=perVO.getPerDocumento()%>" disabled>
                             </div>
@@ -63,7 +63,7 @@
                             <div class="input">
                                 <input type="text" name="perCorreo" title="Debe ingresar un correo" required value="<%=perVO.getPerCorreo()%>" oninput="this.value = this.value.replace(/[^A-Za-z0-9@_. -]/g, '').replace(/(\..*)\./g, '$1')">
                             </div>
-                            <label for="perTelefono">Télefono:</label>
+                            <label for="perTelefono">Teléfono:</label>
                             <div class="input">
                                 <input type="text" name="perTelefono" title="Debe ingresar un número telefónico" required value="<%=perVO.getPerTelefono()%>" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
                             </div>
@@ -71,7 +71,7 @@
                             <div class="input">
                                 <input type="text" name="perDireccion" title="No ingrese * / + _ ? u otros caracteres especiales" required value="<%=perVO.getPerDireccion()%>" oninput="this.value = this.value.replace(/[^A-Za-z0-9 #-]/g, '').replace(/(\..*)\./g, '$1')">
                             </div>
-                            <label for="perClave">Clave:</label>
+                            <label for="perClave">Contraseña:</label>
                             <div class="input">
                                 <input type="password" name="perClave" pattern="^[0-9]{2,10}*$" required value="<%=perVO.getPerClave()%>">
                             </div>

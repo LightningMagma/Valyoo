@@ -55,8 +55,8 @@
             %> 
             <table class="table table-data2" id="myTable">
                 <tr>
-                    <th>Codigo</th>
-                    <th>Descripcion</th>
+                    <th>Código</th>
+                    <th>Descripción</th>
                     <th>Valor</th>
                     <th>Deudor</th>
                     <th>Fecha</th>

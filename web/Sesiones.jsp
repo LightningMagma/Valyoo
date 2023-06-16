@@ -107,7 +107,7 @@
         <a href="indexPersona.jsp">Persona</a>
         <a href="indexRol.jsp">Rol</a>
         <a href="indexSede.jsp">Sede</a>    
-        <a href="indexPersonaRol.jsp">Asignacion rol</a>
+        <a href="indexPersonaRol.jsp">Asignación rol</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
             <i class="fa fa-bars"></i>
         </a>       
@@ -115,7 +115,7 @@
             if (prVO.getPRRol().equals("2")) {%>
         <a href="menuSupervisor.jsp">Perfil</a>
         <a href="indexCuenta.jsp">Cuenta</a>
-        <a href="registrarPrestamos.jsp">Prestamo</a>       
+        <a href="registrarPrestamos.jsp">Préstamo</a>       
         <a href="indexPago.jsp">Pago</a>
         <a href="supervisorDocumentos.jsp">Documentos</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunctione()">

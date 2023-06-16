@@ -58,12 +58,12 @@
                 <h1>Bienvenido a Valyoo</h1>
                 <p class="lead">Somos una empresa dedicada a brindar soluciones para tu negocio.</p>
                 <p class="lead">
-                    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Descubre mas</a>
+                    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Descubre más</a>
                 </p>
             </main>
 
             <footer class="mt-auto text-white-50">
-                <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a></p>
+                <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Valyoo</a></p>
             </footer>
         </div>
     </body>

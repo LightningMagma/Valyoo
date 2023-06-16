@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu administrador</title>
+        <title>Menú administrador</title>
         <%@include file="Sesiones.jsp" %>
     </head>
     <body>

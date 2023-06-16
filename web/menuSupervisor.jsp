@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu supervisor</title>        
+        <title>Menú supervisor</title>        
     </head>
     <body>
         <%            if (request.getAttribute("MensajeError") != null) { %>

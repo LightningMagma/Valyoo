@@ -13,15 +13,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar Prestamos</title>
+        <title>Consultar Préstamos</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" >
         <link href="Estilos/formularioConsulta.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="formularioConsulta">
-        <h3 class="title-5 m-b-35">Prestamos</h3>
+        <h3 class="title-5 m-b-35">Préstamos</h3>
         <form method="post" action="Prestamo">
-            <label>Codigo: </label>
+            <label>Código: </label>
             <input type="text" name="PreId" id="myInput" onkeyup="myFunction()" placeholder="Ingrese ID del prestamo" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <input type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small" value="Consultar">
             <input type="hidden" name="opcion" value="4">
@@ -30,7 +30,7 @@
             <div class="table-data__tool-right">
                 <a href="registrarPrestamos.jsp">
                     <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="zmdi zmdi-plus"></i>Agregar prestamo</button>
+                        <i class="zmdi zmdi-plus"></i>Agregar préstamo</button>
                 </a>
             </div>
         </div>
@@ -46,7 +46,7 @@
             %> 
         <table class="table table-data2" id="myTable"><br>
             <tr>
-                <th>Codigo</th>
+                <th>Código</th>
                 <th>Fecha inicio</th>
                 <th>Fecha fin</th>
                 <th>Cuotas</th>

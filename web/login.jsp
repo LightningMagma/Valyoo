@@ -43,7 +43,7 @@
                                 <input name="opcion" type="hidden" value="4">
                             </div>
                             <p class="registrar">¿No tienes una cuenta? <a href="registrarPersona.jsp">Regístrate</a></p>
-                            <p class="registrar">¿Olvidaste tu contraseña? <a href="recuperarContra.jsp">Recupera</a></p>
+                            <p class="registrar">¿Olvidaste tu contraseña? <a href="recuperarContra.jsp">Recuperar</a></p>
                             <%
                                 if (request.getAttribute("mensajeError") != null) {%>
                             <h2>${mensajeError}</h2>

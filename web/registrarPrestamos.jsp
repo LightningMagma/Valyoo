@@ -12,11 +12,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registrar Prestamo</title>
+        <title>Registrar Préstamo</title>
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h2>Registrar Prestamo</h2>
+        <h2>Registrar Préstamo</h2>
         <form method="post" action="Prestamo">
             <label>Fecha inicio: </label>
             <input type="date" name="PreFechaInicio" maxlength="10" placeholder="0000-00-00">
