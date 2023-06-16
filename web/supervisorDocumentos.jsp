@@ -1,7 +1,7 @@
 <%-- 
     Document   : supervisorDocumentos
     Created on : 15/06/2023, 08:41:34 PM
-    Author     : ACER
+    Author     : Miguel Gil
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
