@@ -45,7 +45,7 @@
                 var file = elemento.files[0];
                 var objhidden = document.formulario.Nombre;
                 objhidden.value = file.name;
-                document.formulario.target="indexDocumentos.jsp";
+                //document.formulario.target="indexDocumentos.jsp";
                 //document.formulario.action = "Documentos";
                 //document.formulario.submit();
                 //alert("Proceso Terminado");

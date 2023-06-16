@@ -6,12 +6,15 @@
 package Controlador;
 
 import ModeloDAO.DocumentosDAO;
+import ModeloDAO.PerRolDAO;
 import ModeloVO.DocumentosVO;
+import ModeloVO.PerRolVO;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -70,7 +73,24 @@ public class DocumentosControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡El documento NO se registró correctamente!");
                 }
-                request.getRequestDispatcher("indexDocumentos.jsp").forward(request, response);
+                PerRolDAO prDAO = new PerRolDAO();
+                PerRolVO prVO = new PerRolVO();
+                ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(docPer);
+                for (int i = 0; i < listaPerRoles.size(); i++) {
+                    prVO = listaPerRoles.get(i);
+                    if (prVO.getPRRol().equals("1")) {
+                        request.getRequestDispatcher("indexDocumentos.jsp").forward(request, response);
+                    }
+                    if (prVO.getPRRol().equals("2")) {
+                        request.getRequestDispatcher("menuSupervisor.jsp").forward(request, response);
+                    }
+                    if (prVO.getPRRol().equals("3")) {
+                        request.getRequestDispatcher("menuSecretario.jsp").forward(request, response);
+                    }
+                    if (prVO.getPRRol().equals("4")) {
+                        request.getRequestDispatcher("menuDeudor.jsp").forward(request, response);
+                    }
+                }
                 break;
             case 2: // Actualizar Registro
                 if (docDAO.actualizarRegistro()) {

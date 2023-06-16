@@ -122,7 +122,7 @@
         <a href="indexCuenta.jsp">Cuenta</a>
         <a href="indexPrestamos.jsp">Prestamo</a>       
         <a href="indexPago.jsp">Pago</a>
-        <a href="indexDocumentos.jsp">Documentos</a>
+        <a href="supervisorDocumentos.jsp">Documentos</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
             <i class="fa fa-bars"></i>
         </a>       
@@ -130,7 +130,7 @@
             if (prVO.getPRRol().equals("3")) {%>          
         <a href="indexPrestamos.jsp">Prestamo</a>        
         <a href="indexPago.jsp">Pago</a> 
-        <a href="indexDocumentos.jsp">Documentos</a>
+        <a href="registrarDocumentos.jsp">Documentos</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
             <i class="fa fa-bars"></i>
         </a>       
