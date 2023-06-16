@@ -54,6 +54,7 @@ public class PersonaControlador extends HttpServlet {
         String perClave = request.getParameter("perClave");
         String perSede = request.getParameter("perSede");
         String perEstado = request.getParameter("perEstado");
+        String docreg = request.getParameter("docreg");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         PersonaVO perVO = new PersonaVO(perDocumento, perTipoDocumento, perNombre, perApellido, perCorreo, perTelefono, perDireccion, perClave, perSede, perEstado);
@@ -74,7 +75,15 @@ public class PersonaControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡La persona NO se registró correctamente!");
                 }
-                request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
+                ArrayList<PerRolVO> listaPerRole = prDAO.listarPerRol(docreg);
+                for (int i = 0; i < listaPerRole.size(); i++) {
+                    prVO = listaPerRole.get(i);
+                    if (prVO.getPRRol().equals("1")) {
+                        request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
+                    } else{
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                    }
+                }
                 break;
             case 2: // Actualizar Registro
                 if (perDAO.actualizarRegistro()) {

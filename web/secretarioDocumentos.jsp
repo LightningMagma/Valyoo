@@ -1,7 +1,7 @@
 <%-- 
-    Document   : registrarDocumentos
-    Created on : 20/03/2023, 02:04:00 PM
-    Author     : Miguel Gil
+    Document   : secretarioDocumentos
+    Created on : 15/06/2023, 11:57:53 PM
+    Author     : ACER
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,7 +27,7 @@
             <input type="text" name="docPer" required maxlength=15 placeholder="Ingrese la persona" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <input type="submit" class="btn btn-success" value="Registrar">
             <input type="reset" class="btn btn-danger" value="Limpiar">
-            <a href="indexDocumentos.jsp">
+            <a href="menuSecretario.jsp">
                 <button class="btn btn-primary" type="button">Volver</button>
             </a>
             <input type="hidden" name="Nombre" value="">

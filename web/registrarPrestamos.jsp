@@ -27,21 +27,22 @@
             <label>Monto: </label>
             <input type="text" name="PreMonto" maxlength="10" placeholder="Ingresé el monto" required pattern="[0-9]{6,10}" title="Debe ingresar un monto adecuado"  oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Intereses: </label>
-            <input type="text" name="PreInteres" maxlength="2" placeholder="Ingresé los intereses" required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+            <input type="text" name="PreInteres" maxlength="4" placeholder="Ingresé los intereses" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
             <label>Cuenta: </label>
             <select name="PreCuenta">
                 <option>Seleccione...</option>
                 <%                    CuentaDAO cuDAO = new CuentaDAO();
                     for (CuentaVO cuVO : cuDAO.listarCuentasActivas()) {
                 %>
-                <option value="<%=cuVO.getCuNumero()%>"><%="Numero de cuenta: "+cuVO.getCuNumero()+" Titular: "+cuVO.getCuPersona()%></option>
-                <% } %>
+                <option value="<%=cuVO.getCuNumero()%>"><%="Numero de cuenta: " + cuVO.getCuNumero() + " Titular: " + cuVO.getCuPersona()%></option>
+                <% }%>
             </select>
             <input type="submit" class="btn btn-success" value="Registrar prestamo">
             <input type="reset" class="btn btn-danger" value="Borrar">
             <a href="indexPrestamos.jsp">
                 <button class="btn btn-primary" type="button">Volver</button>
             </a>
+            <input type="hidden" name="docreg" value="<%=documento%>">
             <input type="hidden" name="opcion" value="1">
             <%
                 if (request.getAttribute("MensajeError") != null) { %>

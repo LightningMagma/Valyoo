@@ -9,6 +9,7 @@ import ModeloDAO.DocumentosDAO;
 import ModeloDAO.PerRolDAO;
 import ModeloVO.DocumentosVO;
 import ModeloVO.PerRolVO;
+import ModeloVO.PersonaVO;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -61,6 +62,7 @@ public class DocumentosControlador extends HttpServlet {
         String docNombre = request.getParameter("docNombre");
         String docUrl = String.valueOf(f);
         String docPer = request.getParameter("docPer");
+        String docreg=request.getParameter("docreg");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         DocumentosVO docVO = new DocumentosVO(docId, docNombre, docUrl, docPer);
@@ -75,20 +77,16 @@ public class DocumentosControlador extends HttpServlet {
                 }
                 PerRolDAO prDAO = new PerRolDAO();
                 PerRolVO prVO = new PerRolVO();
-                ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(docPer);
+                PersonaVO perVO = new PersonaVO();
+                request.setAttribute("personaEncontrada", perVO);
+                ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(docreg);
                 for (int i = 0; i < listaPerRoles.size(); i++) {
                     prVO = listaPerRoles.get(i);
-                    if (prVO.getPRRol().equals("1")) {
-                        request.getRequestDispatcher("indexDocumentos.jsp").forward(request, response);
-                    }
-                    if (prVO.getPRRol().equals("2")) {
-                        request.getRequestDispatcher("menuSupervisor.jsp").forward(request, response);
-                    }
                     if (prVO.getPRRol().equals("3")) {
                         request.getRequestDispatcher("menuSecretario.jsp").forward(request, response);
                     }
-                    if (prVO.getPRRol().equals("4")) {
-                        request.getRequestDispatcher("menuDeudor.jsp").forward(request, response);
+                    if (prVO.getPRRol().equals("1")) {
+                        request.getRequestDispatcher("indexDocumentos.jsp").forward(request, response);
                     }
                 }
                 break;

@@ -99,28 +99,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <div class="topnav" id="myTopnav">
-        <a class="imagenNav"><img src="Estilos/tituloValyoo.png"  alt="Título Valyoo" width="175px"></a>
+        <a class="imagenNav" href="landingpage.jsp"><img src="Estilos/tituloValyoo.png"  alt="Título Valyoo" width="175px"></a>
             <%for (int i = 0; i < listaPerRoles.size(); i++) {
                     prVO = listaPerRoles.get(i);
-                    if (prVO.getPRRol().equals("1")) {%>  
+                    if (prVO.getPRRol().equals("1")) {%> 
+        <a href="menuAdministrador.jsp">Perfil</a>
         <a href="indexPersona.jsp">Persona</a>
         <a href="indexRol.jsp">Rol</a>
-        <a href="indexSolicitud.jsp">Solicitud</a>
-        <a href="indexCuenta.jsp">Cuenta</a>
-        <a href="indexPrestamos.jsp">Prestamo</a>
-        <a href="indexSede.jsp">Sede</a>
-        <a href="indexPago.jsp">Pago</a>         
+        <a href="indexSede.jsp">Sede</a>    
         <a href="indexPersonaRol.jsp">Asignacion rol</a>
-        <a href="indexDocumentos.jsp">Documentos</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
             <i class="fa fa-bars"></i>
         </a>       
         <%}
-            if (prVO.getPRRol().equals("2")) {%>  
-        <a href="indexPersona.jsp">Persona</a>        
-        <a href="indexSolicitud.jsp">Solicitud</a>
+            if (prVO.getPRRol().equals("2")) {%>
+        <a href="menuSupervisor.jsp">Perfil</a>
         <a href="indexCuenta.jsp">Cuenta</a>
-        <a href="indexPrestamos.jsp">Prestamo</a>       
+        <a href="registrarPrestamos.jsp">Prestamo</a>       
         <a href="indexPago.jsp">Pago</a>
         <a href="supervisorDocumentos.jsp">Documentos</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
@@ -128,9 +123,10 @@
         </a>       
         <%}
             if (prVO.getPRRol().equals("3")) {%>          
-        <a href="indexPrestamos.jsp">Prestamo</a>        
-        <a href="indexPago.jsp">Pago</a> 
-        <a href="registrarDocumentos.jsp">Documentos</a>
+        <a href="menuSecretario.jsp">Perfil</a>
+        <a href="indexSolicitud.jsp">Solicitud</a>
+        <a href="pagoSecretario.jsp">Pago</a> 
+        <a href="secretarioDocumentos.jsp">Documentos</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
             <i class="fa fa-bars"></i>
         </a>       
@@ -188,7 +184,7 @@
                 }
             }
         }
-        
+
         function myFunctione() {
             var x = document.getElementById("myTopnav");
             if (x.className === "topnav") {

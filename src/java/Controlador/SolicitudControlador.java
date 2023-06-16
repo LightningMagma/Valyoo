@@ -62,14 +62,8 @@ public class SolicitudControlador extends HttpServlet {
                 ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(solPersona);
                 for (int i = 0; i < listaPerRoles.size(); i++) {
                     prVO = listaPerRoles.get(i);
-                    if (prVO.getPRRol().equals("1")) {
-                        request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
-                    }
-                    if (prVO.getPRRol().equals("2")) {
-                        request.getRequestDispatcher("menuSupervisor.jsp").forward(request, response);
-                    }
                     if (prVO.getPRRol().equals("3")) {
-                        request.getRequestDispatcher("menuSecretario.jsp").forward(request, response);
+                        request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
                     }
                     if (prVO.getPRRol().equals("4")) {
                         request.getRequestDispatcher("menuDeudor.jsp").forward(request, response);

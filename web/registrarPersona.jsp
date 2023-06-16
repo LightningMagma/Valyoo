@@ -62,6 +62,7 @@
                             </div>
                             <div class="input">
                                 <input type="submit" value="Registrar">
+                                <input type="hidden" name="docreg" value="1234567">
                                 <input name="opcion" type="hidden" value="1">
                             </div>
 

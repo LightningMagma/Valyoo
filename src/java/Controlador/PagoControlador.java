@@ -6,9 +6,13 @@
 package Controlador;
 
 import ModeloDAO.PagoDAO;
+import ModeloDAO.PerRolDAO;
 import ModeloVO.PagoVO;
+import ModeloVO.PerRolVO;
+import ModeloVO.PersonaVO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,6 +44,7 @@ public class PagoControlador extends HttpServlet {
         String PagValor = request.getParameter("PagValor");
         String PagFecha = request.getParameter("PagFecha");
         String PagPres = request.getParameter("PagPrestamo");
+        String docreg=request.getParameter("docreg");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         PagoVO pagVO = new PagoVO(PagId, PagDesc, PagValor, PagPres, PagFecha);
@@ -53,7 +58,23 @@ public class PagoControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "¡El pago NO se registró correctamente!");
                 }
-                request.getRequestDispatcher("indexPago.jsp").forward(request, response);
+                PerRolDAO prDAO = new PerRolDAO();
+                PerRolVO prVO = new PerRolVO();
+                PersonaVO perVO = new PersonaVO();
+                request.setAttribute("personaEncontrada", perVO);
+                ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(docreg);
+                for (int i = 0; i < listaPerRoles.size(); i++) {
+                    prVO = listaPerRoles.get(i);
+                    if (prVO.getPRRol().equals("3")) {
+                        request.getRequestDispatcher("menuSecretario.jsp").forward(request, response);
+                    }
+                    if (prVO.getPRRol().equals("2")) {
+                        request.getRequestDispatcher("indexPago.jsp").forward(request, response);
+                    }
+                    if (prVO.getPRRol().equals("1")) {
+                        request.getRequestDispatcher("indexPago.jsp").forward(request, response);
+                    }
+                }
                 break;
             case 2: // Actualizar Pago
                 if (pagDAO.actualizarRegistro()) {

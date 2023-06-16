@@ -5,10 +5,14 @@
  */
 package Controlador;
 
+import ModeloDAO.PerRolDAO;
 import ModeloDAO.PrestamosDAO;
+import ModeloVO.PerRolVO;
+import ModeloVO.PersonaVO;
 import ModeloVO.PrestamosVO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,6 +47,7 @@ public class PrestamoControlador extends HttpServlet {
         String PreInteres = request.getParameter("PreInteres");
         String PreEstado = request.getParameter("PreEstado");
         String PreCuenta = request.getParameter("PreCuenta");
+        String docreg=request.getParameter("docreg");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         
         PrestamosVO presVO = new PrestamosVO(PreId, PreFechaInicio, PreFechaFin, PreCuotas, PreMonto, PreInteres, PreCuenta, PreEstado);
@@ -56,7 +61,17 @@ public class PrestamoControlador extends HttpServlet {
                 else {
                     request.setAttribute("MensajeError", "¡El prestamo NO se registró correctamente!");
                 }
-                request.getRequestDispatcher("indexPrestamos.jsp").forward(request, response);
+                PerRolDAO prDAO = new PerRolDAO();
+                PerRolVO prVO = new PerRolVO();
+                PersonaVO perVO = new PersonaVO();
+                request.setAttribute("personaEncontrada", perVO);
+                ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(docreg);
+                for (int i = 0; i < listaPerRoles.size(); i++) {
+                    prVO = listaPerRoles.get(i);
+                    if (prVO.getPRRol().equals("2")) {
+                        request.getRequestDispatcher("indexPrestamos.jsp").forward(request, response);
+                    }
+                }
                 break;
             case 2: // Actualizar Registro
                 if(presDAO.actualizarRegistro()) {

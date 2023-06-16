@@ -1,10 +1,9 @@
 <%-- 
-    Document   : registrarPago
-    Created on : 17/03/2023, 02:49:17 PM
-    Author     : APRENDIZ
+    Document   : pagoSecretario
+    Created on : 15/06/2023, 11:51:50 PM
+    Author     : ACER
 --%>
 
-<%@page import="ModeloVO.PrestamosVO"%>
 <%@page import="ModeloDAO.PrestamosDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="Sesiones.jsp" %>
@@ -12,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registrar Pago</title>
+        <title>Pago</title>
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
@@ -33,7 +32,7 @@
             </select>
             <input type="submit" class="btn btn-success" value="Registrar pago">
             <input type="reset" class="btn btn-danger" value="Borrar">
-            <a href="indexPago.jsp">
+            <a href="menuSecretario.jsp">
                 <button class="btn btn-primary" type="button">Volver</button>
             </a>
             <input type="hidden" name="docreg" value="<%=documento%>">
@@ -46,6 +45,5 @@
         ${MensajeExito}
         <%  }
         %>
-
     </body>
 </html>
