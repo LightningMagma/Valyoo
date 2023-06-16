@@ -5,10 +5,15 @@
  */
 package Controlador;
 
+import ModeloDAO.PerRolDAO;
+import ModeloDAO.PersonaDAO;
 import ModeloDAO.SolicitudDAO;
+import ModeloVO.PerRolVO;
+import ModeloVO.PersonaVO;
 import ModeloVO.SolicitudVO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,39 +41,57 @@ public class SolicitudControlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String solId = request.getParameter("solId");
         String solMonto = request.getParameter("solMonto");
-        String solCuotas = request.getParameter("solCuotas");         
+        String solCuotas = request.getParameter("solCuotas");
         String solEstado = request.getParameter("solEstado");
         String solPersona = request.getParameter("solPersona");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
-        
-        SolicitudVO solVO = new SolicitudVO(solId, solMonto, solCuotas,solEstado,solPersona);
+
+        SolicitudVO solVO = new SolicitudVO(solId, solMonto, solCuotas, solEstado, solPersona);
         SolicitudDAO solDAO = new SolicitudDAO(solVO);
-        
-        switch(opcion){
+
+        switch (opcion) {
             case 1://Agrega registro
-                if(solDAO.agregarRegistro()){
-                    //Enviar atravez de un Atributo                    
-                   request.setAttribute("MensajeExito","La solicitud se registro correctamente!");
-                }else{
-                   request.setAttribute("MensajeError","La solicitud no se registro correctamente!"); 
+                if (solDAO.agregarRegistro()) {
+                    //Enviar a través de un Atributo                    
+                    request.setAttribute("MensajeExito", "La solicitud se registro correctamente!");
+                } else {
+                    request.setAttribute("MensajeError", "La solicitud no se registro correctamente!");
                 }
-                request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);                
+                PerRolDAO prDAO = new PerRolDAO();
+                PerRolVO prVO = new PerRolVO();
+                ArrayList<PerRolVO> listaPerRoles = prDAO.listarPerRol(solPersona);
+                for (int i = 0; i < listaPerRoles.size(); i++) {
+                    prVO = listaPerRoles.get(i);
+                    if (prVO.getPRRol().equals("1")) {
+                        request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
+                    }
+                    if (prVO.getPRRol().equals("2")) {
+                        request.getRequestDispatcher("menuSupervisor.jsp").forward(request, response);
+                    }
+                    if (prVO.getPRRol().equals("3")) {
+                        request.getRequestDispatcher("menuSecretario.jsp").forward(request, response);
+                    }
+                    if (prVO.getPRRol().equals("4")) {
+                        request.getRequestDispatcher("menuDeudor.jsp").forward(request, response);
+                    }
+                }
                 break;
+
             case 2:
-                if(solDAO.actualizarRegistro()){
+                if (solDAO.actualizarRegistro()) {
                     //Enviar atravez de un Atributo
-                   request.setAttribute("MensajeExito","La solicitud se actualizó correctamente!");
-                }else{
-                   request.setAttribute("MensajeError","La solicitud no se actualizó correctamente!"); 
+                    request.setAttribute("MensajeExito", "La solicitud se actualizó correctamente!");
+                } else {
+                    request.setAttribute("MensajeError", "La solicitud no se actualizó correctamente!");
                 }
                 request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
                 break;
             case 3:
-                if(solDAO.eliminarRegistro()){
+                if (solDAO.eliminarRegistro()) {
                     //Enviar atravez de un Atributo
-                   request.setAttribute("MensajeExito","¡El estado de la solicitud se cambió correctamente!");
-                }else{
-                   request.setAttribute("MensajeError","¡El estado de la solicitud NO se cambió correctamente!"); 
+                    request.setAttribute("MensajeExito", "¡El estado de la solicitud se cambió correctamente!");
+                } else {
+                    request.setAttribute("MensajeError", "¡El estado de la solicitud NO se cambió correctamente!");
                 }
                 request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
                 break;

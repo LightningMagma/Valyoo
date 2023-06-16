@@ -13,6 +13,16 @@
     <link rel="stylesheet" type="text/css" href="Estilos/profile.css" >
 </head>
 <body>
+    <%            if (request.getAttribute("MensajeError") != null) { %>
+            <div class="alert alert-danger" role="alert">
+                ${MensajeError}
+            </div>            
+            <%  } else { %>
+            <div class="alert alert-success" role="alert">
+                ${MensajeExito}
+            </div>            
+            <%  }
+            %> 
     <div class="container">
         <div class="main">
             <div class="row">
