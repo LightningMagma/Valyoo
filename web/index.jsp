@@ -1,75 +1,71 @@
-
 <%-- 
-    Document   : index
-    Created on : Mar 14, 2023, 11:18:59 PM
-    Author     : xJuanDa
+    Document   : landingpage
+    Created on : 24/03/2023, 08:03:34 AM
+    Author     : Miguel Gil
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en" class="h-100">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Iniciar sesión</title>
-        <link href="Estilos/style.css" rel="stylesheet" type="text/css"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.84.0">
+        <title>Valyoo</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link href="Estilos/landingPage.css" rel="stylesheet" type="text/css"/>
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+
+
+
+        <!-- Bootstrap core CSS -->
+        <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>    
+        <!-- Custom styles for this template -->
+        <link href="cover.css" rel="stylesheet">
     </head>
-    <body>
-        <section>
-            <div class="color"></div>
-            <div class="color"></div>
-            <div class="color"></div>
-            <div class="box">
-                <div class="fondo" style="--i:0;"></div>
-                <div class="fondo" style="--i:1;"></div>
-                <div class="fondo" style="--i:2;"></div>
-                <div class="fondo" style="--i:3;"></div>
-                <div class="fondo" style="--i:4;"></div>
-                <div class="fondo" style="--i:5;"></div>
-                <div class="contenedor">
-                    <div class="formulario">
+    <body class="d-flex h-100 text-center text-white bg-dark">
 
-                        <h2>Inicio de sesión</h2>
-                        <form action="Persona" method="post">
-                            <img src="Estilos/tituloValyooConSlogan.png" alt="" width="70%"/>
-                            <div class="input">
-                                <input type="text" name="perDocumento" pattern="^[0-9]{7,10}*$" title="Debe ingresar un número de documento" required placeholder="Número de documento" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
-                            </div>
-                            <div class="input">
-                                <input type="password" name="perClave" pattern="^[a-z0-9_-]{3,18}$" required placeholder="Ingrese la contraseña">
-                            </div>
-                            <div class="input">
-                                <input type="submit" value="Login">
-                                <input name="opcion" type="hidden" value="4">
-                            </div>
-                            <p class="registrar">¿No tienes una cuenta? <a href="registrarPersona.jsp">Regístrate</a></p>
-                            <%
-                                if (request.getAttribute("mensajeError") != null) {%>
-                            <h2>${mensajeError}</h2>
-                            <%} else {%>
-                            <h2>${mensajeExito}</h2>    
-                            <%}
-                            %>
-                        </form>
-                    </div>
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <header class="mb-auto">
+                <div>
+                    <h3><img src="Estilos/tituloValyoo.png" alt="Título Valyoo" width="175px"></h3>
+                    <h3 class="float-md-start mb-0">Valyoo</h3>
+                    <nav class="nav nav-masthead justify-content-center float-md-end">
+                        <a class="nav-link active" aria-current="page" href="index.jsp">Inicio</a>
+                        <a class="nav-link" href="login.jsp">Iniciar Sesión</a>
+                        <a class="nav-link" href="registrarPersona.jsp">Registrarse</a>
+                    </nav>
                 </div>
-            </div>
-        </section>
-        <h1>Correo con javaMail</h1>
-        <form method="post" action="EnvioCorreo">
-            <table>
-                <tr>
-                    <td>Destino</td>
-                    <td><input type="email" name="destino"></td>
-                </tr>                
-                <tr>
-                    <td><input type="submit" value="Enviar"> </td>
-                </tr>
-            </table>
+            </header>
+            <main class="px-3">
+                <h1>Bienvenido a Valyoo</h1>
+                <p class="lead">Somos una empresa dedicada a brindar soluciones para tu negocio.</p>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Descubre mas</a>
+                </p>
+            </main>
 
-
-        </form>
-
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+            <footer class="mt-auto text-white-50">
+                <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a></p>
+            </footer>
+        </div>
     </body>
 </html>
+

@@ -59,8 +59,9 @@ public class EnvioCorreoControlador extends HttpServlet {
 
         String destino = request.getParameter("destino");
         String asunto = "Recuperación de contraseña";
-        String mensaje = "Su nueva contraseña es : "+ generarContra();
-         PersonaVO perVO = new PersonaVO(destino,clave);
+        String contra = generarContra();
+        String mensaje = "Su nueva contraseña es : "+ contra;
+         PersonaVO perVO = new PersonaVO(destino,contra);
          PersonaDAO perDAO = new PersonaDAO(perVO);
          perDAO.actualizarContra();
         String resultadoMensaje = "";
@@ -73,7 +74,7 @@ public class EnvioCorreoControlador extends HttpServlet {
             resultadoMensaje = "Error al enviar al correo" + e.getMessage();
         } finally {
             request.setAttribute("EstadoMensaje", resultadoMensaje);
-            getServletContext().getRequestDispatcher("/resultado.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 
         }
     }

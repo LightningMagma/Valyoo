@@ -81,7 +81,7 @@ public class PersonaControlador extends HttpServlet {
                     if (prVO.getPRRol().equals("1")) {
                         request.getRequestDispatcher("indexPersona.jsp").forward(request, response);
                     } else{
-                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
                     }
                 }
                 break;
@@ -141,7 +141,7 @@ public class PersonaControlador extends HttpServlet {
                     }
                 } else {
                     request.setAttribute("mensajeError", "Usuario o contraseña incorrectos");
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
                 break;
             case 5: // Eliminar Registro

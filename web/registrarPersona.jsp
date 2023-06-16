@@ -58,7 +58,8 @@
                                 <input type="text" name="perDireccion" pattern="^[^*/+?\¡¿!$%&().,:;_=<>^" title="No ingrese * / + _ ? u otros caracteres especiales" required placeholder="Dirección" oninput="this.value = this.value.replace(/[^A-Za-z0-9 #-]/g, '').replace(/(\..*)\./g, '$1')">
                             </div>
                             <div class="input">
-                                <input type="password" name="perClave" pattern="^[A-Za-z0-9]{2,10}$" required placeholder="Ingrese la contraseña" >
+                                <input type="password" name="perClave" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" title="La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+                                       NO puede tener otros símbolos."required placeholder="Ingrese la contraseña" >
                             </div>
                             <div class="input">
                                 <input type="submit" value="Registrar">
@@ -74,7 +75,7 @@
                             <%}
                             %>
                         </form>
-                        <a href="landingpage.jsp">
+                        <a href="index.jsp">
                             <button class="btn btn-primary">Volver</button>
                         </a>
                     </div>
