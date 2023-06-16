@@ -225,3 +225,14 @@ section .color:nth-child(3){
     left: 140px;
 }
 input:invalid { border-color: red; } input, input:valid { border-color: #ccc; }
+.input-icon-container{
+    cursor: pointer;
+    font-size: 1.4rem;
+    
+}
+.input-icon{
+    color: #929292;
+}
+.input-icon:cover{
+    color: #333;
+}

@@ -9,8 +9,10 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <link rel="icon" href="Estilos/logoValyoo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Iniciar sesión</title>
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
         <link href="Estilos/style.css" rel="stylesheet" type="text/css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" >
     </head>
@@ -36,7 +38,10 @@
                                 <input type="text" name="perDocumento" pattern="^[0-9]{7,10}*$" title="Debe ingresar un número de documento" required placeholder="Número de documento" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
                             </div>
                             <div class="input">
-                                <input type="password" name="perClave" pattern="^[a-z0-9_-]{3,18}$" required placeholder="Ingrese la contraseña">
+                                <input type="password" id="password" name="perClave" pattern="^[a-z0-9_-]{3,18}$" required placeholder="Ingrese la contraseña">
+                                <span class="input-icon-container">
+                                    <i class="input-icon ri-eye-off-line" id="input-icon"></i>
+                                </span>
                             </div>
                             <div class="input">
                                 <input type="submit" value="Login">
@@ -58,8 +63,10 @@
                     </div>
                 </div>
             </div>
-        </section>      
+        </section>   
+                        
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="main.js" type="text/javascript"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
 </html>

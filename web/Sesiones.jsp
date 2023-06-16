@@ -16,6 +16,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="Estilos/logoValyoo.png">
+        <link rel="shortcut icon" href="Estilos/logoValyoo.png" type="image/x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Valyoo</title>
         <link href="Estilos/estilonavland.css" rel="stylesheet" type="text/css"/>
@@ -26,7 +28,7 @@
         <link href="Estilos/botones.css" rel="stylesheet" type="text/css"/>
         <!-- Bootstrap CSS-->
         <link href="Estilos/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
         <!-- Vendor CSS-->
         <link href="Estilos/vendor/animsition/animsition.min.css" rel="stylesheet" type="text/css"/>
         <link href="Estilos/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
@@ -38,7 +40,7 @@
 
         <!-- Main CSS-->
         <link href="Estilos/css/theme.css" rel="stylesheet" media="all">
-
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
         <link href="Estilos/formularioConsulta.css" rel="stylesheet" type="text/css"/>
 
     </style>
@@ -108,6 +110,10 @@
         <a href="indexRol.jsp">Rol</a>
         <a href="indexSede.jsp">Sede</a>    
         <a href="indexPersonaRol.jsp">Asignación rol</a>
+        <a href="indexCuenta.jsp">Cuenta</a>
+        <a href="indexPrestamos.jsp">Préstamo</a>       
+        <a href="indexPago.jsp">Pago</a>
+        <a href="indexDocumentos.jsp">Documentos</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunctione()">
             <i class="fa fa-bars"></i>
         </a>       
@@ -149,50 +155,53 @@
     </section>
     <script>
         function confirmarCambioEstado() {
-            var respuesta = confirm("¿Desea cambiar el estado del registro?");
-            if (respuesta == true) {
-                return true;
-            } else {
-                return false;
-            }
+        var respuesta = confirm("¿Desea cambiar el estado del registro?");
+        if (respuesta == true) {
+        return true;
+        } else {
+        return false;
+        }
         }
         function confirmar() {
-            var respuesta = confirm("¿Está seguro de eliminar el registro?");
-            if (respuesta == true) {
-                return true;
-            } else {
-                return false;
-            }
+        var respuesta = confirm("¿Está seguro de eliminar el registro?");
+        if (respuesta == true) {
+        return true;
+        } else {
+        return false;
+        }
         }
     </script>
     <script>
         function myFunction() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > - 1) {
+        tr[i].style.display = "";
+        } else {
+        tr[i].style.display = "none";
+        }
+        }
+        }
         }
 
         function myFunctione() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+        x.className += " responsive";
+        } else {
+        x.className = "topnav";
         }
+        }
+
+
     </script>
+    
 </body>
 </html>

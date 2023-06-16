@@ -4,11 +4,13 @@
     Author     : Miguel Gil
 --%>
 
+<%@page import="ModeloDAO.PersonaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="Sesiones.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="Estilos/logoValyoo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registrar Documentos</title>
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
@@ -24,7 +26,14 @@
             
             <input type="text" name="docUrl" required placeholder="Ingrese la URL del documento" title="Debe la descipcion del pago">-->
             <label for="docPer">Persona:</label>
-            <input type="text" name="docPer" required maxlength=15 placeholder="Ingrese la persona" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')">
+            <select name="docPer">
+                <option>Seleccione...</option>
+                <%                    PersonaDAO perDAO = new PersonaDAO();
+                    for (PersonaVO perVO : perDAO.listar()) {
+                %>
+                <option value="<%=perVO.getPerDocumento()%>" name="docPer"><%=perVO.getPerNombre() + " " + perVO.getPerApellido()%></option>
+                <% }%>
+            </select>
             <input type="submit" class="btn btn-success" value="Registrar">
             <input type="reset" class="btn btn-danger" value="Limpiar">
             <a href="indexDocumentos.jsp">
@@ -46,7 +55,7 @@
                 var file = elemento.files[0];
                 var objhidden = document.formulario.Nombre;
                 objhidden.value = file.name;
-                document.formulario="indexDocumentos.jsp";
+                document.formulario.target = "indexDocumentos.jsp";
                 //document.formulario.action = "Documentos";
                 //document.formulario.submit();
                 //alert("Proceso Terminado");

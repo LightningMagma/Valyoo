@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="Estilos/logoValyoo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Menú</title>
         <link href="Estilos/MenuPrincipal.css" rel="stylesheet" type="text/css"/>

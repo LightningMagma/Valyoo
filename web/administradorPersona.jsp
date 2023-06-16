@@ -9,9 +9,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="Estilos/logoValyoo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registrar Persona</title>
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <h2>Registro de persona</h2>
@@ -43,7 +45,10 @@
             <input type="text" name="perDireccion" title="No ingrese * / + _ ? u otros caracteres especiales" required placeholder="Dirección" oninput="this.value = this.value.replace(/[^A-Za-z0-9 #-]/g, '').replace(/(\..*)\./g, '$1')">
 
             <label for="perClave">Contraseña:</label>
-            <input type="password" name="perClave" required placeholder="Ingrese la contraseña" >
+            <input type="password" name="perClave" id="password" required placeholder="Ingrese la contraseña">
+            <span class="input-icon-container">
+                <i class="input-icon ri-eye-off-line" id="input-icon"></i>
+            </span>
 
 
             <input type="submit" class="btn btn-success" value="Registrar">
@@ -55,6 +60,7 @@
             <input type="hidden" name="opcion" value="1">
         </form>
 
+        <script src="main.js" type="text/javascript"></script>
         <%
             if (request.getAttribute("MensajeError") != null) { %>
         ${MensajeError}
@@ -62,5 +68,6 @@
         ${MensajeExito}
         <%}
         %>
+
     </body>
 </html>

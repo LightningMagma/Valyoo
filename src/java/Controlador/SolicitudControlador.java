@@ -65,6 +65,9 @@ public class SolicitudControlador extends HttpServlet {
                     if (prVO.getPRRol().equals("3")) {
                         request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
                     }
+                    if (prVO.getPRRol().equals("1")) {
+                        request.getRequestDispatcher("indexSolicitud.jsp").forward(request, response);
+                    }
                     if (prVO.getPRRol().equals("4")) {
                         request.getRequestDispatcher("menuDeudor.jsp").forward(request, response);
                     }

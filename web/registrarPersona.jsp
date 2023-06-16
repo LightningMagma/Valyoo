@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="Estilos/logoValyoo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registrar Personas</title>
         <link href="Estilos/style.css" rel="stylesheet" type="text/css"/>
@@ -60,6 +61,9 @@
                             <div class="input">
                                 <input type="password" name="perClave" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" title="La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
                                        NO puede tener otros símbolos."required placeholder="Ingrese la contraseña" >
+                                <span class="input-icon-container">
+                                    <i class="input-icon ri-eye-off-line" id="input-icon"></i>
+                                </span>
                             </div>
                             <div class="input">
                                 <input type="submit" value="Registrar">
@@ -84,6 +88,7 @@
         </section>
 
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="main.js" type="text/javascript"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <%
             if (request.getAttribute("MensajeError") != null) { %>

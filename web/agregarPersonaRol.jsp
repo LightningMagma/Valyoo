@@ -13,6 +13,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="Estilos/logoValyoo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Asignar Persona Rol</title>
         <link href="Estilos/Styles.css" rel="stylesheet" type="text/css"/>

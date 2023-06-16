@@ -71,6 +71,9 @@ public class PrestamoControlador extends HttpServlet {
                     if (prVO.getPRRol().equals("2")) {
                         request.getRequestDispatcher("indexPrestamos.jsp").forward(request, response);
                     }
+                    if (prVO.getPRRol().equals("1")) {
+                        request.getRequestDispatcher("indexPrestamos.jsp").forward(request, response);
+                    }
                 }
                 break;
             case 2: // Actualizar Registro

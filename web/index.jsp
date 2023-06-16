@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
     <head>
+        <link rel="icon" href="Estilos/logoValyoo.png">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">

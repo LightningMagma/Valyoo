@@ -12,6 +12,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="Estilos/logoValyoo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Documento</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -71,8 +72,8 @@
                     <td>
                         <form method="post" action="Documentos">
                             <input type="hidden" name="docId" value="<%=docVO.getDocId()%>">
-                            <button class="btn btn-warning" name="opcion" value="3" >Editar</button>
-                            <button class="btn btn-danger" name="opcion" value="4" onclick="return confirmar()">Eliminar</button>
+                            <!--<button class="btn btn-warning" name="opcion" value="3" >Editar</button>
+                            <button class="btn btn-danger" name="opcion" value="4" onclick="return confirmar()">Eliminar</button>-->
                         </form>
                     </td>
                 </tr>
