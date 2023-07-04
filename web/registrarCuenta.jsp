@@ -32,9 +32,7 @@
             </select>
             <input type="submit" class="btn btn-success" value="Registrar Cuenta">
             <input type="reset" class="btn btn-danger " value="Borrar">
-            <a href="indexCuenta.jsp">
-                <button class="btn btn-primary">Volver</button>
-            </a>
+            
             <input type="hidden" name="opcion" value="1"><br>
             <%if (request.getAttribute("MensajeError") != null) { %>
             ${MensajeError}
